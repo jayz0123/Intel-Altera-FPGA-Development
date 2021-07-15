@@ -1,0 +1,13 @@
+
+State Machine - |Top|ControllerRx:CRx|pstate
+Name pstate.IDLE pstate.LOAD pstate.RCV 
+pstate.IDLE 0 0 0 
+pstate.RCV 1 0 1 
+pstate.LOAD 1 1 0 
+
+State Machine - |Top|ControllerTx:CTx|pstate
+Name pstate.HOLD pstate.TRANS pstate.LOAD pstate.IDLE 
+pstate.IDLE 0 0 0 0 
+pstate.LOAD 0 0 1 1 
+pstate.TRANS 0 1 0 1 
+pstate.HOLD 1 0 0 1 

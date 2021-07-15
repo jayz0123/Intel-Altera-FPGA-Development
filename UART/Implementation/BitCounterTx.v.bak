@@ -1,0 +1,31 @@
+module BitCounterTx
+(
+	clk,
+	clk_baud,
+	reset,
+	load,
+	bit_counter
+);
+
+input			clk;
+input			clk_baud;
+input			reset;
+input			load;
+
+output 	[3:0]	bit_counter;
+
+reg	 	[3:0]	bit_counter;
+
+
+always @(posedge clk or negedge reset)
+begin	
+	if(!reset)
+		bit_counter <= 4'b0000;
+		
+	else if(load)
+		bit_counter <= 4'b0000;
+		
+	else if(!load && clk_baud)
+		bit_counter <= bit_counter + 1;
+end
+endmodule

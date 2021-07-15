@@ -1,0 +1,422 @@
+|Top
+clk => clk.IN10
+reset => reset.IN10
+send_tx => send_tx.IN1
+data_in_tx[0] => data_in_tx[0].IN2
+data_in_tx[1] => data_in_tx[1].IN2
+data_in_tx[2] => data_in_tx[2].IN2
+data_in_tx[3] => data_in_tx[3].IN2
+data_in_tx[4] => data_in_tx[4].IN2
+data_in_tx[5] => data_in_tx[5].IN2
+data_in_tx[6] => data_in_tx[6].IN2
+data_hex6[0] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex6[1] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex6[2] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex6[3] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex6[4] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex6[5] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex6[6] <= Decoder7SegmentRx:D7SHex6.data_decoded
+data_hex5[0] <= Decoder7SegmentRx:D7SHex5.data_decoded
+data_hex5[1] <= Decoder7SegmentRx:D7SHex5.data_decoded
+data_hex5[2] <= Decoder7SegmentRx:D7SHex5.data_decoded
+data_hex5[3] <= Decoder7SegmentRx:D7SHex5.data_decoded
+data_hex5[4] <= Decoder7SegmentRx:D7SHex5.data_decoded
+data_hex5[5] <= Decoder7SegmentRx:D7SHex5.data_decoded
+data_hex5[6] <= Decoder7SegmentRx:D7SHex5.data_decoded
+parity_error <= ErrorDetectorRx:EDRx.parity_error
+framing_error <= ErrorDetectorRx:EDRx.framing_error
+tx <= ShiftRegisterTx:SRTx.serial_out
+rx => rx.IN2
+
+
+|Top|BaudGeneratorTx:BGTx
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => clk_baud.IN1
+clk_baud <= clk_baud.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|BaudGeneratorRx:BGRx
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+reset => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => counter.OUTPUTSELECT
+baud_enable => clk_baud.IN1
+clk_baud <= clk_baud.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|DataRegisterTx:DRTx
+clk => data_out[0]~reg0.CLK
+clk => data_out[1]~reg0.CLK
+clk => data_out[2]~reg0.CLK
+clk => data_out[3]~reg0.CLK
+clk => data_out[4]~reg0.CLK
+clk => data_out[5]~reg0.CLK
+clk => data_out[6]~reg0.CLK
+clk => data_out[7]~reg0.CLK
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+data_in[0] => data_out.DATAA
+data_in[1] => data_out.DATAA
+data_in[2] => data_out.DATAA
+data_in[3] => data_out.DATAA
+data_in[4] => data_out.DATAA
+data_in[5] => data_out.DATAA
+data_in[6] => data_out.DATAA
+data_in[7] => data_out.DATAA
+data_out[0] <= data_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= data_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= data_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= data_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= data_out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= data_out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[6] <= data_out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[7] <= data_out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|DataRegisterRx:DRRx
+clk => data_out[0]~reg0.CLK
+clk => data_out[1]~reg0.CLK
+clk => data_out[2]~reg0.CLK
+clk => data_out[3]~reg0.CLK
+clk => data_out[4]~reg0.CLK
+clk => data_out[5]~reg0.CLK
+clk => data_out[6]~reg0.CLK
+clk => data_out[7]~reg0.CLK
+clk => data_out[8]~reg0.CLK
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+reset => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+load => data_out.OUTPUTSELECT
+data_in[0] => data_out.DATAB
+data_in[1] => data_out.DATAB
+data_in[2] => data_out.DATAB
+data_in[3] => data_out.DATAB
+data_in[4] => data_out.DATAB
+data_in[5] => data_out.DATAB
+data_in[6] => data_out.DATAB
+data_in[7] => data_out.DATAB
+data_in[8] => data_out.DATAB
+data_out[0] <= data_out[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= data_out[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= data_out[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= data_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= data_out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= data_out[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[6] <= data_out[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[7] <= data_out[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_out[8] <= data_out[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|ShiftRegisterTx:SRTx
+clk => data[0].CLK
+clk => data[1].CLK
+clk => data[2].CLK
+clk => data[3].CLK
+clk => data[4].CLK
+clk => data[5].CLK
+clk => data[6].CLK
+clk => data[7].CLK
+clk => data[8].CLK
+clk => data[9].CLK
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+load => data.OUTPUTSELECT
+parallel_in[0] => data.DATAB
+parallel_in[1] => data.DATAB
+parallel_in[2] => data.DATAB
+parallel_in[3] => data.DATAB
+parallel_in[4] => data.DATAB
+parallel_in[5] => data.DATAB
+parallel_in[6] => data.DATAB
+parallel_in[7] => data.DATAB
+parallel_in[8] => data.DATAB
+parallel_in[9] => data.DATAB
+serial_out <= data[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|ShiftRegisterRx:SRRx
+clk => data[0].CLK
+clk => data[1].CLK
+clk => data[2].CLK
+clk => data[3].CLK
+clk => data[4].CLK
+clk => data[5].CLK
+clk => data[6].CLK
+clk => data[7].CLK
+clk => data[8].CLK
+clk => data[9].CLK
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+clk_baud => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+reset => data.OUTPUTSELECT
+serial_in => data.DATAB
+parallel_out[0] <= data[0].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[1] <= data[1].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[2] <= data[2].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[3] <= data[3].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[4] <= data[4].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[5] <= data[5].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[6] <= data[6].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[7] <= data[7].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[8] <= data[8].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[9] <= data[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|BitCounterTx:BCTx
+clk => bit_counter[0]~reg0.CLK
+clk => bit_counter[1]~reg0.CLK
+clk => bit_counter[2]~reg0.CLK
+clk => bit_counter[3]~reg0.CLK
+clk_baud => always0.IN0
+reset => bit_counter.OUTPUTSELECT
+reset => bit_counter.OUTPUTSELECT
+reset => bit_counter.OUTPUTSELECT
+reset => bit_counter.OUTPUTSELECT
+load => bit_counter.OUTPUTSELECT
+load => bit_counter.OUTPUTSELECT
+load => bit_counter.OUTPUTSELECT
+load => bit_counter.OUTPUTSELECT
+load => always0.IN1
+bit_counter[0] <= bit_counter[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bit_counter[1] <= bit_counter[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bit_counter[2] <= bit_counter[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bit_counter[3] <= bit_counter[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|BitCounterRx:BCRx
+clk => bit_counter[0]~reg0.CLK
+clk => bit_counter[1]~reg0.CLK
+clk => bit_counter[2]~reg0.CLK
+clk => bit_counter[3]~reg0.CLK
+clk_baud => always0.IN0
+reset => bit_counter.OUTPUTSELECT
+reset => bit_counter.OUTPUTSELECT
+reset => bit_counter.OUTPUTSELECT
+reset => bit_counter.OUTPUTSELECT
+clear => bit_counter.OUTPUTSELECT
+clear => bit_counter.OUTPUTSELECT
+clear => bit_counter.OUTPUTSELECT
+clear => bit_counter.OUTPUTSELECT
+clear => always0.IN1
+bit_counter[0] <= bit_counter[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bit_counter[1] <= bit_counter[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bit_counter[2] <= bit_counter[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+bit_counter[3] <= bit_counter[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|Decoder7SegmentRx:D7SHex6
+data_decoding[0] => Decoder0.IN3
+data_decoding[1] => Decoder0.IN2
+data_decoding[2] => Decoder0.IN1
+data_decoding[3] => Decoder0.IN0
+data_decoded[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|Decoder7SegmentRx:D7SHex5
+data_decoding[0] => Decoder0.IN3
+data_decoding[1] => Decoder0.IN2
+data_decoding[2] => Decoder0.IN1
+data_decoding[3] => Decoder0.IN0
+data_decoded[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|ControllerTx:CTx
+clk => pstate~1.DATAIN
+reset => pstate.OUTPUTSELECT
+reset => pstate.OUTPUTSELECT
+reset => pstate.OUTPUTSELECT
+reset => pstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+bit_counter[0] => Equal0.IN2
+bit_counter[1] => Equal0.IN1
+bit_counter[2] => Equal0.IN3
+bit_counter[3] => Equal0.IN0
+load <= load.DB_MAX_OUTPUT_PORT_TYPE
+baud_enable <= baud_enable.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|ControllerRx:CRx
+clk => pstate~1.DATAIN
+reset => pstate.OUTPUTSELECT
+reset => pstate.OUTPUTSELECT
+reset => pstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+start => nstate.OUTPUTSELECT
+bit_counter[0] => Equal0.IN3
+bit_counter[1] => Equal0.IN1
+bit_counter[2] => Equal0.IN2
+bit_counter[3] => Equal0.IN0
+load <= load.DB_MAX_OUTPUT_PORT_TYPE
+clear <= clear.DB_MAX_OUTPUT_PORT_TYPE
+baud_enable <= baud_enable.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|ParityGeneratorTx:PGTx
+data[0] => WideXor0.IN0
+data[1] => WideXor0.IN1
+data[2] => WideXor0.IN2
+data[3] => WideXor0.IN3
+data[4] => WideXor0.IN4
+data[5] => WideXor0.IN5
+data[6] => WideXor0.IN6
+parity_bit <= WideXor0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Top|ErrorDetectorRx:EDRx
+data[0] => WideXor0.IN0
+data[1] => WideXor0.IN1
+data[2] => WideXor0.IN2
+data[3] => WideXor0.IN3
+data[4] => WideXor0.IN4
+data[5] => WideXor0.IN5
+data[6] => WideXor0.IN6
+data[7] => WideXor0.IN7
+data[8] => framing_error.DATAIN
+parity_error <= WideXor0.DB_MAX_OUTPUT_PORT_TYPE
+framing_error <= data[8].DB_MAX_OUTPUT_PORT_TYPE
+
+

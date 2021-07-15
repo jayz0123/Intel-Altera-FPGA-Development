@@ -1,0 +1,471 @@
+|IrDATransceiver
+clk => clk~0.IN3
+rst => rst~0.IN1
+data_txd[0] => data_txd[0]~6.IN1
+data_txd[1] => data_txd[1]~5.IN1
+data_txd[2] => data_txd[2]~4.IN1
+data_txd[3] => data_txd[3]~3.IN1
+data_txd[4] => data_txd[4]~2.IN1
+data_txd[5] => data_txd[5]~1.IN1
+data_txd[6] => data_txd[6]~0.IN1
+rxd_ir => rxd_ir~0.IN2
+send_key => send_key~0.IN1
+hex6[0] <= IrDAReceiver:IrDA_receiver.hex6
+hex6[1] <= IrDAReceiver:IrDA_receiver.hex6
+hex6[2] <= IrDAReceiver:IrDA_receiver.hex6
+hex6[3] <= IrDAReceiver:IrDA_receiver.hex6
+hex6[4] <= IrDAReceiver:IrDA_receiver.hex6
+hex6[5] <= IrDAReceiver:IrDA_receiver.hex6
+hex6[6] <= IrDAReceiver:IrDA_receiver.hex6
+hex5[0] <= IrDAReceiver:IrDA_receiver.hex5
+hex5[1] <= IrDAReceiver:IrDA_receiver.hex5
+hex5[2] <= IrDAReceiver:IrDA_receiver.hex5
+hex5[3] <= IrDAReceiver:IrDA_receiver.hex5
+hex5[4] <= IrDAReceiver:IrDA_receiver.hex5
+hex5[5] <= IrDAReceiver:IrDA_receiver.hex5
+hex5[6] <= IrDAReceiver:IrDA_receiver.hex5
+txd_ir <= IrDATransmitter:IrDA_transmitter.txd_ir
+parity_error <= IrDAReceiver:IrDA_receiver.parity_error
+framing_error <= IrDAReceiver:IrDA_receiver.framing_error
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter
+clk => clk~0.IN5
+rst => rst~0.IN1
+ena => ena~0.IN1
+start => start~0.IN1
+data_txd[0] => data_txd[0]~6.IN2
+data_txd[1] => data_txd[1]~5.IN2
+data_txd[2] => data_txd[2]~4.IN2
+data_txd[3] => data_txd[3]~3.IN2
+data_txd[4] => data_txd[4]~2.IN2
+data_txd[5] => data_txd[5]~1.IN2
+data_txd[6] => data_txd[6]~0.IN2
+txd_ir <= Inverter:transmitter_inverter.txd_ir
+done <= TransmitterController:transmitter_controller.done
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register
+clk => pdata[0].CLK
+clk => pdata[1].CLK
+clk => pdata[2].CLK
+clk => pdata[3].CLK
+clk => pdata[4].CLK
+clk => pdata[5].CLK
+clk => pdata[6].CLK
+clk => pdata[7].CLK
+clk => pdata[8].CLK
+clk => pdata[9].CLK
+rst => ndata[9].OUTPUTSELECT
+rst => ndata[8].OUTPUTSELECT
+rst => ndata[7].OUTPUTSELECT
+rst => ndata[6].OUTPUTSELECT
+rst => ndata[5].OUTPUTSELECT
+rst => ndata[4].OUTPUTSELECT
+rst => ndata[3].OUTPUTSELECT
+rst => ndata[2].OUTPUTSELECT
+rst => ndata[1].OUTPUTSELECT
+rst => ndata[0].OUTPUTSELECT
+shift => ndata~10.OUTPUTSELECT
+shift => ndata~11.OUTPUTSELECT
+shift => ndata~12.OUTPUTSELECT
+shift => ndata~13.OUTPUTSELECT
+shift => ndata~14.OUTPUTSELECT
+shift => ndata~15.OUTPUTSELECT
+shift => ndata~16.OUTPUTSELECT
+shift => ndata~17.OUTPUTSELECT
+shift => ndata~18.OUTPUTSELECT
+shift => ndata~19.OUTPUTSELECT
+load => ndata~0.OUTPUTSELECT
+load => ndata~1.OUTPUTSELECT
+load => ndata~2.OUTPUTSELECT
+load => ndata~3.OUTPUTSELECT
+load => ndata~4.OUTPUTSELECT
+load => ndata~5.OUTPUTSELECT
+load => ndata~6.OUTPUTSELECT
+load => ndata~7.OUTPUTSELECT
+load => ndata~8.OUTPUTSELECT
+load => ndata~9.OUTPUTSELECT
+serial_in => ndata~10.DATAB
+parallel_in[0] => ndata~9.DATAB
+parallel_in[1] => ndata~8.DATAB
+parallel_in[2] => ndata~7.DATAB
+parallel_in[3] => ndata~6.DATAB
+parallel_in[4] => ndata~5.DATAB
+parallel_in[5] => ndata~4.DATAB
+parallel_in[6] => ndata~3.DATAB
+parallel_in[7] => ndata~2.DATAB
+parallel_in[8] => ndata~1.DATAB
+parallel_in[9] => ndata~0.DATAB
+serial_out <= pdata[0].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[0] <= pdata[0].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[1] <= pdata[1].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[2] <= pdata[2].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[3] <= pdata[3].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[4] <= pdata[4].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[5] <= pdata[5].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[6] <= pdata[6].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[7] <= pdata[7].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[8] <= pdata[8].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[9] <= pdata[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator
+clk => pcount[0].CLK
+clk => pcount[1].CLK
+clk => pcount[2].CLK
+clk => pcount[3].CLK
+clk => pcount[4].CLK
+rst => ncount[4].OUTPUTSELECT
+rst => ncount[3].OUTPUTSELECT
+rst => ncount[2].OUTPUTSELECT
+rst => ncount[1].OUTPUTSELECT
+rst => ncount[0].OUTPUTSELECT
+rst => baud_full~0.OUTPUTSELECT
+rst => baud_txir~0.OUTPUTSELECT
+rst => baud_rxir~0.OUTPUTSELECT
+ena => ncount~5.OUTPUTSELECT
+ena => ncount~6.OUTPUTSELECT
+ena => ncount~7.OUTPUTSELECT
+ena => ncount~8.OUTPUTSELECT
+ena => ncount~9.OUTPUTSELECT
+baud_full <= baud_full~0.DB_MAX_OUTPUT_PORT_TYPE
+baud_txir <= baud_txir~0.DB_MAX_OUTPUT_PORT_TYPE
+baud_rxir <= baud_rxir~0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter
+clk => pcount[0].CLK
+clk => pcount[1].CLK
+clk => pcount[2].CLK
+clk => pcount[3].CLK
+rst => ncount[3].OUTPUTSELECT
+rst => ncount[2].OUTPUTSELECT
+rst => ncount[1].OUTPUTSELECT
+rst => ncount[0].OUTPUTSELECT
+rst => bit_done~1.OUTPUTSELECT
+ena => bit_done~0.OUTPUTSELECT
+ena => ncount~8.OUTPUTSELECT
+ena => ncount~9.OUTPUTSELECT
+ena => ncount~10.OUTPUTSELECT
+ena => ncount~11.OUTPUTSELECT
+inc => ncount~4.OUTPUTSELECT
+inc => ncount~5.OUTPUTSELECT
+inc => ncount~6.OUTPUTSELECT
+inc => ncount~7.OUTPUTSELECT
+bit_done <= bit_done~1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator
+data[0] => WideXor0.IN0
+data[1] => WideXor0.IN1
+data[2] => WideXor0.IN2
+data[3] => WideXor0.IN3
+data[4] => WideXor0.IN4
+data[5] => WideXor0.IN5
+data[6] => WideXor0.IN6
+parity_bit <= WideXor0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter
+clk => pval.CLK
+rst => nval.OUTPUTSELECT
+ena => nval~0.OUTPUTSELECT
+txd => nval~0.DATAB
+txd_ir <= pval.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller
+clk => pstate~4.DATAIN
+rst => clear_baud~1.OUTPUTSELECT
+rst => clear_bit~0.OUTPUTSELECT
+rst => nstate.IDLE.OUTPUTSELECT
+rst => nstate.LOAD.OUTPUTSELECT
+rst => nstate.TRANS.OUTPUTSELECT
+rst => load~1.OUTPUTSELECT
+rst => ena_baud~1.OUTPUTSELECT
+rst => ena_bit~0.OUTPUTSELECT
+rst => done~2.OUTPUTSELECT
+rst => ena_inv~2.OUTPUTSELECT
+rst => shift~2.OUTPUTSELECT
+rst => inc~0.OUTPUTSELECT
+rst => clear_shift.DATAIN
+rst => clear_inv.DATAIN
+ena => clear_baud~0.OUTPUTSELECT
+ena => nstate~6.OUTPUTSELECT
+ena => nstate~7.OUTPUTSELECT
+ena => nstate~8.OUTPUTSELECT
+ena => load~0.OUTPUTSELECT
+ena => ena_baud~0.OUTPUTSELECT
+ena => done~1.OUTPUTSELECT
+ena => ena_inv~1.OUTPUTSELECT
+ena => shift~1.OUTPUTSELECT
+start => nstate~0.OUTPUTSELECT
+start => nstate~1.OUTPUTSELECT
+start => nstate~2.OUTPUTSELECT
+bit_done => nstate~3.OUTPUTSELECT
+bit_done => nstate~4.OUTPUTSELECT
+bit_done => nstate~5.OUTPUTSELECT
+bit_done => done~0.DATAB
+baud_full => shift~0.DATAB
+baud_txir => ena_inv~0.DATAB
+shift <= shift~2.DB_MAX_OUTPUT_PORT_TYPE
+load <= load~1.DB_MAX_OUTPUT_PORT_TYPE
+inc <= inc~0.DB_MAX_OUTPUT_PORT_TYPE
+ena_baud <= ena_baud~1.DB_MAX_OUTPUT_PORT_TYPE
+ena_bit <= ena_bit~0.DB_MAX_OUTPUT_PORT_TYPE
+ena_inv <= ena_inv~2.DB_MAX_OUTPUT_PORT_TYPE
+clear_baud <= clear_baud~1.DB_MAX_OUTPUT_PORT_TYPE
+clear_bit <= clear_bit~0.DB_MAX_OUTPUT_PORT_TYPE
+clear_shift <= rst.DB_MAX_OUTPUT_PORT_TYPE
+clear_inv <= rst.DB_MAX_OUTPUT_PORT_TYPE
+done <= done~2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver
+clk => clk~0.IN4
+rst => rst~0.IN1
+ena => ena~0.IN1
+start => start~0.IN1
+rxd_ir => rxd_ir~0.IN1
+hex6[0] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex6[1] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex6[2] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex6[3] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex6[4] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex6[5] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex6[6] <= SevenSegDecoder:receiver_hex6_decoder.data_decoded
+hex5[0] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+hex5[1] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+hex5[2] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+hex5[3] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+hex5[4] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+hex5[5] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+hex5[6] <= SevenSegDecoder:receiver_hex5_decoder.data_decoded
+parity_error <= ErrorDetector:receiver_error_detector.parity_error
+framing_error <= ErrorDetector:receiver_error_detector.framing_error
+done <= ReceiverController:receiver_controller.done
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register
+clk => pdata[0].CLK
+clk => pdata[1].CLK
+clk => pdata[2].CLK
+clk => pdata[3].CLK
+clk => pdata[4].CLK
+clk => pdata[5].CLK
+clk => pdata[6].CLK
+clk => pdata[7].CLK
+clk => pdata[8].CLK
+clk => pdata[9].CLK
+rst => ndata[9].OUTPUTSELECT
+rst => ndata[8].OUTPUTSELECT
+rst => ndata[7].OUTPUTSELECT
+rst => ndata[6].OUTPUTSELECT
+rst => ndata[5].OUTPUTSELECT
+rst => ndata[4].OUTPUTSELECT
+rst => ndata[3].OUTPUTSELECT
+rst => ndata[2].OUTPUTSELECT
+rst => ndata[1].OUTPUTSELECT
+rst => ndata[0].OUTPUTSELECT
+shift => ndata~10.OUTPUTSELECT
+shift => ndata~11.OUTPUTSELECT
+shift => ndata~12.OUTPUTSELECT
+shift => ndata~13.OUTPUTSELECT
+shift => ndata~14.OUTPUTSELECT
+shift => ndata~15.OUTPUTSELECT
+shift => ndata~16.OUTPUTSELECT
+shift => ndata~17.OUTPUTSELECT
+shift => ndata~18.OUTPUTSELECT
+shift => ndata~19.OUTPUTSELECT
+load => ndata~0.OUTPUTSELECT
+load => ndata~1.OUTPUTSELECT
+load => ndata~2.OUTPUTSELECT
+load => ndata~3.OUTPUTSELECT
+load => ndata~4.OUTPUTSELECT
+load => ndata~5.OUTPUTSELECT
+load => ndata~6.OUTPUTSELECT
+load => ndata~7.OUTPUTSELECT
+load => ndata~8.OUTPUTSELECT
+load => ndata~9.OUTPUTSELECT
+serial_in => ndata~10.DATAB
+parallel_in[0] => ndata~9.DATAB
+parallel_in[1] => ndata~8.DATAB
+parallel_in[2] => ndata~7.DATAB
+parallel_in[3] => ndata~6.DATAB
+parallel_in[4] => ndata~5.DATAB
+parallel_in[5] => ndata~4.DATAB
+parallel_in[6] => ndata~3.DATAB
+parallel_in[7] => ndata~2.DATAB
+parallel_in[8] => ndata~1.DATAB
+parallel_in[9] => ndata~0.DATAB
+serial_out <= pdata[0].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[0] <= pdata[0].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[1] <= pdata[1].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[2] <= pdata[2].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[3] <= pdata[3].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[4] <= pdata[4].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[5] <= pdata[5].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[6] <= pdata[6].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[7] <= pdata[7].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[8] <= pdata[8].DB_MAX_OUTPUT_PORT_TYPE
+parallel_out[9] <= pdata[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator
+clk => pcount[0].CLK
+clk => pcount[1].CLK
+clk => pcount[2].CLK
+clk => pcount[3].CLK
+clk => pcount[4].CLK
+rst => ncount[4].OUTPUTSELECT
+rst => ncount[3].OUTPUTSELECT
+rst => ncount[2].OUTPUTSELECT
+rst => ncount[1].OUTPUTSELECT
+rst => ncount[0].OUTPUTSELECT
+rst => baud_full~0.OUTPUTSELECT
+rst => baud_txir~0.OUTPUTSELECT
+rst => baud_rxir~0.OUTPUTSELECT
+ena => ncount~5.OUTPUTSELECT
+ena => ncount~6.OUTPUTSELECT
+ena => ncount~7.OUTPUTSELECT
+ena => ncount~8.OUTPUTSELECT
+ena => ncount~9.OUTPUTSELECT
+baud_full <= baud_full~0.DB_MAX_OUTPUT_PORT_TYPE
+baud_txir <= baud_txir~0.DB_MAX_OUTPUT_PORT_TYPE
+baud_rxir <= baud_rxir~0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter
+clk => pcount[0].CLK
+clk => pcount[1].CLK
+clk => pcount[2].CLK
+clk => pcount[3].CLK
+rst => ncount[3].OUTPUTSELECT
+rst => ncount[2].OUTPUTSELECT
+rst => ncount[1].OUTPUTSELECT
+rst => ncount[0].OUTPUTSELECT
+rst => bit_done~1.OUTPUTSELECT
+ena => bit_done~0.OUTPUTSELECT
+ena => ncount~8.OUTPUTSELECT
+ena => ncount~9.OUTPUTSELECT
+ena => ncount~10.OUTPUTSELECT
+ena => ncount~11.OUTPUTSELECT
+inc => ncount~4.OUTPUTSELECT
+inc => ncount~5.OUTPUTSELECT
+inc => ncount~6.OUTPUTSELECT
+inc => ncount~7.OUTPUTSELECT
+bit_done <= bit_done~1.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector
+data[0] => WideXor0.IN0
+data[1] => WideXor0.IN1
+data[2] => WideXor0.IN2
+data[3] => WideXor0.IN3
+data[4] => WideXor0.IN4
+data[5] => WideXor0.IN5
+data[6] => WideXor0.IN6
+data[7] => WideXor0.IN7
+data[8] => framing_error.DATAIN
+parity_error <= WideXor0.DB_MAX_OUTPUT_PORT_TYPE
+framing_error <= data[8].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder
+data_decoding[0] => Decoder0.IN3
+data_decoding[1] => Decoder0.IN2
+data_decoding[2] => Decoder0.IN1
+data_decoding[3] => Decoder0.IN0
+data_decoded[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder
+data_decoding[0] => Decoder0.IN3
+data_decoding[1] => Decoder0.IN2
+data_decoding[2] => Decoder0.IN1
+data_decoding[3] => Decoder0.IN0
+data_decoded[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+data_decoded[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller
+clk => pstate~4.DATAIN
+rst => clear_baud~1.OUTPUTSELECT
+rst => clear_bit~0.OUTPUTSELECT
+rst => nstate.IDLE.OUTPUTSELECT
+rst => nstate.RCV.OUTPUTSELECT
+rst => ena_baud~1.OUTPUTSELECT
+rst => ena_bit~0.OUTPUTSELECT
+rst => done~2.OUTPUTSELECT
+rst => shift~2.OUTPUTSELECT
+rst => inc~0.OUTPUTSELECT
+rst => clear_shift.DATAIN
+ena => clear_baud~0.OUTPUTSELECT
+ena => nstate~6.OUTPUTSELECT
+ena => nstate~7.OUTPUTSELECT
+ena => ena_baud~0.OUTPUTSELECT
+ena => done~1.OUTPUTSELECT
+ena => shift~1.OUTPUTSELECT
+start => nstate~0.OUTPUTSELECT
+start => nstate~1.OUTPUTSELECT
+bit_done => nstate~2.OUTPUTSELECT
+bit_done => nstate~3.OUTPUTSELECT
+bit_done => done~0.DATAA
+baud_rxir => shift~0.DATAA
+shift <= shift~2.DB_MAX_OUTPUT_PORT_TYPE
+inc <= inc~0.DB_MAX_OUTPUT_PORT_TYPE
+ena_baud <= ena_baud~1.DB_MAX_OUTPUT_PORT_TYPE
+ena_bit <= ena_bit~0.DB_MAX_OUTPUT_PORT_TYPE
+clear_baud <= clear_baud~1.DB_MAX_OUTPUT_PORT_TYPE
+clear_bit <= clear_bit~0.DB_MAX_OUTPUT_PORT_TYPE
+clear_shift <= rst.DB_MAX_OUTPUT_PORT_TYPE
+done <= done~2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|IrDATransceiver|TransceiverController:transceiver_controller
+clk => pstate~4.DATAIN
+rst => nstate.IDLE.OUTPUTSELECT
+rst => nstate.TRANS.OUTPUTSELECT
+rst => nstate.RCV.OUTPUTSELECT
+rst => ena_trans~0.OUTPUTSELECT
+rst => start_trans~1.OUTPUTSELECT
+rst => ena_rcv~1.OUTPUTSELECT
+rst => start_rcv~1.OUTPUTSELECT
+rst => rst_transmitter.DATAIN
+rst => rst_receiver.DATAIN
+send_key => nstate~3.OUTPUTSELECT
+send_key => nstate~4.OUTPUTSELECT
+send_key => nstate~5.OUTPUTSELECT
+send_key => ena_rcv~0.OUTPUTSELECT
+send_key => Selector0.IN2
+send_key => start_trans~0.DATAB
+start_bit => nstate~0.OUTPUTSELECT
+start_bit => nstate~1.OUTPUTSELECT
+start_bit => nstate~2.OUTPUTSELECT
+start_bit => ena_rcv~0.DATAA
+trans_done => nstate~6.OUTPUTSELECT
+trans_done => nstate~7.OUTPUTSELECT
+trans_done => nstate~8.OUTPUTSELECT
+rcv_done => nstate~9.OUTPUTSELECT
+rcv_done => nstate~10.OUTPUTSELECT
+rcv_done => nstate~11.OUTPUTSELECT
+ena_trans <= ena_trans~0.DB_MAX_OUTPUT_PORT_TYPE
+ena_rcv <= ena_rcv~1.DB_MAX_OUTPUT_PORT_TYPE
+start_trans <= start_trans~1.DB_MAX_OUTPUT_PORT_TYPE
+start_rcv <= start_rcv~1.DB_MAX_OUTPUT_PORT_TYPE
+rst_transmitter <= rst.DB_MAX_OUTPUT_PORT_TYPE
+rst_receiver <= rst.DB_MAX_OUTPUT_PORT_TYPE
+
+

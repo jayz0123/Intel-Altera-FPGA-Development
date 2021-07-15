@@ -1,0 +1,188 @@
+module Top
+(
+	clk,
+	reset,
+	start,
+	data_in,
+	data_hex6,
+	data_hex5,
+	tx,
+	rx
+);
+
+parameter 		BAUDRATE = 1302;
+
+input 			clk;
+input 			reset;
+input 			start;
+input				rx;
+input 	[6:0] data_in_tx;
+
+output 			tx;
+output	[6:0]	data_hex6;
+output	[6:0]	data_hex5;
+output			parity_error;
+output 			framing_error;
+
+wire 				clk_baud_tx;
+wire				clk_baud_rx;
+wire 				load_tx;
+wire 				load_rx;
+wire 				baud_enable_tx;
+wire				baud_enable_rx;
+wire 		[6:0]	data_tx;
+wire  	[9:0]	data_rx;
+wire 		[3:0]	bit_counter_tx;
+wire 		[3:0]	bit_counter_rx;
+wire				parity_bit_tx;
+wire				clear_rx;
+wire		[6:0]	data_out_rx;
+
+reg				start_tx;
+
+
+initial
+begin
+	tx 		 	= 1'b1;
+	start 	 	= 1'b1;
+	data_out    = 7'b111_1111;
+end
+
+always @(posedge clk)
+begin
+	start <= start_in;
+end
+
+
+BaudGeneratorTx #(.BAUDRATE(BAUDRATE)) BGTx
+(
+	.clk(clk),
+	.reset(reset),
+	.baud_enable(baud_enable_tx),
+	.clk_baud(clk_baud_tx)
+);
+
+BaudGeneratorRx #(.BAUDRATE(BAUDRATE)) BGRx
+(
+	.clk(clk),
+	.reset(reset),
+	.baud_enable(baud_enable_rx),
+	.clk_baud(clk_baud_rx)
+);
+
+
+DataRegisterTx DRTx
+(
+	.clk(clk),
+	.reset(reset),
+	.data_in(data_in_rx),
+	.data_out(data_tx)
+);
+
+DataRegisterRx DRRx
+(
+	.clk(clk),
+	.reset(reset),
+	.load(load_rx),
+	.data_in(data_rx[7:1]),
+	.data_out(data_out_tx),
+);
+
+
+ShiftRegisterTx SRTx
+(
+	.clk(clk),
+	.clk_baud(clk_baud_tx),
+	.reset(reset),
+	.load(load_tx),
+	.parallel_in({parity_bit_tx, data_tx, 2'b01}),
+	.serial_out(tx)
+);
+
+ShiftRegisterRx SRRx
+(
+	.clk(clk),
+	.clk_baud(clk_baud_rx),
+	.reset(reset),
+	.serial_in(rx),
+	.parallel_out(data_rx)
+);
+
+
+BitCounterTx BCTx
+(
+	.clk(clk),
+	.clk_baud(clk_baud_tx),
+	.reset(reset),
+	.load(load_tx),
+	.bit_counter(bit_counter_tx)
+);
+
+
+BitCounterRx BCRx
+(
+	.clk(clk),
+	.clk_baud(clk_baud_rx),
+	.reset(reset),
+	.clear(clear),
+	.bit_counter(bit_counter_rx)
+);
+
+
+Decoder7SegmentRx D7SHex6
+(
+	.clk(clk),
+	.reset(reset),
+	.data_decoding({1'b0, data_out_rx[6:4]}),
+	.data_decoded(data_hex6)
+);
+
+Decoder7Segment D7SHex5
+(
+	.clk(clk),
+	.reset(reset),
+	.data_decoding(data_out_rx[3:0]),
+	.data_decoded(data_hex5)
+);
+
+
+ControllerTx CTx
+(
+	.clk(clk),
+	.reset(reset),
+	.start(start_tx),
+	.bit_counter(bit_counter_tx),
+	.load(load_tx),
+	.baud_enable(baud_enable_tx),
+);
+
+ControllerRx CRx
+(
+	.clk(clk),
+	.reset(reset),
+	.start(rx),
+	.bit_counter(bit_counter_rx),
+	.load(load_rx),
+	.clear(clear_rx),
+	.baud_enable(baud_enable_rx),
+);
+
+
+ParityGeneratorTx PGTx
+(
+	.clk(clk),
+	.reset(reset),
+	.data(data_in),
+	.parity_bit(parity_bit_tx)
+);
+
+ErrorDetectorRx EDRx
+(
+	.clk(clk),
+	.reset(reset),
+	.data(data_rx),
+	.parity_error(parity_error),
+	.framing_error(framing_error)
+);
+
+endmodule

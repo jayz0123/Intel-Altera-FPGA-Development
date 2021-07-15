@@ -1,0 +1,3659 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
+
+// DATE "02/07/2020 21:01:05"
+
+// 
+// Device: Altera EP2C35F672C6 Package FBGA672
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module IrDATransceiver (
+	clk,
+	rst,
+	data_txd,
+	rxd_ir,
+	send_key,
+	hex6,
+	hex5,
+	txd_ir,
+	parity_error,
+	framing_error);
+input 	clk;
+input 	rst;
+input 	[6:0] data_txd;
+input 	rxd_ir;
+input 	send_key;
+output 	[6:0] hex6;
+output 	[6:0] hex5;
+output 	txd_ir;
+output 	parity_error;
+output 	framing_error;
+
+// Design Ports Information
+// hex6[0]	=>  Location: PIN_R2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex6[1]	=>  Location: PIN_P4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex6[2]	=>  Location: PIN_P3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex6[3]	=>  Location: PIN_M2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex6[4]	=>  Location: PIN_M3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex6[5]	=>  Location: PIN_M5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex6[6]	=>  Location: PIN_M4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[0]	=>  Location: PIN_T2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[1]	=>  Location: PIN_P6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[2]	=>  Location: PIN_P7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[3]	=>  Location: PIN_T9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[4]	=>  Location: PIN_R5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[5]	=>  Location: PIN_R4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// hex5[6]	=>  Location: PIN_R3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// txd_ir	=>  Location: PIN_AE24,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// parity_error	=>  Location: PIN_AE22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// framing_error	=>  Location: PIN_W19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// rst	=>  Location: PIN_W26,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// clk	=>  Location: PIN_N2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// send_key	=>  Location: PIN_P23,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// rxd_ir	=>  Location: PIN_AE25,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[0]	=>  Location: PIN_N1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[1]	=>  Location: PIN_P1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[2]	=>  Location: PIN_P2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[3]	=>  Location: PIN_T7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[4]	=>  Location: PIN_U3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[5]	=>  Location: PIN_U4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// data_txd[6]	=>  Location: PIN_V1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \IrDA_receiver|receiver_baud_generator|pcount[0]~5_combout ;
+wire \transceiver_controller|nstate.RCV~0_combout ;
+wire \transceiver_controller|nstate.IDLE~0_combout ;
+wire \transceiver_controller|nstate.IDLE~2_combout ;
+wire \transceiver_controller|nstate.IDLE~5_combout ;
+wire \IrDA_receiver|receiver_bit_counter|Add0~0_combout ;
+wire \IrDA_receiver|receiver_bit_counter|ncount[3]~3_combout ;
+wire \IrDA_transmitter|transmitter_controller|nstate.IDLE~0_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[3]~4_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[4]~5_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[5]~6_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[6]~7_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[7]~8_combout ;
+wire \IrDA_transmitter|transmitter_parity_generator|WideXor0~0_combout ;
+wire \IrDA_transmitter|transmitter_parity_generator|WideXor0~1_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[8]~9_combout ;
+wire \rxd_ir~combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[9]~9_combout ;
+wire \send_key~combout ;
+wire \IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout ;
+wire \IrDA_receiver|receiver_bit_counter|ncount[0]~2_combout ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[0]~6 ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[1]~7_combout ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[3]~14 ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[4]~15_combout ;
+wire \rst~combout ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[2]~9_combout ;
+wire \IrDA_receiver|receiver_baud_generator|Equal0~0_combout ;
+wire \IrDA_receiver|receiver_baud_generator|Equal0~1_combout ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[1]~8 ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[2]~10 ;
+wire \IrDA_receiver|receiver_baud_generator|pcount[3]~13_combout ;
+wire \IrDA_receiver|receiver_baud_generator|Equal1~0_combout ;
+wire \IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout ;
+wire \IrDA_receiver|receiver_bit_counter|ncount[1]~4_combout ;
+wire \IrDA_receiver|receiver_bit_counter|ncount[2]~1_combout ;
+wire \IrDA_receiver|receiver_bit_counter|Equal0~0_combout ;
+wire \transceiver_controller|nstate.IDLE~1_combout ;
+wire \transceiver_controller|nstate.TRANS~1_combout ;
+wire \transceiver_controller|pstate.TRANS~regout ;
+wire \transceiver_controller|nstate.IDLE~6_combout ;
+wire \transceiver_controller|pstate.IDLE~regout ;
+wire \IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ;
+wire \transceiver_controller|nstate.TRANS~0_combout ;
+wire \IrDA_transmitter|transmitter_controller|nstate.LOAD~0_combout ;
+wire \IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ;
+wire \IrDA_transmitter|transmitter_controller|ena_bit~0_combout ;
+wire \IrDA_transmitter|transmitter_controller|nstate.TRANS~1_combout ;
+wire \IrDA_transmitter|transmitter_controller|nstate.TRANS~2_combout ;
+wire \IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ;
+wire \IrDA_transmitter|transmitter_inverter|nval~2_combout ;
+wire \transceiver_controller|nstate.IDLE~3_combout ;
+wire \IrDA_transmitter|transmitter_controller|nstate.IDLE~1_combout ;
+wire \IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ;
+wire \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|ncount[1]~4_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|pcount[3]~1_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[0]~5_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[2]~9_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ;
+wire \IrDA_transmitter|transmitter_controller|clear_bit~0_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[0]~6 ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[1]~7_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[1]~8 ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[2]~10 ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[3]~11_combout ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[3]~12 ;
+wire \IrDA_transmitter|transmitter_baud_generator|pcount[4]~13_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|pcount[3]~0_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|ncount[2]~1_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|ncount[0]~2_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|Add0~0_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|ncount[3]~3_combout ;
+wire \IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ;
+wire \transceiver_controller|nstate.IDLE~4_combout ;
+wire \transceiver_controller|nstate.RCV~1_combout ;
+wire \transceiver_controller|pstate.RCV~regout ;
+wire \IrDA_receiver|receiver_controller|ena_bit~0_combout ;
+wire \IrDA_receiver|receiver_controller|nstate.RCV~0_combout ;
+wire \IrDA_receiver|receiver_controller|nstate.RCV~1_combout ;
+wire \IrDA_receiver|receiver_controller|nstate.RCV~2_combout ;
+wire \IrDA_receiver|receiver_controller|pstate.RCV~regout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[8]~8_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[7]~2_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[6]~3_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[5]~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|WideOr6~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|WideOr5~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|Decoder0~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|WideOr3~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|WideOr2~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|WideOr1~0_combout ;
+wire \IrDA_receiver|receiver_hex6_decoder|WideOr0~0_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[4]~7_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[3]~6_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[1]~4_combout ;
+wire \IrDA_receiver|receiver_shift_register|ndata[2]~5_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr6~0_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr5~0_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr4~0_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr3~0_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr2~0_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr1~0_combout ;
+wire \IrDA_receiver|receiver_hex5_decoder|WideOr0~0_combout ;
+wire \clk~combout ;
+wire \clk~clkctrl_outclk ;
+wire \IrDA_transmitter|transmitter_controller|inc~0_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[2]~3_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[1]~2_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[0]~0_combout ;
+wire \IrDA_transmitter|transmitter_shift_register|ndata[0]~1_combout ;
+wire \IrDA_transmitter|transmitter_inverter|nval~0_combout ;
+wire \IrDA_transmitter|transmitter_inverter|nval~1_combout ;
+wire \IrDA_transmitter|transmitter_inverter|nval~3_combout ;
+wire \IrDA_transmitter|transmitter_inverter|pval~regout ;
+wire \IrDA_receiver|receiver_error_detector|WideXor0~0_combout ;
+wire \IrDA_receiver|receiver_error_detector|WideXor0~1_combout ;
+wire \IrDA_receiver|receiver_error_detector|WideXor0~combout ;
+wire [6:0] \data_txd~combout ;
+wire [4:0] \IrDA_transmitter|transmitter_baud_generator|pcount ;
+wire [4:0] \IrDA_receiver|receiver_baud_generator|pcount ;
+wire [3:0] \IrDA_transmitter|transmitter_bit_counter|pcount ;
+wire [3:0] \IrDA_receiver|receiver_bit_counter|pcount ;
+wire [9:0] \IrDA_receiver|receiver_shift_register|pdata ;
+wire [9:0] \IrDA_transmitter|transmitter_shift_register|pdata ;
+
+
+// Location: LCFF_X11_Y17_N17
+cycloneii_lcell_ff \IrDA_receiver|receiver_baud_generator|pcount[0] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_baud_generator|pcount[0]~5_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_baud_generator|pcount [0]));
+
+// Location: LCCOMB_X11_Y17_N16
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[0]~5 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[0]~5_combout  = \IrDA_receiver|receiver_baud_generator|pcount [0] $ (VCC)
+// \IrDA_receiver|receiver_baud_generator|pcount[0]~6  = CARRY(\IrDA_receiver|receiver_baud_generator|pcount [0])
+
+	.dataa(\IrDA_receiver|receiver_baud_generator|pcount [0]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[0]~5_combout ),
+	.cout(\IrDA_receiver|receiver_baud_generator|pcount[0]~6 ));
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[0]~5 .lut_mask = 16'h55AA;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[0]~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X17_Y17_N21
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[3] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[3]~4_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [3]));
+
+// Location: LCFF_X17_Y17_N31
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[4] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[4]~5_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [4]));
+
+// Location: LCFF_X17_Y17_N25
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[5] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[5]~6_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [5]));
+
+// Location: LCFF_X17_Y17_N11
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[6] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[6]~7_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [6]));
+
+// Location: LCFF_X17_Y17_N17
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[7] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[7]~8_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [7]));
+
+// Location: LCFF_X17_Y17_N7
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[8] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[8]~9_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [8]));
+
+// Location: LCCOMB_X14_Y17_N16
+cycloneii_lcell_comb \transceiver_controller|nstate.RCV~0 (
+// Equation(s):
+// \transceiver_controller|nstate.RCV~0_combout  = (!\transceiver_controller|pstate.IDLE~regout  & (\send_key~combout  & (\rst~combout  & !\rxd_ir~combout )))
+
+	.dataa(\transceiver_controller|pstate.IDLE~regout ),
+	.datab(\send_key~combout ),
+	.datac(\rst~combout ),
+	.datad(\rxd_ir~combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.RCV~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.RCV~0 .lut_mask = 16'h0040;
+defparam \transceiver_controller|nstate.RCV~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N22
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~0 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~0_combout  = (\rst~combout  & (\transceiver_controller|pstate.RCV~regout  & \transceiver_controller|pstate.IDLE~regout ))
+
+	.dataa(\rst~combout ),
+	.datab(\transceiver_controller|pstate.RCV~regout ),
+	.datac(vcc),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~0 .lut_mask = 16'h8800;
+defparam \transceiver_controller|nstate.IDLE~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N11
+cycloneii_lcell_ff \IrDA_receiver|receiver_bit_counter|pcount[3] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_bit_counter|ncount[3]~3_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_bit_counter|pcount [3]));
+
+// Location: LCCOMB_X14_Y17_N6
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~2 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~2_combout  = (\rxd_ir~combout  & (\send_key~combout  & (\rst~combout  & !\transceiver_controller|pstate.IDLE~regout )))
+
+	.dataa(\rxd_ir~combout ),
+	.datab(\send_key~combout ),
+	.datac(\rst~combout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~2 .lut_mask = 16'h0080;
+defparam \transceiver_controller|nstate.IDLE~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N24
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~5 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~5_combout  = (\transceiver_controller|pstate.IDLE~regout ) # (((\send_key~combout  & \rxd_ir~combout )) # (!\rst~combout ))
+
+	.dataa(\transceiver_controller|pstate.IDLE~regout ),
+	.datab(\send_key~combout ),
+	.datac(\rst~combout ),
+	.datad(\rxd_ir~combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~5 .lut_mask = 16'hEFAF;
+defparam \transceiver_controller|nstate.IDLE~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X10_Y17_N16
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|Add0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|Add0~0_combout  = \IrDA_receiver|receiver_bit_counter|pcount [3] $ (((\IrDA_receiver|receiver_bit_counter|pcount [1] & (\IrDA_receiver|receiver_bit_counter|pcount [0] & \IrDA_receiver|receiver_bit_counter|pcount [2]))))
+
+	.dataa(\IrDA_receiver|receiver_bit_counter|pcount [3]),
+	.datab(\IrDA_receiver|receiver_bit_counter|pcount [1]),
+	.datac(\IrDA_receiver|receiver_bit_counter|pcount [0]),
+	.datad(\IrDA_receiver|receiver_bit_counter|pcount [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|Add0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|Add0~0 .lut_mask = 16'h6AAA;
+defparam \IrDA_receiver|receiver_bit_counter|Add0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N10
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|ncount[3]~3 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|ncount[3]~3_combout  = (\IrDA_receiver|receiver_bit_counter|Add0~0_combout  & \IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout )
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_bit_counter|Add0~0_combout ),
+	.datac(vcc),
+	.datad(\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|ncount[3]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|ncount[3]~3 .lut_mask = 16'hCC00;
+defparam \IrDA_receiver|receiver_bit_counter|ncount[3]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N10
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|nstate.IDLE~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|nstate.IDLE~0_combout  = ((!\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout  & ((\send_key~combout ) # (\transceiver_controller|pstate.IDLE~regout )))) # (!\rst~combout )
+
+	.dataa(\send_key~combout ),
+	.datab(\rst~combout ),
+	.datac(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|nstate.IDLE~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|nstate.IDLE~0 .lut_mask = 16'h3F3B;
+defparam \IrDA_transmitter|transmitter_controller|nstate.IDLE~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N20
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[3]~4 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[3]~4_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\data_txd~combout [2]))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// (\IrDA_transmitter|transmitter_shift_register|pdata [4]))
+
+	.dataa(\IrDA_transmitter|transmitter_shift_register|pdata [4]),
+	.datab(\data_txd~combout [2]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[3]~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[3]~4 .lut_mask = 16'hCCAA;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[3]~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N30
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[4]~5 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[4]~5_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\data_txd~combout [3]))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// (\IrDA_transmitter|transmitter_shift_register|pdata [5]))
+
+	.dataa(\IrDA_transmitter|transmitter_shift_register|pdata [5]),
+	.datab(\data_txd~combout [3]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[4]~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[4]~5 .lut_mask = 16'hCCAA;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[4]~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N24
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[5]~6 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[5]~6_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\data_txd~combout [4]))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// (\IrDA_transmitter|transmitter_shift_register|pdata [6]))
+
+	.dataa(\IrDA_transmitter|transmitter_shift_register|pdata [6]),
+	.datab(\data_txd~combout [4]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[5]~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[5]~6 .lut_mask = 16'hCCAA;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[5]~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N10
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[6]~7 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[6]~7_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\data_txd~combout [5]))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// (\IrDA_transmitter|transmitter_shift_register|pdata [7]))
+
+	.dataa(\IrDA_transmitter|transmitter_shift_register|pdata [7]),
+	.datab(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.datac(vcc),
+	.datad(\data_txd~combout [5]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[6]~7_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[6]~7 .lut_mask = 16'hEE22;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[6]~7 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N16
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[7]~8 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[7]~8_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\data_txd~combout [6]))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// (\IrDA_transmitter|transmitter_shift_register|pdata [8]))
+
+	.dataa(\IrDA_transmitter|transmitter_shift_register|pdata [8]),
+	.datab(\data_txd~combout [6]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[7]~8_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[7]~8 .lut_mask = 16'hCCAA;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[7]~8 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N12
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_parity_generator|WideXor0~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_parity_generator|WideXor0~0_combout  = \data_txd~combout [0] $ (\data_txd~combout [2] $ (\data_txd~combout [3] $ (\data_txd~combout [1])))
+
+	.dataa(\data_txd~combout [0]),
+	.datab(\data_txd~combout [2]),
+	.datac(\data_txd~combout [3]),
+	.datad(\data_txd~combout [1]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_parity_generator|WideXor0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_parity_generator|WideXor0~0 .lut_mask = 16'h6996;
+defparam \IrDA_transmitter|transmitter_parity_generator|WideXor0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N18
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_parity_generator|WideXor0~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_parity_generator|WideXor0~1_combout  = \data_txd~combout [5] $ (\data_txd~combout [4] $ (\data_txd~combout [6]))
+
+	.dataa(\data_txd~combout [5]),
+	.datab(\data_txd~combout [4]),
+	.datac(vcc),
+	.datad(\data_txd~combout [6]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_parity_generator|WideXor0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_parity_generator|WideXor0~1 .lut_mask = 16'h9966;
+defparam \IrDA_transmitter|transmitter_parity_generator|WideXor0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N6
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[8]~9 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[8]~9_combout  = (\IrDA_transmitter|transmitter_parity_generator|WideXor0~0_combout  $ (!\IrDA_transmitter|transmitter_parity_generator|WideXor0~1_combout )) # 
+// (!\IrDA_transmitter|transmitter_controller|inc~0_combout )
+
+	.dataa(\IrDA_transmitter|transmitter_parity_generator|WideXor0~0_combout ),
+	.datab(\IrDA_transmitter|transmitter_parity_generator|WideXor0~1_combout ),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[8]~9_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[8]~9 .lut_mask = 16'h99FF;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[8]~9 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: PIN_N1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [0]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[0]));
+// synopsys translate_off
+defparam \data_txd[0]~I .input_async_reset = "none";
+defparam \data_txd[0]~I .input_power_up = "low";
+defparam \data_txd[0]~I .input_register_mode = "none";
+defparam \data_txd[0]~I .input_sync_reset = "none";
+defparam \data_txd[0]~I .oe_async_reset = "none";
+defparam \data_txd[0]~I .oe_power_up = "low";
+defparam \data_txd[0]~I .oe_register_mode = "none";
+defparam \data_txd[0]~I .oe_sync_reset = "none";
+defparam \data_txd[0]~I .operation_mode = "input";
+defparam \data_txd[0]~I .output_async_reset = "none";
+defparam \data_txd[0]~I .output_power_up = "low";
+defparam \data_txd[0]~I .output_register_mode = "none";
+defparam \data_txd[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_P2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[2]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [2]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[2]));
+// synopsys translate_off
+defparam \data_txd[2]~I .input_async_reset = "none";
+defparam \data_txd[2]~I .input_power_up = "low";
+defparam \data_txd[2]~I .input_register_mode = "none";
+defparam \data_txd[2]~I .input_sync_reset = "none";
+defparam \data_txd[2]~I .oe_async_reset = "none";
+defparam \data_txd[2]~I .oe_power_up = "low";
+defparam \data_txd[2]~I .oe_register_mode = "none";
+defparam \data_txd[2]~I .oe_sync_reset = "none";
+defparam \data_txd[2]~I .operation_mode = "input";
+defparam \data_txd[2]~I .output_async_reset = "none";
+defparam \data_txd[2]~I .output_power_up = "low";
+defparam \data_txd[2]~I .output_register_mode = "none";
+defparam \data_txd[2]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_T7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[3]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [3]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[3]));
+// synopsys translate_off
+defparam \data_txd[3]~I .input_async_reset = "none";
+defparam \data_txd[3]~I .input_power_up = "low";
+defparam \data_txd[3]~I .input_register_mode = "none";
+defparam \data_txd[3]~I .input_sync_reset = "none";
+defparam \data_txd[3]~I .oe_async_reset = "none";
+defparam \data_txd[3]~I .oe_power_up = "low";
+defparam \data_txd[3]~I .oe_register_mode = "none";
+defparam \data_txd[3]~I .oe_sync_reset = "none";
+defparam \data_txd[3]~I .operation_mode = "input";
+defparam \data_txd[3]~I .output_async_reset = "none";
+defparam \data_txd[3]~I .output_power_up = "low";
+defparam \data_txd[3]~I .output_register_mode = "none";
+defparam \data_txd[3]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_U3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[4]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [4]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[4]));
+// synopsys translate_off
+defparam \data_txd[4]~I .input_async_reset = "none";
+defparam \data_txd[4]~I .input_power_up = "low";
+defparam \data_txd[4]~I .input_register_mode = "none";
+defparam \data_txd[4]~I .input_sync_reset = "none";
+defparam \data_txd[4]~I .oe_async_reset = "none";
+defparam \data_txd[4]~I .oe_power_up = "low";
+defparam \data_txd[4]~I .oe_register_mode = "none";
+defparam \data_txd[4]~I .oe_sync_reset = "none";
+defparam \data_txd[4]~I .operation_mode = "input";
+defparam \data_txd[4]~I .output_async_reset = "none";
+defparam \data_txd[4]~I .output_power_up = "low";
+defparam \data_txd[4]~I .output_register_mode = "none";
+defparam \data_txd[4]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_U4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[5]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [5]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[5]));
+// synopsys translate_off
+defparam \data_txd[5]~I .input_async_reset = "none";
+defparam \data_txd[5]~I .input_power_up = "low";
+defparam \data_txd[5]~I .input_register_mode = "none";
+defparam \data_txd[5]~I .input_sync_reset = "none";
+defparam \data_txd[5]~I .oe_async_reset = "none";
+defparam \data_txd[5]~I .oe_power_up = "low";
+defparam \data_txd[5]~I .oe_register_mode = "none";
+defparam \data_txd[5]~I .oe_sync_reset = "none";
+defparam \data_txd[5]~I .operation_mode = "input";
+defparam \data_txd[5]~I .output_async_reset = "none";
+defparam \data_txd[5]~I .output_power_up = "low";
+defparam \data_txd[5]~I .output_register_mode = "none";
+defparam \data_txd[5]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_V1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[6]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [6]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[6]));
+// synopsys translate_off
+defparam \data_txd[6]~I .input_async_reset = "none";
+defparam \data_txd[6]~I .input_power_up = "low";
+defparam \data_txd[6]~I .input_register_mode = "none";
+defparam \data_txd[6]~I .input_sync_reset = "none";
+defparam \data_txd[6]~I .oe_async_reset = "none";
+defparam \data_txd[6]~I .oe_power_up = "low";
+defparam \data_txd[6]~I .oe_register_mode = "none";
+defparam \data_txd[6]~I .oe_sync_reset = "none";
+defparam \data_txd[6]~I .operation_mode = "input";
+defparam \data_txd[6]~I .output_async_reset = "none";
+defparam \data_txd[6]~I .output_power_up = "low";
+defparam \data_txd[6]~I .output_register_mode = "none";
+defparam \data_txd[6]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AE25,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \rxd_ir~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\rxd_ir~combout ),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(rxd_ir));
+// synopsys translate_off
+defparam \rxd_ir~I .input_async_reset = "none";
+defparam \rxd_ir~I .input_power_up = "low";
+defparam \rxd_ir~I .input_register_mode = "none";
+defparam \rxd_ir~I .input_sync_reset = "none";
+defparam \rxd_ir~I .oe_async_reset = "none";
+defparam \rxd_ir~I .oe_power_up = "low";
+defparam \rxd_ir~I .oe_register_mode = "none";
+defparam \rxd_ir~I .oe_sync_reset = "none";
+defparam \rxd_ir~I .operation_mode = "input";
+defparam \rxd_ir~I .output_async_reset = "none";
+defparam \rxd_ir~I .output_power_up = "low";
+defparam \rxd_ir~I .output_register_mode = "none";
+defparam \rxd_ir~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N8
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[9]~9 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[9]~9_combout  = (\rxd_ir~combout ) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\rxd_ir~combout ),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[9]~9_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[9]~9 .lut_mask = 16'hF5F5;
+defparam \IrDA_receiver|receiver_shift_register|ndata[9]~9 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: PIN_P23,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \send_key~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\send_key~combout ),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(send_key));
+// synopsys translate_off
+defparam \send_key~I .input_async_reset = "none";
+defparam \send_key~I .input_power_up = "low";
+defparam \send_key~I .input_register_mode = "none";
+defparam \send_key~I .input_sync_reset = "none";
+defparam \send_key~I .oe_async_reset = "none";
+defparam \send_key~I .oe_power_up = "low";
+defparam \send_key~I .oe_register_mode = "none";
+defparam \send_key~I .oe_sync_reset = "none";
+defparam \send_key~I .operation_mode = "input";
+defparam \send_key~I .output_async_reset = "none";
+defparam \send_key~I .output_power_up = "low";
+defparam \send_key~I .output_register_mode = "none";
+defparam \send_key~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N30
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|ncount[3]~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout  = (\rst~combout  & (\IrDA_receiver|receiver_bit_counter|Equal0~0_combout  & ((\IrDA_receiver|receiver_controller|pstate.RCV~regout ) # (!\IrDA_receiver|receiver_controller|ena_bit~0_combout ))))
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datac(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.datad(\IrDA_receiver|receiver_bit_counter|Equal0~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|ncount[3]~0 .lut_mask = 16'h8A00;
+defparam \IrDA_receiver|receiver_bit_counter|ncount[3]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N28
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|ncount[0]~2 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|ncount[0]~2_combout  = (!\IrDA_receiver|receiver_bit_counter|pcount [0] & \IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_bit_counter|pcount [0]),
+	.datad(\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|ncount[0]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|ncount[0]~2 .lut_mask = 16'h0F00;
+defparam \IrDA_receiver|receiver_bit_counter|ncount[0]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N18
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[1]~7 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[1]~7_combout  = (\IrDA_receiver|receiver_baud_generator|pcount [1] & (!\IrDA_receiver|receiver_baud_generator|pcount[0]~6 )) # (!\IrDA_receiver|receiver_baud_generator|pcount [1] & 
+// ((\IrDA_receiver|receiver_baud_generator|pcount[0]~6 ) # (GND)))
+// \IrDA_receiver|receiver_baud_generator|pcount[1]~8  = CARRY((!\IrDA_receiver|receiver_baud_generator|pcount[0]~6 ) # (!\IrDA_receiver|receiver_baud_generator|pcount [1]))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_baud_generator|pcount [1]),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(\IrDA_receiver|receiver_baud_generator|pcount[0]~6 ),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[1]~7_combout ),
+	.cout(\IrDA_receiver|receiver_baud_generator|pcount[1]~8 ));
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[1]~7 .lut_mask = 16'h3C3F;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[1]~7 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N22
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[3]~13 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[3]~13_combout  = (\IrDA_receiver|receiver_baud_generator|pcount [3] & (!\IrDA_receiver|receiver_baud_generator|pcount[2]~10 )) # (!\IrDA_receiver|receiver_baud_generator|pcount [3] & 
+// ((\IrDA_receiver|receiver_baud_generator|pcount[2]~10 ) # (GND)))
+// \IrDA_receiver|receiver_baud_generator|pcount[3]~14  = CARRY((!\IrDA_receiver|receiver_baud_generator|pcount[2]~10 ) # (!\IrDA_receiver|receiver_baud_generator|pcount [3]))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_baud_generator|pcount [3]),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(\IrDA_receiver|receiver_baud_generator|pcount[2]~10 ),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[3]~13_combout ),
+	.cout(\IrDA_receiver|receiver_baud_generator|pcount[3]~14 ));
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[3]~13 .lut_mask = 16'h3C3F;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[3]~13 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N24
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[4]~15 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[4]~15_combout  = \IrDA_receiver|receiver_baud_generator|pcount[3]~14  $ (!\IrDA_receiver|receiver_baud_generator|pcount [4])
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\IrDA_receiver|receiver_baud_generator|pcount [4]),
+	.cin(\IrDA_receiver|receiver_baud_generator|pcount[3]~14 ),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[4]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[4]~15 .lut_mask = 16'hF00F;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[4]~15 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: PIN_W26,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \rst~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\rst~combout ),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(rst));
+// synopsys translate_off
+defparam \rst~I .input_async_reset = "none";
+defparam \rst~I .input_power_up = "low";
+defparam \rst~I .input_register_mode = "none";
+defparam \rst~I .input_sync_reset = "none";
+defparam \rst~I .oe_async_reset = "none";
+defparam \rst~I .oe_power_up = "low";
+defparam \rst~I .oe_register_mode = "none";
+defparam \rst~I .oe_sync_reset = "none";
+defparam \rst~I .operation_mode = "input";
+defparam \rst~I .output_async_reset = "none";
+defparam \rst~I .output_power_up = "low";
+defparam \rst~I .output_register_mode = "none";
+defparam \rst~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N4
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[1]~12 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout  = (\IrDA_receiver|receiver_controller|ena_bit~0_combout ) # (!\rst~combout )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\rst~combout ),
+	.datad(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[1]~12 .lut_mask = 16'hFF0F;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[1]~12 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N25
+cycloneii_lcell_ff \IrDA_receiver|receiver_baud_generator|pcount[4] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_baud_generator|pcount[4]~15_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_baud_generator|pcount [4]));
+
+// Location: LCCOMB_X11_Y17_N20
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[2]~9 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[2]~9_combout  = (\IrDA_receiver|receiver_baud_generator|pcount [2] & (\IrDA_receiver|receiver_baud_generator|pcount[1]~8  $ (GND))) # (!\IrDA_receiver|receiver_baud_generator|pcount [2] & 
+// (!\IrDA_receiver|receiver_baud_generator|pcount[1]~8  & VCC))
+// \IrDA_receiver|receiver_baud_generator|pcount[2]~10  = CARRY((\IrDA_receiver|receiver_baud_generator|pcount [2] & !\IrDA_receiver|receiver_baud_generator|pcount[1]~8 ))
+
+	.dataa(\IrDA_receiver|receiver_baud_generator|pcount [2]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(\IrDA_receiver|receiver_baud_generator|pcount[1]~8 ),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[2]~9_combout ),
+	.cout(\IrDA_receiver|receiver_baud_generator|pcount[2]~10 ));
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[2]~9 .lut_mask = 16'hA50A;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[2]~9 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N21
+cycloneii_lcell_ff \IrDA_receiver|receiver_baud_generator|pcount[2] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_baud_generator|pcount[2]~9_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_baud_generator|pcount [2]));
+
+// Location: LCCOMB_X11_Y17_N8
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|Equal0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|Equal0~0_combout  = (!\IrDA_receiver|receiver_baud_generator|pcount [4] & \IrDA_receiver|receiver_baud_generator|pcount [2])
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_baud_generator|pcount [4]),
+	.datad(\IrDA_receiver|receiver_baud_generator|pcount [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_baud_generator|Equal0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|Equal0~0 .lut_mask = 16'h0F00;
+defparam \IrDA_receiver|receiver_baud_generator|Equal0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N0
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|Equal0~1 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|Equal0~1_combout  = (\IrDA_receiver|receiver_baud_generator|pcount [0] & (\IrDA_receiver|receiver_baud_generator|pcount [3] & (\IrDA_receiver|receiver_baud_generator|Equal0~0_combout  & 
+// \IrDA_receiver|receiver_baud_generator|pcount [1])))
+
+	.dataa(\IrDA_receiver|receiver_baud_generator|pcount [0]),
+	.datab(\IrDA_receiver|receiver_baud_generator|pcount [3]),
+	.datac(\IrDA_receiver|receiver_baud_generator|Equal0~0_combout ),
+	.datad(\IrDA_receiver|receiver_baud_generator|pcount [1]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_baud_generator|Equal0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|Equal0~1 .lut_mask = 16'h8000;
+defparam \IrDA_receiver|receiver_baud_generator|Equal0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N6
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|pcount[1]~11 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout  = ((\IrDA_receiver|receiver_baud_generator|Equal0~1_combout ) # ((!\IrDA_receiver|receiver_controller|pstate.RCV~regout  & \IrDA_receiver|receiver_controller|ena_bit~0_combout ))) # 
+// (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datac(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.datad(\IrDA_receiver|receiver_baud_generator|Equal0~1_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|pcount[1]~11 .lut_mask = 16'hFF75;
+defparam \IrDA_receiver|receiver_baud_generator|pcount[1]~11 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N19
+cycloneii_lcell_ff \IrDA_receiver|receiver_baud_generator|pcount[1] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_baud_generator|pcount[1]~7_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_baud_generator|pcount [1]));
+
+// Location: LCFF_X11_Y17_N23
+cycloneii_lcell_ff \IrDA_receiver|receiver_baud_generator|pcount[3] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_baud_generator|pcount[3]~13_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_receiver|receiver_baud_generator|pcount[1]~11_combout ),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_baud_generator|pcount[1]~12_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_baud_generator|pcount [3]));
+
+// Location: LCCOMB_X11_Y17_N26
+cycloneii_lcell_comb \IrDA_receiver|receiver_baud_generator|Equal1~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_baud_generator|Equal1~0_combout  = (!\IrDA_receiver|receiver_baud_generator|pcount [0] & (!\IrDA_receiver|receiver_baud_generator|pcount [3] & (\IrDA_receiver|receiver_baud_generator|Equal0~0_combout  & 
+// !\IrDA_receiver|receiver_baud_generator|pcount [1])))
+
+	.dataa(\IrDA_receiver|receiver_baud_generator|pcount [0]),
+	.datab(\IrDA_receiver|receiver_baud_generator|pcount [3]),
+	.datac(\IrDA_receiver|receiver_baud_generator|Equal0~0_combout ),
+	.datad(\IrDA_receiver|receiver_baud_generator|pcount [1]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_baud_generator|Equal1~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_baud_generator|Equal1~0 .lut_mask = 16'h0010;
+defparam \IrDA_receiver|receiver_baud_generator|Equal1~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X11_Y17_N2
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|pcount[3]~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout  = ((\IrDA_receiver|receiver_controller|ena_bit~0_combout  & ((\IrDA_receiver|receiver_baud_generator|Equal1~0_combout ) # (!\IrDA_receiver|receiver_controller|pstate.RCV~regout )))) # (!\rst~combout 
+// )
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datac(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.datad(\IrDA_receiver|receiver_baud_generator|Equal1~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|pcount[3]~0 .lut_mask = 16'hF575;
+defparam \IrDA_receiver|receiver_bit_counter|pcount[3]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N29
+cycloneii_lcell_ff \IrDA_receiver|receiver_bit_counter|pcount[0] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_bit_counter|ncount[0]~2_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_bit_counter|pcount [0]));
+
+// Location: LCCOMB_X11_Y17_N14
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|ncount[1]~4 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|ncount[1]~4_combout  = (\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout  & (\IrDA_receiver|receiver_bit_counter|pcount [0] $ (\IrDA_receiver|receiver_bit_counter|pcount [1])))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_bit_counter|pcount [0]),
+	.datac(\IrDA_receiver|receiver_bit_counter|pcount [1]),
+	.datad(\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|ncount[1]~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|ncount[1]~4 .lut_mask = 16'h3C00;
+defparam \IrDA_receiver|receiver_bit_counter|ncount[1]~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N15
+cycloneii_lcell_ff \IrDA_receiver|receiver_bit_counter|pcount[1] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_bit_counter|ncount[1]~4_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_bit_counter|pcount [1]));
+
+// Location: LCCOMB_X11_Y17_N30
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|ncount[2]~1 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|ncount[2]~1_combout  = (\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout  & (\IrDA_receiver|receiver_bit_counter|pcount [2] $ (((\IrDA_receiver|receiver_bit_counter|pcount [1] & 
+// \IrDA_receiver|receiver_bit_counter|pcount [0])))))
+
+	.dataa(\IrDA_receiver|receiver_bit_counter|pcount [1]),
+	.datab(\IrDA_receiver|receiver_bit_counter|pcount [0]),
+	.datac(\IrDA_receiver|receiver_bit_counter|pcount [2]),
+	.datad(\IrDA_receiver|receiver_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|ncount[2]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|ncount[2]~1 .lut_mask = 16'h7800;
+defparam \IrDA_receiver|receiver_bit_counter|ncount[2]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X11_Y17_N31
+cycloneii_lcell_ff \IrDA_receiver|receiver_bit_counter|pcount[2] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_bit_counter|ncount[2]~1_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_bit_counter|pcount[3]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_bit_counter|pcount [2]));
+
+// Location: LCCOMB_X11_Y17_N12
+cycloneii_lcell_comb \IrDA_receiver|receiver_bit_counter|Equal0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_bit_counter|Equal0~0_combout  = ((\IrDA_receiver|receiver_bit_counter|pcount [0]) # ((\IrDA_receiver|receiver_bit_counter|pcount [2]) # (!\IrDA_receiver|receiver_bit_counter|pcount [1]))) # 
+// (!\IrDA_receiver|receiver_bit_counter|pcount [3])
+
+	.dataa(\IrDA_receiver|receiver_bit_counter|pcount [3]),
+	.datab(\IrDA_receiver|receiver_bit_counter|pcount [0]),
+	.datac(\IrDA_receiver|receiver_bit_counter|pcount [1]),
+	.datad(\IrDA_receiver|receiver_bit_counter|pcount [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_bit_counter|Equal0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_bit_counter|Equal0~0 .lut_mask = 16'hFFDF;
+defparam \IrDA_receiver|receiver_bit_counter|Equal0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N12
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~1 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~1_combout  = (\transceiver_controller|nstate.IDLE~0_combout  & ((\IrDA_receiver|receiver_bit_counter|Equal0~0_combout ) # (!\IrDA_receiver|receiver_controller|pstate.RCV~regout )))
+
+	.dataa(\transceiver_controller|nstate.IDLE~0_combout ),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datad(\IrDA_receiver|receiver_bit_counter|Equal0~0_combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~1 .lut_mask = 16'hAA0A;
+defparam \transceiver_controller|nstate.IDLE~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N4
+cycloneii_lcell_comb \transceiver_controller|nstate.TRANS~1 (
+// Equation(s):
+// \transceiver_controller|nstate.TRANS~1_combout  = (\transceiver_controller|nstate.TRANS~0_combout ) # ((\transceiver_controller|pstate.TRANS~regout  & ((\transceiver_controller|nstate.IDLE~4_combout ) # (\transceiver_controller|nstate.IDLE~1_combout ))))
+
+	.dataa(\transceiver_controller|nstate.TRANS~0_combout ),
+	.datab(\transceiver_controller|nstate.IDLE~4_combout ),
+	.datac(\transceiver_controller|pstate.TRANS~regout ),
+	.datad(\transceiver_controller|nstate.IDLE~1_combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.TRANS~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.TRANS~1 .lut_mask = 16'hFAEA;
+defparam \transceiver_controller|nstate.TRANS~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X14_Y17_N5
+cycloneii_lcell_ff \transceiver_controller|pstate.TRANS (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\transceiver_controller|nstate.TRANS~1_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\transceiver_controller|pstate.TRANS~regout ));
+
+// Location: LCCOMB_X14_Y17_N26
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~6 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~6_combout  = (\transceiver_controller|nstate.IDLE~4_combout  & (((\transceiver_controller|pstate.IDLE~regout )))) # (!\transceiver_controller|nstate.IDLE~4_combout  & ((\transceiver_controller|nstate.IDLE~1_combout  & 
+// ((\transceiver_controller|pstate.IDLE~regout ))) # (!\transceiver_controller|nstate.IDLE~1_combout  & (!\transceiver_controller|nstate.IDLE~5_combout ))))
+
+	.dataa(\transceiver_controller|nstate.IDLE~5_combout ),
+	.datab(\transceiver_controller|nstate.IDLE~4_combout ),
+	.datac(\transceiver_controller|pstate.IDLE~regout ),
+	.datad(\transceiver_controller|nstate.IDLE~1_combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~6 .lut_mask = 16'hF0D1;
+defparam \transceiver_controller|nstate.IDLE~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X14_Y17_N27
+cycloneii_lcell_ff \transceiver_controller|pstate.IDLE (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\transceiver_controller|nstate.IDLE~6_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\transceiver_controller|pstate.IDLE~regout ));
+
+// Location: LCCOMB_X14_Y17_N18
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|nstate.TRANS~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout  = (\rst~combout  & (!\transceiver_controller|pstate.TRANS~regout  & ((\send_key~combout ) # (\transceiver_controller|pstate.IDLE~regout ))))
+
+	.dataa(\rst~combout ),
+	.datab(\send_key~combout ),
+	.datac(\transceiver_controller|pstate.TRANS~regout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|nstate.TRANS~0 .lut_mask = 16'h0A08;
+defparam \IrDA_transmitter|transmitter_controller|nstate.TRANS~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N4
+cycloneii_lcell_comb \transceiver_controller|nstate.TRANS~0 (
+// Equation(s):
+// \transceiver_controller|nstate.TRANS~0_combout  = (\rst~combout  & (!\send_key~combout  & !\transceiver_controller|pstate.IDLE~regout ))
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\send_key~combout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.TRANS~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.TRANS~0 .lut_mask = 16'h000A;
+defparam \transceiver_controller|nstate.TRANS~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N18
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|nstate.LOAD~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|nstate.LOAD~0_combout  = (\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout  & (((\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout  & 
+// \IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout )))) # (!\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout  & ((\transceiver_controller|nstate.TRANS~0_combout ) # ((\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout  & 
+// \IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ))))
+
+	.dataa(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ),
+	.datab(\transceiver_controller|nstate.TRANS~0_combout ),
+	.datac(\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ),
+	.datad(\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|nstate.LOAD~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|nstate.LOAD~0 .lut_mask = 16'hF444;
+defparam \IrDA_transmitter|transmitter_controller|nstate.LOAD~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X15_Y17_N19
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_controller|pstate.LOAD (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_controller|nstate.LOAD~0_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ));
+
+// Location: LCCOMB_X14_Y17_N0
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|ena_bit~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|ena_bit~0_combout  = (\rst~combout  & ((\transceiver_controller|pstate.TRANS~regout ) # ((!\send_key~combout  & !\transceiver_controller|pstate.IDLE~regout ))))
+
+	.dataa(\rst~combout ),
+	.datab(\send_key~combout ),
+	.datac(\transceiver_controller|pstate.TRANS~regout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|ena_bit~0 .lut_mask = 16'hA0A2;
+defparam \IrDA_transmitter|transmitter_controller|ena_bit~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N30
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|nstate.TRANS~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|nstate.TRANS~1_combout  = (\IrDA_transmitter|transmitter_controller|ena_bit~0_combout  & ((\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ) # 
+// ((\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout  & \IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ))))
+
+	.dataa(\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ),
+	.datab(\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ),
+	.datac(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|nstate.TRANS~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|nstate.TRANS~1 .lut_mask = 16'hE0C0;
+defparam \IrDA_transmitter|transmitter_controller|nstate.TRANS~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N14
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|nstate.TRANS~2 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|nstate.TRANS~2_combout  = (\IrDA_transmitter|transmitter_controller|nstate.TRANS~1_combout ) # ((\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout  & 
+// \IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ))
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ),
+	.datac(\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ),
+	.datad(\IrDA_transmitter|transmitter_controller|nstate.TRANS~1_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|nstate.TRANS~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|nstate.TRANS~2 .lut_mask = 16'hFFC0;
+defparam \IrDA_transmitter|transmitter_controller|nstate.TRANS~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X14_Y17_N15
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_controller|pstate.TRANS (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_controller|nstate.TRANS~2_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ));
+
+// Location: LCCOMB_X14_Y17_N2
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_inverter|nval~2 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_inverter|nval~2_combout  = (\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout  & ((\transceiver_controller|pstate.TRANS~regout ) # ((!\send_key~combout  & !\transceiver_controller|pstate.IDLE~regout ))))
+
+	.dataa(\send_key~combout ),
+	.datab(\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ),
+	.datac(\transceiver_controller|pstate.TRANS~regout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_inverter|nval~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_inverter|nval~2 .lut_mask = 16'hC0C4;
+defparam \IrDA_transmitter|transmitter_inverter|nval~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N20
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~3 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~3_combout  = (\rst~combout  & (!\transceiver_controller|pstate.RCV~regout  & \transceiver_controller|pstate.IDLE~regout ))
+
+	.dataa(\rst~combout ),
+	.datab(\transceiver_controller|pstate.RCV~regout ),
+	.datac(vcc),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~3 .lut_mask = 16'h2200;
+defparam \transceiver_controller|nstate.IDLE~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N16
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|nstate.IDLE~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|nstate.IDLE~1_combout  = (!\IrDA_transmitter|transmitter_controller|nstate.IDLE~0_combout  & (((\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ) # 
+// (!\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout )) # (!\IrDA_transmitter|transmitter_controller|ena_bit~0_combout )))
+
+	.dataa(\IrDA_transmitter|transmitter_controller|nstate.IDLE~0_combout ),
+	.datab(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|nstate.IDLE~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|nstate.IDLE~1 .lut_mask = 16'h5155;
+defparam \IrDA_transmitter|transmitter_controller|nstate.IDLE~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X15_Y17_N17
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_controller|pstate.IDLE (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_controller|nstate.IDLE~1_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ));
+
+// Location: LCCOMB_X15_Y17_N22
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout  = (\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout  & ((\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ) # 
+// ((\IrDA_transmitter|transmitter_controller|ena_bit~0_combout  & \IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ))))
+
+	.dataa(\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ),
+	.datab(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datac(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ),
+	.datad(\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0 .lut_mask = 16'hAA80;
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N26
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|ncount[1]~4 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|ncount[1]~4_combout  = (\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout  & (\IrDA_transmitter|transmitter_bit_counter|pcount [0] $ (\IrDA_transmitter|transmitter_bit_counter|pcount [1])))
+
+	.dataa(\IrDA_transmitter|transmitter_bit_counter|pcount [0]),
+	.datab(vcc),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|pcount [1]),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|ncount[1]~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[1]~4 .lut_mask = 16'h5A00;
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[1]~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N14
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|pcount[3]~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|pcount[3]~1_combout  = (\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ) # ((!\transceiver_controller|pstate.TRANS~regout  & ((\send_key~combout ) # (\transceiver_controller|pstate.IDLE~regout ))))
+
+	.dataa(\send_key~combout ),
+	.datab(\transceiver_controller|pstate.TRANS~regout ),
+	.datac(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|pcount[3]~1 .lut_mask = 16'hF3F2;
+defparam \IrDA_transmitter|transmitter_bit_counter|pcount[3]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X16_Y17_N20
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[0]~5 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[0]~5_combout  = \IrDA_transmitter|transmitter_baud_generator|pcount [0] $ (VCC)
+// \IrDA_transmitter|transmitter_baud_generator|pcount[0]~6  = CARRY(\IrDA_transmitter|transmitter_baud_generator|pcount [0])
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [0]),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[0]~5_combout ),
+	.cout(\IrDA_transmitter|transmitter_baud_generator|pcount[0]~6 ));
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[0]~5 .lut_mask = 16'h33CC;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[0]~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X16_Y17_N24
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[2]~9 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[2]~9_combout  = (\IrDA_transmitter|transmitter_baud_generator|pcount [2] & (\IrDA_transmitter|transmitter_baud_generator|pcount[1]~8  $ (GND))) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [2] 
+// & (!\IrDA_transmitter|transmitter_baud_generator|pcount[1]~8  & VCC))
+// \IrDA_transmitter|transmitter_baud_generator|pcount[2]~10  = CARRY((\IrDA_transmitter|transmitter_baud_generator|pcount [2] & !\IrDA_transmitter|transmitter_baud_generator|pcount[1]~8 ))
+
+	.dataa(\IrDA_transmitter|transmitter_baud_generator|pcount [2]),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~8 ),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[2]~9_combout ),
+	.cout(\IrDA_transmitter|transmitter_baud_generator|pcount[2]~10 ));
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[2]~9 .lut_mask = 16'hA50A;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[2]~9 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N28
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[1]~16 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout  = (\IrDA_transmitter|transmitter_controller|ena_bit~0_combout  & ((\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ) # 
+// ((!\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout  & !\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout )))) # (!\IrDA_transmitter|transmitter_controller|ena_bit~0_combout  & 
+// (((!\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ))))
+
+	.dataa(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ),
+	.datab(\IrDA_transmitter|transmitter_controller|pstate.TRANS~regout ),
+	.datac(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[1]~16 .lut_mask = 16'hC0DF;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[1]~16 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X16_Y17_N25
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_baud_generator|pcount[2] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_baud_generator|pcount[2]~9_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_baud_generator|pcount [2]));
+
+// Location: LCCOMB_X16_Y17_N30
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|Equal0~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout  = (((!\IrDA_transmitter|transmitter_baud_generator|pcount [3]) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [2])) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [1])) # 
+// (!\IrDA_transmitter|transmitter_baud_generator|pcount [0])
+
+	.dataa(\IrDA_transmitter|transmitter_baud_generator|pcount [0]),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [1]),
+	.datac(\IrDA_transmitter|transmitter_baud_generator|pcount [2]),
+	.datad(\IrDA_transmitter|transmitter_baud_generator|pcount [3]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|Equal0~0 .lut_mask = 16'h7FFF;
+defparam \IrDA_transmitter|transmitter_baud_generator|Equal0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N2
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|clear_bit~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|clear_bit~0_combout  = (\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ) # ((\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout  & 
+// \IrDA_transmitter|transmitter_controller|ena_bit~0_combout ))
+
+	.dataa(\IrDA_transmitter|transmitter_controller|pstate.IDLE~regout ),
+	.datab(vcc),
+	.datac(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|nstate.TRANS~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|clear_bit~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|clear_bit~0 .lut_mask = 16'hFFA0;
+defparam \IrDA_transmitter|transmitter_controller|clear_bit~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X16_Y17_N4
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[1]~15 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout  = ((!\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout  & !\IrDA_transmitter|transmitter_baud_generator|pcount [4])) # 
+// (!\IrDA_transmitter|transmitter_controller|clear_bit~0_combout )
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ),
+	.datac(\IrDA_transmitter|transmitter_baud_generator|pcount [4]),
+	.datad(\IrDA_transmitter|transmitter_controller|clear_bit~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[1]~15 .lut_mask = 16'h03FF;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[1]~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X16_Y17_N21
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_baud_generator|pcount[0] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_baud_generator|pcount[0]~5_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_baud_generator|pcount [0]));
+
+// Location: LCCOMB_X16_Y17_N22
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[1]~7 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[1]~7_combout  = (\IrDA_transmitter|transmitter_baud_generator|pcount [1] & (!\IrDA_transmitter|transmitter_baud_generator|pcount[0]~6 )) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [1] & 
+// ((\IrDA_transmitter|transmitter_baud_generator|pcount[0]~6 ) # (GND)))
+// \IrDA_transmitter|transmitter_baud_generator|pcount[1]~8  = CARRY((!\IrDA_transmitter|transmitter_baud_generator|pcount[0]~6 ) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [1]))
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [1]),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(\IrDA_transmitter|transmitter_baud_generator|pcount[0]~6 ),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~7_combout ),
+	.cout(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~8 ));
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[1]~7 .lut_mask = 16'h3C3F;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[1]~7 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCFF_X16_Y17_N23
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_baud_generator|pcount[1] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~7_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_baud_generator|pcount [1]));
+
+// Location: LCCOMB_X16_Y17_N26
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[3]~11 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[3]~11_combout  = (\IrDA_transmitter|transmitter_baud_generator|pcount [3] & (!\IrDA_transmitter|transmitter_baud_generator|pcount[2]~10 )) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [3] & 
+// ((\IrDA_transmitter|transmitter_baud_generator|pcount[2]~10 ) # (GND)))
+// \IrDA_transmitter|transmitter_baud_generator|pcount[3]~12  = CARRY((!\IrDA_transmitter|transmitter_baud_generator|pcount[2]~10 ) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [3]))
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [3]),
+	.datac(vcc),
+	.datad(vcc),
+	.cin(\IrDA_transmitter|transmitter_baud_generator|pcount[2]~10 ),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[3]~11_combout ),
+	.cout(\IrDA_transmitter|transmitter_baud_generator|pcount[3]~12 ));
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[3]~11 .lut_mask = 16'h3C3F;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[3]~11 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCFF_X16_Y17_N27
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_baud_generator|pcount[3] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_baud_generator|pcount[3]~11_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_baud_generator|pcount [3]));
+
+// Location: LCCOMB_X16_Y17_N28
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_baud_generator|pcount[4]~13 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_baud_generator|pcount[4]~13_combout  = \IrDA_transmitter|transmitter_baud_generator|pcount[3]~12  $ (!\IrDA_transmitter|transmitter_baud_generator|pcount [4])
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_baud_generator|pcount [4]),
+	.cin(\IrDA_transmitter|transmitter_baud_generator|pcount[3]~12 ),
+	.combout(\IrDA_transmitter|transmitter_baud_generator|pcount[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[4]~13 .lut_mask = 16'hF00F;
+defparam \IrDA_transmitter|transmitter_baud_generator|pcount[4]~13 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCFF_X16_Y17_N29
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_baud_generator|pcount[4] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_baud_generator|pcount[4]~13_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~15_combout ),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_baud_generator|pcount[1]~16_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_baud_generator|pcount [4]));
+
+// Location: LCCOMB_X15_Y17_N0
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|pcount[3]~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|pcount[3]~0_combout  = ((\IrDA_transmitter|transmitter_baud_generator|pcount [4]) # ((\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ) # (!\IrDA_transmitter|transmitter_controller|ena_bit~0_combout 
+// ))) # (!\IrDA_transmitter|transmitter_inverter|nval~2_combout )
+
+	.dataa(\IrDA_transmitter|transmitter_inverter|nval~2_combout ),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [4]),
+	.datac(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|pcount[3]~0 .lut_mask = 16'hFFDF;
+defparam \IrDA_transmitter|transmitter_bit_counter|pcount[3]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N12
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|pcount[3]~2 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout  = ((!\IrDA_transmitter|transmitter_bit_counter|pcount[3]~0_combout ) # (!\IrDA_transmitter|transmitter_bit_counter|pcount[3]~1_combout )) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~1_combout ),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|pcount[3]~2 .lut_mask = 16'h5FFF;
+defparam \IrDA_transmitter|transmitter_bit_counter|pcount[3]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X15_Y17_N27
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_bit_counter|pcount[1] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_bit_counter|ncount[1]~4_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_bit_counter|pcount [1]));
+
+// Location: LCCOMB_X15_Y17_N8
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|ncount[2]~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|ncount[2]~1_combout  = (\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout  & (\IrDA_transmitter|transmitter_bit_counter|pcount [2] $ (((\IrDA_transmitter|transmitter_bit_counter|pcount [0] & 
+// \IrDA_transmitter|transmitter_bit_counter|pcount [1])))))
+
+	.dataa(\IrDA_transmitter|transmitter_bit_counter|pcount [0]),
+	.datab(\IrDA_transmitter|transmitter_bit_counter|pcount [1]),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|pcount [2]),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|ncount[2]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[2]~1 .lut_mask = 16'h7800;
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[2]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X15_Y17_N9
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_bit_counter|pcount[2] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_bit_counter|ncount[2]~1_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_bit_counter|pcount [2]));
+
+// Location: LCCOMB_X15_Y17_N6
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|ncount[0]~2 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|ncount[0]~2_combout  = (!\IrDA_transmitter|transmitter_bit_counter|pcount [0] & \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|pcount [0]),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|ncount[0]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[0]~2 .lut_mask = 16'h0F00;
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[0]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X15_Y17_N7
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_bit_counter|pcount[0] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_bit_counter|ncount[0]~2_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_bit_counter|pcount [0]));
+
+// Location: LCCOMB_X16_Y17_N14
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|Add0~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|Add0~0_combout  = \IrDA_transmitter|transmitter_bit_counter|pcount [3] $ (((\IrDA_transmitter|transmitter_bit_counter|pcount [2] & (\IrDA_transmitter|transmitter_bit_counter|pcount [1] & 
+// \IrDA_transmitter|transmitter_bit_counter|pcount [0]))))
+
+	.dataa(\IrDA_transmitter|transmitter_bit_counter|pcount [2]),
+	.datab(\IrDA_transmitter|transmitter_bit_counter|pcount [1]),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|pcount [0]),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|pcount [3]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|Add0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|Add0~0 .lut_mask = 16'h7F80;
+defparam \IrDA_transmitter|transmitter_bit_counter|Add0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X15_Y17_N24
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|ncount[3]~3 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|ncount[3]~3_combout  = (\IrDA_transmitter|transmitter_bit_counter|Add0~0_combout  & \IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|Add0~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[3]~3 .lut_mask = 16'hF000;
+defparam \IrDA_transmitter|transmitter_bit_counter|ncount[3]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X15_Y17_N25
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_bit_counter|pcount[3] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_bit_counter|ncount[3]~3_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_transmitter|transmitter_bit_counter|pcount[3]~2_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_bit_counter|pcount [3]));
+
+// Location: LCCOMB_X15_Y17_N20
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_bit_counter|Equal0~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout  = (\IrDA_transmitter|transmitter_bit_counter|pcount [0]) # ((\IrDA_transmitter|transmitter_bit_counter|pcount [2]) # ((!\IrDA_transmitter|transmitter_bit_counter|pcount [1]) # 
+// (!\IrDA_transmitter|transmitter_bit_counter|pcount [3])))
+
+	.dataa(\IrDA_transmitter|transmitter_bit_counter|pcount [0]),
+	.datab(\IrDA_transmitter|transmitter_bit_counter|pcount [2]),
+	.datac(\IrDA_transmitter|transmitter_bit_counter|pcount [3]),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|pcount [1]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_bit_counter|Equal0~0 .lut_mask = 16'hEFFF;
+defparam \IrDA_transmitter|transmitter_bit_counter|Equal0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N30
+cycloneii_lcell_comb \transceiver_controller|nstate.IDLE~4 (
+// Equation(s):
+// \transceiver_controller|nstate.IDLE~4_combout  = (\transceiver_controller|nstate.IDLE~2_combout ) # ((\transceiver_controller|nstate.IDLE~3_combout  & ((\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ) # 
+// (!\IrDA_transmitter|transmitter_inverter|nval~2_combout ))))
+
+	.dataa(\transceiver_controller|nstate.IDLE~2_combout ),
+	.datab(\IrDA_transmitter|transmitter_inverter|nval~2_combout ),
+	.datac(\transceiver_controller|nstate.IDLE~3_combout ),
+	.datad(\IrDA_transmitter|transmitter_bit_counter|Equal0~0_combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.IDLE~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.IDLE~4 .lut_mask = 16'hFABA;
+defparam \transceiver_controller|nstate.IDLE~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N8
+cycloneii_lcell_comb \transceiver_controller|nstate.RCV~1 (
+// Equation(s):
+// \transceiver_controller|nstate.RCV~1_combout  = (\transceiver_controller|nstate.RCV~0_combout ) # ((\transceiver_controller|pstate.RCV~regout  & ((\transceiver_controller|nstate.IDLE~4_combout ) # (\transceiver_controller|nstate.IDLE~1_combout ))))
+
+	.dataa(\transceiver_controller|nstate.RCV~0_combout ),
+	.datab(\transceiver_controller|nstate.IDLE~4_combout ),
+	.datac(\transceiver_controller|pstate.RCV~regout ),
+	.datad(\transceiver_controller|nstate.IDLE~1_combout ),
+	.cin(gnd),
+	.combout(\transceiver_controller|nstate.RCV~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \transceiver_controller|nstate.RCV~1 .lut_mask = 16'hFAEA;
+defparam \transceiver_controller|nstate.RCV~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X14_Y17_N9
+cycloneii_lcell_ff \transceiver_controller|pstate.RCV (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\transceiver_controller|nstate.RCV~1_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\transceiver_controller|pstate.RCV~regout ));
+
+// Location: LCCOMB_X14_Y17_N28
+cycloneii_lcell_comb \IrDA_receiver|receiver_controller|ena_bit~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_controller|ena_bit~0_combout  = (\transceiver_controller|pstate.RCV~regout ) # ((!\rxd_ir~combout  & (\send_key~combout  & !\transceiver_controller|pstate.IDLE~regout )))
+
+	.dataa(\rxd_ir~combout ),
+	.datab(\send_key~combout ),
+	.datac(\transceiver_controller|pstate.RCV~regout ),
+	.datad(\transceiver_controller|pstate.IDLE~regout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_controller|ena_bit~0 .lut_mask = 16'hF0F4;
+defparam \IrDA_receiver|receiver_controller|ena_bit~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N24
+cycloneii_lcell_comb \IrDA_receiver|receiver_controller|nstate.RCV~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_controller|nstate.RCV~0_combout  = (\IrDA_receiver|receiver_controller|pstate.RCV~regout  & (((\IrDA_receiver|receiver_bit_counter|Equal0~0_combout ) # (!\IrDA_receiver|receiver_controller|ena_bit~0_combout )) # (!\rst~combout )))
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datac(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.datad(\IrDA_receiver|receiver_bit_counter|Equal0~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_controller|nstate.RCV~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_controller|nstate.RCV~0 .lut_mask = 16'hCC4C;
+defparam \IrDA_receiver|receiver_controller|nstate.RCV~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X14_Y17_N10
+cycloneii_lcell_comb \IrDA_receiver|receiver_controller|nstate.RCV~1 (
+// Equation(s):
+// \IrDA_receiver|receiver_controller|nstate.RCV~1_combout  = (!\transceiver_controller|pstate.IDLE~regout  & (\send_key~combout  & (!\IrDA_receiver|receiver_controller|pstate.RCV~regout  & !\rxd_ir~combout )))
+
+	.dataa(\transceiver_controller|pstate.IDLE~regout ),
+	.datab(\send_key~combout ),
+	.datac(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datad(\rxd_ir~combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_controller|nstate.RCV~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_controller|nstate.RCV~1 .lut_mask = 16'h0004;
+defparam \IrDA_receiver|receiver_controller|nstate.RCV~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N0
+cycloneii_lcell_comb \IrDA_receiver|receiver_controller|nstate.RCV~2 (
+// Equation(s):
+// \IrDA_receiver|receiver_controller|nstate.RCV~2_combout  = ((\IrDA_receiver|receiver_controller|nstate.RCV~0_combout ) # (\IrDA_receiver|receiver_controller|nstate.RCV~1_combout )) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_controller|nstate.RCV~0_combout ),
+	.datad(\IrDA_receiver|receiver_controller|nstate.RCV~1_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_controller|nstate.RCV~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_controller|nstate.RCV~2 .lut_mask = 16'hFFF5;
+defparam \IrDA_receiver|receiver_controller|nstate.RCV~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N1
+cycloneii_lcell_ff \IrDA_receiver|receiver_controller|pstate.RCV (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_controller|nstate.RCV~2_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(!\rst~combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_controller|pstate.RCV~regout ));
+
+// Location: LCCOMB_X12_Y17_N22
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[5]~1 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[5]~1_combout  = ((\IrDA_receiver|receiver_controller|pstate.RCV~regout  & (\IrDA_receiver|receiver_controller|ena_bit~0_combout  & \IrDA_receiver|receiver_baud_generator|Equal1~0_combout ))) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_receiver|receiver_controller|pstate.RCV~regout ),
+	.datac(\IrDA_receiver|receiver_controller|ena_bit~0_combout ),
+	.datad(\IrDA_receiver|receiver_baud_generator|Equal1~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[5]~1 .lut_mask = 16'hD555;
+defparam \IrDA_receiver|receiver_shift_register|ndata[5]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N9
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[9] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[9]~9_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [9]));
+
+// Location: LCCOMB_X12_Y17_N14
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[8]~8 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[8]~8_combout  = (\IrDA_receiver|receiver_shift_register|pdata [9]) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [9]),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[8]~8_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[8]~8 .lut_mask = 16'hF5F5;
+defparam \IrDA_receiver|receiver_shift_register|ndata[8]~8 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N15
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[8] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[8]~8_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [8]));
+
+// Location: LCCOMB_X12_Y17_N28
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[7]~2 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[7]~2_combout  = (\IrDA_receiver|receiver_shift_register|pdata [8]) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [8]),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[7]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[7]~2 .lut_mask = 16'hF5F5;
+defparam \IrDA_receiver|receiver_shift_register|ndata[7]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N29
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[7] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[7]~2_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [7]));
+
+// Location: LCCOMB_X12_Y17_N6
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[6]~3 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[6]~3_combout  = (\IrDA_receiver|receiver_shift_register|pdata [7]) # (!\rst~combout )
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.datac(\rst~combout ),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[6]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[6]~3 .lut_mask = 16'hCFCF;
+defparam \IrDA_receiver|receiver_shift_register|ndata[6]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N7
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[6] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[6]~3_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [6]));
+
+// Location: LCCOMB_X12_Y17_N26
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[5]~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[5]~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [6]) # (!\rst~combout )
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datab(vcc),
+	.datac(\rst~combout ),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[5]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[5]~0 .lut_mask = 16'hAFAF;
+defparam \IrDA_receiver|receiver_shift_register|ndata[5]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N27
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[5] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[5]~0_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [5]));
+
+// Location: LCCOMB_X1_Y17_N12
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|WideOr6~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|WideOr6~0_combout  = (!\IrDA_receiver|receiver_shift_register|pdata [6] & (\IrDA_receiver|receiver_shift_register|pdata [5] $ (\IrDA_receiver|receiver_shift_register|pdata [7])))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|WideOr6~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr6~0 .lut_mask = 16'h0330;
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr6~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N30
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|WideOr5~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|WideOr5~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [7] & (\IrDA_receiver|receiver_shift_register|pdata [6] $ (\IrDA_receiver|receiver_shift_register|pdata [5])))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|WideOr5~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr5~0 .lut_mask = 16'h3C00;
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr5~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N28
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|Decoder0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|Decoder0~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [6] & (!\IrDA_receiver|receiver_shift_register|pdata [5] & !\IrDA_receiver|receiver_shift_register|pdata [7]))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|Decoder0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|Decoder0~0 .lut_mask = 16'h000C;
+defparam \IrDA_receiver|receiver_hex6_decoder|Decoder0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N6
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|WideOr3~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|WideOr3~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [6] & (\IrDA_receiver|receiver_shift_register|pdata [5] & \IrDA_receiver|receiver_shift_register|pdata [7])) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [6] & (\IrDA_receiver|receiver_shift_register|pdata [5] $ (\IrDA_receiver|receiver_shift_register|pdata [7])))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|WideOr3~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr3~0 .lut_mask = 16'hC330;
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr3~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N0
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|WideOr2~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|WideOr2~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [5]) # ((!\IrDA_receiver|receiver_shift_register|pdata [6] & \IrDA_receiver|receiver_shift_register|pdata [7]))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|WideOr2~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr2~0 .lut_mask = 16'hF3F0;
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr2~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N10
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|WideOr1~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|WideOr1~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [6] & ((\IrDA_receiver|receiver_shift_register|pdata [5]) # (!\IrDA_receiver|receiver_shift_register|pdata [7]))) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [6] & (\IrDA_receiver|receiver_shift_register|pdata [5] & !\IrDA_receiver|receiver_shift_register|pdata [7]))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|WideOr1~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr1~0 .lut_mask = 16'hC0FC;
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr1~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N4
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex6_decoder|WideOr0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex6_decoder|WideOr0~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [6] & (\IrDA_receiver|receiver_shift_register|pdata [5] & \IrDA_receiver|receiver_shift_register|pdata [7])) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [6] & ((!\IrDA_receiver|receiver_shift_register|pdata [7])))
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex6_decoder|WideOr0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr0~0 .lut_mask = 16'hC033;
+defparam \IrDA_receiver|receiver_hex6_decoder|WideOr0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N2
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[4]~7 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[4]~7_combout  = (\IrDA_receiver|receiver_shift_register|pdata [5]) # (!\rst~combout )
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datac(\rst~combout ),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[4]~7_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[4]~7 .lut_mask = 16'hCFCF;
+defparam \IrDA_receiver|receiver_shift_register|ndata[4]~7 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N3
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[4] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[4]~7_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [4]));
+
+// Location: LCCOMB_X12_Y17_N20
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[3]~6 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[3]~6_combout  = (\IrDA_receiver|receiver_shift_register|pdata [4]) # (!\rst~combout )
+
+	.dataa(vcc),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\rst~combout ),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[3]~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[3]~6 .lut_mask = 16'hCFCF;
+defparam \IrDA_receiver|receiver_shift_register|ndata[3]~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N21
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[3] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[3]~6_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [3]));
+
+// Location: LCCOMB_X12_Y17_N4
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[1]~4 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[1]~4_combout  = (\IrDA_receiver|receiver_shift_register|pdata [2]) # (!\rst~combout )
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.datab(vcc),
+	.datac(\rst~combout ),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[1]~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[1]~4 .lut_mask = 16'hAFAF;
+defparam \IrDA_receiver|receiver_shift_register|ndata[1]~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N5
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[1] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[1]~4_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [1]));
+
+// Location: LCCOMB_X12_Y17_N10
+cycloneii_lcell_comb \IrDA_receiver|receiver_shift_register|ndata[2]~5 (
+// Equation(s):
+// \IrDA_receiver|receiver_shift_register|ndata[2]~5_combout  = (\IrDA_receiver|receiver_shift_register|pdata [3]) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(vcc),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_shift_register|ndata[2]~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_shift_register|ndata[2]~5 .lut_mask = 16'hF5F5;
+defparam \IrDA_receiver|receiver_shift_register|ndata[2]~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X12_Y17_N11
+cycloneii_lcell_ff \IrDA_receiver|receiver_shift_register|pdata[2] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_receiver|receiver_shift_register|ndata[2]~5_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\IrDA_receiver|receiver_shift_register|ndata[5]~1_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_receiver|receiver_shift_register|pdata [2]));
+
+// Location: LCCOMB_X1_Y17_N18
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr6~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr6~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [3] & (!\IrDA_receiver|receiver_shift_register|pdata [2] & (\IrDA_receiver|receiver_shift_register|pdata [4] $ 
+// (!\IrDA_receiver|receiver_shift_register|pdata [1])))) # (!\IrDA_receiver|receiver_shift_register|pdata [3] & (\IrDA_receiver|receiver_shift_register|pdata [1] & (\IrDA_receiver|receiver_shift_register|pdata [4] $ 
+// (!\IrDA_receiver|receiver_shift_register|pdata [2]))))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr6~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr6~0 .lut_mask = 16'h4092;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr6~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N8
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr5~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr5~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [4] & ((\IrDA_receiver|receiver_shift_register|pdata [1] & ((\IrDA_receiver|receiver_shift_register|pdata [2]))) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [1] & (\IrDA_receiver|receiver_shift_register|pdata [3])))) # (!\IrDA_receiver|receiver_shift_register|pdata [4] & (\IrDA_receiver|receiver_shift_register|pdata [3] & 
+// (\IrDA_receiver|receiver_shift_register|pdata [1] $ (\IrDA_receiver|receiver_shift_register|pdata [2]))))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr5~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr5~0 .lut_mask = 16'hCA28;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr5~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N26
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr4~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr4~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [3] & (\IrDA_receiver|receiver_shift_register|pdata [4] & ((\IrDA_receiver|receiver_shift_register|pdata [2]) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [1])))) # (!\IrDA_receiver|receiver_shift_register|pdata [3] & (!\IrDA_receiver|receiver_shift_register|pdata [4] & (!\IrDA_receiver|receiver_shift_register|pdata [1] & 
+// \IrDA_receiver|receiver_shift_register|pdata [2])))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr4~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr4~0 .lut_mask = 16'h8908;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr4~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N24
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr3~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr3~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [2] & ((\IrDA_receiver|receiver_shift_register|pdata [3] & ((\IrDA_receiver|receiver_shift_register|pdata [1]))) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [3] & (\IrDA_receiver|receiver_shift_register|pdata [4] & !\IrDA_receiver|receiver_shift_register|pdata [1])))) # (!\IrDA_receiver|receiver_shift_register|pdata [2] & 
+// (!\IrDA_receiver|receiver_shift_register|pdata [4] & (\IrDA_receiver|receiver_shift_register|pdata [3] $ (\IrDA_receiver|receiver_shift_register|pdata [1]))))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr3~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr3~0 .lut_mask = 16'hA412;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr3~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N22
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr2~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr2~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [2] & (((!\IrDA_receiver|receiver_shift_register|pdata [4] & \IrDA_receiver|receiver_shift_register|pdata [1])))) # 
+// (!\IrDA_receiver|receiver_shift_register|pdata [2] & ((\IrDA_receiver|receiver_shift_register|pdata [3] & (!\IrDA_receiver|receiver_shift_register|pdata [4])) # (!\IrDA_receiver|receiver_shift_register|pdata [3] & 
+// ((\IrDA_receiver|receiver_shift_register|pdata [1])))))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr2~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr2~0 .lut_mask = 16'h3072;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr2~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N16
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr1~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr1~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [3] & (\IrDA_receiver|receiver_shift_register|pdata [1] & (\IrDA_receiver|receiver_shift_register|pdata [4] $ 
+// (\IrDA_receiver|receiver_shift_register|pdata [2])))) # (!\IrDA_receiver|receiver_shift_register|pdata [3] & (!\IrDA_receiver|receiver_shift_register|pdata [4] & ((\IrDA_receiver|receiver_shift_register|pdata [1]) # 
+// (\IrDA_receiver|receiver_shift_register|pdata [2]))))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr1~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr1~0 .lut_mask = 16'h3190;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr1~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y17_N14
+cycloneii_lcell_comb \IrDA_receiver|receiver_hex5_decoder|WideOr0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_hex5_decoder|WideOr0~0_combout  = (\IrDA_receiver|receiver_shift_register|pdata [1] & ((\IrDA_receiver|receiver_shift_register|pdata [4]) # (\IrDA_receiver|receiver_shift_register|pdata [3] $ 
+// (\IrDA_receiver|receiver_shift_register|pdata [2])))) # (!\IrDA_receiver|receiver_shift_register|pdata [1] & ((\IrDA_receiver|receiver_shift_register|pdata [2]) # (\IrDA_receiver|receiver_shift_register|pdata [3] $ 
+// (\IrDA_receiver|receiver_shift_register|pdata [4]))))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_hex5_decoder|WideOr0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr0~0 .lut_mask = 16'hDFE6;
+defparam \IrDA_receiver|receiver_hex5_decoder|WideOr0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: PIN_N2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \clk~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\clk~combout ),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(clk));
+// synopsys translate_off
+defparam \clk~I .input_async_reset = "none";
+defparam \clk~I .input_power_up = "low";
+defparam \clk~I .input_register_mode = "none";
+defparam \clk~I .input_sync_reset = "none";
+defparam \clk~I .oe_async_reset = "none";
+defparam \clk~I .oe_power_up = "low";
+defparam \clk~I .oe_register_mode = "none";
+defparam \clk~I .oe_sync_reset = "none";
+defparam \clk~I .operation_mode = "input";
+defparam \clk~I .output_async_reset = "none";
+defparam \clk~I .output_power_up = "low";
+defparam \clk~I .output_register_mode = "none";
+defparam \clk~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneii_clkctrl \clk~clkctrl (
+	.ena(vcc),
+	.inclk({gnd,gnd,gnd,\clk~combout }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\clk~clkctrl_outclk ));
+// synopsys translate_off
+defparam \clk~clkctrl .clock_type = "global clock";
+defparam \clk~clkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: PIN_P1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \data_txd[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(\data_txd~combout [1]),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(data_txd[1]));
+// synopsys translate_off
+defparam \data_txd[1]~I .input_async_reset = "none";
+defparam \data_txd[1]~I .input_power_up = "low";
+defparam \data_txd[1]~I .input_register_mode = "none";
+defparam \data_txd[1]~I .input_sync_reset = "none";
+defparam \data_txd[1]~I .oe_async_reset = "none";
+defparam \data_txd[1]~I .oe_power_up = "low";
+defparam \data_txd[1]~I .oe_register_mode = "none";
+defparam \data_txd[1]~I .oe_sync_reset = "none";
+defparam \data_txd[1]~I .operation_mode = "input";
+defparam \data_txd[1]~I .output_async_reset = "none";
+defparam \data_txd[1]~I .output_power_up = "low";
+defparam \data_txd[1]~I .output_register_mode = "none";
+defparam \data_txd[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N26
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_controller|inc~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_controller|inc~0_combout  = ((\IrDA_transmitter|transmitter_baud_generator|pcount [4]) # ((\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ) # (!\IrDA_transmitter|transmitter_inverter|nval~2_combout ))) # 
+// (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [4]),
+	.datac(\IrDA_transmitter|transmitter_baud_generator|Equal0~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_inverter|nval~2_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_controller|inc~0 .lut_mask = 16'hFDFF;
+defparam \IrDA_transmitter|transmitter_controller|inc~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N2
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[2]~3 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[2]~3_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\data_txd~combout [1]))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// (\IrDA_transmitter|transmitter_shift_register|pdata [3]))
+
+	.dataa(\IrDA_transmitter|transmitter_shift_register|pdata [3]),
+	.datab(\data_txd~combout [1]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[2]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[2]~3 .lut_mask = 16'hCCAA;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[2]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N14
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|pdata[6]~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout  = (((\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout  & \IrDA_transmitter|transmitter_controller|ena_bit~0_combout )) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout 
+// )) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ),
+	.datac(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|pdata[6]~0 .lut_mask = 16'hD5FF;
+defparam \IrDA_transmitter|transmitter_shift_register|pdata[6]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X17_Y17_N3
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[2] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[2]~3_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [2]));
+
+// Location: LCCOMB_X17_Y17_N0
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[1]~2 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[1]~2_combout  = (\IrDA_transmitter|transmitter_controller|inc~0_combout  & (\data_txd~combout [0])) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout  & 
+// ((\IrDA_transmitter|transmitter_shift_register|pdata [2])))
+
+	.dataa(\data_txd~combout [0]),
+	.datab(\IrDA_transmitter|transmitter_shift_register|pdata [2]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[1]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[1]~2 .lut_mask = 16'hAACC;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[1]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X17_Y17_N1
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[1] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[1]~2_combout ),
+	.sdata(vcc),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(!\rst~combout ),
+	.ena(\IrDA_transmitter|transmitter_shift_register|pdata[6]~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [1]));
+
+// Location: LCCOMB_X17_Y17_N8
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[0]~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[0]~0_combout  = (\IrDA_transmitter|transmitter_shift_register|pdata [0] & ((!\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ) # (!\IrDA_transmitter|transmitter_controller|ena_bit~0_combout 
+// )))
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_shift_register|pdata [0]),
+	.datac(\IrDA_transmitter|transmitter_controller|ena_bit~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|pstate.LOAD~regout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[0]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[0]~0 .lut_mask = 16'h0CCC;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[0]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N22
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_shift_register|ndata[0]~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_shift_register|ndata[0]~1_combout  = ((\IrDA_transmitter|transmitter_controller|inc~0_combout  & ((\IrDA_transmitter|transmitter_shift_register|ndata[0]~0_combout ))) # (!\IrDA_transmitter|transmitter_controller|inc~0_combout 
+//  & (\IrDA_transmitter|transmitter_shift_register|pdata [1]))) # (!\rst~combout )
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_transmitter|transmitter_shift_register|pdata [1]),
+	.datac(\IrDA_transmitter|transmitter_shift_register|ndata[0]~0_combout ),
+	.datad(\IrDA_transmitter|transmitter_controller|inc~0_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_shift_register|ndata[0]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[0]~1 .lut_mask = 16'hF5DD;
+defparam \IrDA_transmitter|transmitter_shift_register|ndata[0]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X17_Y17_N23
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_shift_register|pdata[0] (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_shift_register|ndata[0]~1_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_shift_register|pdata [0]));
+
+// Location: LCCOMB_X17_Y17_N4
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_inverter|nval~0 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_inverter|nval~0_combout  = (!\IrDA_transmitter|transmitter_baud_generator|pcount [4] & !\IrDA_transmitter|transmitter_shift_register|pdata [0])
+
+	.dataa(vcc),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [4]),
+	.datac(vcc),
+	.datad(\IrDA_transmitter|transmitter_shift_register|pdata [0]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_inverter|nval~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_inverter|nval~0 .lut_mask = 16'h0033;
+defparam \IrDA_transmitter|transmitter_inverter|nval~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X16_Y17_N12
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_inverter|nval~1 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_inverter|nval~1_combout  = (\IrDA_transmitter|transmitter_baud_generator|pcount [1] & (!\IrDA_transmitter|transmitter_baud_generator|pcount [3] & (\IrDA_transmitter|transmitter_baud_generator|pcount [2] & 
+// \IrDA_transmitter|transmitter_baud_generator|pcount [0]))) # (!\IrDA_transmitter|transmitter_baud_generator|pcount [1] & (\IrDA_transmitter|transmitter_baud_generator|pcount [3] & (!\IrDA_transmitter|transmitter_baud_generator|pcount [2])))
+
+	.dataa(\IrDA_transmitter|transmitter_baud_generator|pcount [1]),
+	.datab(\IrDA_transmitter|transmitter_baud_generator|pcount [3]),
+	.datac(\IrDA_transmitter|transmitter_baud_generator|pcount [2]),
+	.datad(\IrDA_transmitter|transmitter_baud_generator|pcount [0]),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_inverter|nval~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_inverter|nval~1 .lut_mask = 16'h2404;
+defparam \IrDA_transmitter|transmitter_inverter|nval~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X17_Y17_N28
+cycloneii_lcell_comb \IrDA_transmitter|transmitter_inverter|nval~3 (
+// Equation(s):
+// \IrDA_transmitter|transmitter_inverter|nval~3_combout  = (\rst~combout  & (\IrDA_transmitter|transmitter_inverter|nval~0_combout  & (\IrDA_transmitter|transmitter_inverter|nval~2_combout  & \IrDA_transmitter|transmitter_inverter|nval~1_combout )))
+
+	.dataa(\rst~combout ),
+	.datab(\IrDA_transmitter|transmitter_inverter|nval~0_combout ),
+	.datac(\IrDA_transmitter|transmitter_inverter|nval~2_combout ),
+	.datad(\IrDA_transmitter|transmitter_inverter|nval~1_combout ),
+	.cin(gnd),
+	.combout(\IrDA_transmitter|transmitter_inverter|nval~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_transmitter|transmitter_inverter|nval~3 .lut_mask = 16'h8000;
+defparam \IrDA_transmitter|transmitter_inverter|nval~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCFF_X17_Y17_N29
+cycloneii_lcell_ff \IrDA_transmitter|transmitter_inverter|pval (
+	.clk(\clk~clkctrl_outclk ),
+	.datain(\IrDA_transmitter|transmitter_inverter|nval~3_combout ),
+	.sdata(gnd),
+	.aclr(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.regout(\IrDA_transmitter|transmitter_inverter|pval~regout ));
+
+// Location: LCCOMB_X12_Y17_N16
+cycloneii_lcell_comb \IrDA_receiver|receiver_error_detector|WideXor0~0 (
+// Equation(s):
+// \IrDA_receiver|receiver_error_detector|WideXor0~0_combout  = \IrDA_receiver|receiver_shift_register|pdata [6] $ (\IrDA_receiver|receiver_shift_register|pdata [5] $ (\IrDA_receiver|receiver_shift_register|pdata [1] $ 
+// (\IrDA_receiver|receiver_shift_register|pdata [2])))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [6]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [5]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [1]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [2]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_error_detector|WideXor0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_error_detector|WideXor0~0 .lut_mask = 16'h6996;
+defparam \IrDA_receiver|receiver_error_detector|WideXor0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N12
+cycloneii_lcell_comb \IrDA_receiver|receiver_error_detector|WideXor0~1 (
+// Equation(s):
+// \IrDA_receiver|receiver_error_detector|WideXor0~1_combout  = \IrDA_receiver|receiver_shift_register|pdata [3] $ (\IrDA_receiver|receiver_shift_register|pdata [4] $ (\IrDA_receiver|receiver_shift_register|pdata [8] $ 
+// (\IrDA_receiver|receiver_shift_register|pdata [7])))
+
+	.dataa(\IrDA_receiver|receiver_shift_register|pdata [3]),
+	.datab(\IrDA_receiver|receiver_shift_register|pdata [4]),
+	.datac(\IrDA_receiver|receiver_shift_register|pdata [8]),
+	.datad(\IrDA_receiver|receiver_shift_register|pdata [7]),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_error_detector|WideXor0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_error_detector|WideXor0~1 .lut_mask = 16'h6996;
+defparam \IrDA_receiver|receiver_error_detector|WideXor0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X12_Y17_N18
+cycloneii_lcell_comb \IrDA_receiver|receiver_error_detector|WideXor0 (
+// Equation(s):
+// \IrDA_receiver|receiver_error_detector|WideXor0~combout  = \IrDA_receiver|receiver_error_detector|WideXor0~0_combout  $ (\IrDA_receiver|receiver_error_detector|WideXor0~1_combout )
+
+	.dataa(\IrDA_receiver|receiver_error_detector|WideXor0~0_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\IrDA_receiver|receiver_error_detector|WideXor0~1_combout ),
+	.cin(gnd),
+	.combout(\IrDA_receiver|receiver_error_detector|WideXor0~combout ),
+	.cout());
+// synopsys translate_off
+defparam \IrDA_receiver|receiver_error_detector|WideXor0 .lut_mask = 16'h55AA;
+defparam \IrDA_receiver|receiver_error_detector|WideXor0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: PIN_R2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[0]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|WideOr6~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[0]));
+// synopsys translate_off
+defparam \hex6[0]~I .input_async_reset = "none";
+defparam \hex6[0]~I .input_power_up = "low";
+defparam \hex6[0]~I .input_register_mode = "none";
+defparam \hex6[0]~I .input_sync_reset = "none";
+defparam \hex6[0]~I .oe_async_reset = "none";
+defparam \hex6[0]~I .oe_power_up = "low";
+defparam \hex6[0]~I .oe_register_mode = "none";
+defparam \hex6[0]~I .oe_sync_reset = "none";
+defparam \hex6[0]~I .operation_mode = "output";
+defparam \hex6[0]~I .output_async_reset = "none";
+defparam \hex6[0]~I .output_power_up = "low";
+defparam \hex6[0]~I .output_register_mode = "none";
+defparam \hex6[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_P4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[1]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|WideOr5~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[1]));
+// synopsys translate_off
+defparam \hex6[1]~I .input_async_reset = "none";
+defparam \hex6[1]~I .input_power_up = "low";
+defparam \hex6[1]~I .input_register_mode = "none";
+defparam \hex6[1]~I .input_sync_reset = "none";
+defparam \hex6[1]~I .oe_async_reset = "none";
+defparam \hex6[1]~I .oe_power_up = "low";
+defparam \hex6[1]~I .oe_register_mode = "none";
+defparam \hex6[1]~I .oe_sync_reset = "none";
+defparam \hex6[1]~I .operation_mode = "output";
+defparam \hex6[1]~I .output_async_reset = "none";
+defparam \hex6[1]~I .output_power_up = "low";
+defparam \hex6[1]~I .output_register_mode = "none";
+defparam \hex6[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_P3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[2]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|Decoder0~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[2]));
+// synopsys translate_off
+defparam \hex6[2]~I .input_async_reset = "none";
+defparam \hex6[2]~I .input_power_up = "low";
+defparam \hex6[2]~I .input_register_mode = "none";
+defparam \hex6[2]~I .input_sync_reset = "none";
+defparam \hex6[2]~I .oe_async_reset = "none";
+defparam \hex6[2]~I .oe_power_up = "low";
+defparam \hex6[2]~I .oe_register_mode = "none";
+defparam \hex6[2]~I .oe_sync_reset = "none";
+defparam \hex6[2]~I .operation_mode = "output";
+defparam \hex6[2]~I .output_async_reset = "none";
+defparam \hex6[2]~I .output_power_up = "low";
+defparam \hex6[2]~I .output_register_mode = "none";
+defparam \hex6[2]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[3]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|WideOr3~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[3]));
+// synopsys translate_off
+defparam \hex6[3]~I .input_async_reset = "none";
+defparam \hex6[3]~I .input_power_up = "low";
+defparam \hex6[3]~I .input_register_mode = "none";
+defparam \hex6[3]~I .input_sync_reset = "none";
+defparam \hex6[3]~I .oe_async_reset = "none";
+defparam \hex6[3]~I .oe_power_up = "low";
+defparam \hex6[3]~I .oe_register_mode = "none";
+defparam \hex6[3]~I .oe_sync_reset = "none";
+defparam \hex6[3]~I .operation_mode = "output";
+defparam \hex6[3]~I .output_async_reset = "none";
+defparam \hex6[3]~I .output_power_up = "low";
+defparam \hex6[3]~I .output_register_mode = "none";
+defparam \hex6[3]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[4]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|WideOr2~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[4]));
+// synopsys translate_off
+defparam \hex6[4]~I .input_async_reset = "none";
+defparam \hex6[4]~I .input_power_up = "low";
+defparam \hex6[4]~I .input_register_mode = "none";
+defparam \hex6[4]~I .input_sync_reset = "none";
+defparam \hex6[4]~I .oe_async_reset = "none";
+defparam \hex6[4]~I .oe_power_up = "low";
+defparam \hex6[4]~I .oe_register_mode = "none";
+defparam \hex6[4]~I .oe_sync_reset = "none";
+defparam \hex6[4]~I .operation_mode = "output";
+defparam \hex6[4]~I .output_async_reset = "none";
+defparam \hex6[4]~I .output_power_up = "low";
+defparam \hex6[4]~I .output_register_mode = "none";
+defparam \hex6[4]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[5]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|WideOr1~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[5]));
+// synopsys translate_off
+defparam \hex6[5]~I .input_async_reset = "none";
+defparam \hex6[5]~I .input_power_up = "low";
+defparam \hex6[5]~I .input_register_mode = "none";
+defparam \hex6[5]~I .input_sync_reset = "none";
+defparam \hex6[5]~I .oe_async_reset = "none";
+defparam \hex6[5]~I .oe_power_up = "low";
+defparam \hex6[5]~I .oe_register_mode = "none";
+defparam \hex6[5]~I .oe_sync_reset = "none";
+defparam \hex6[5]~I .operation_mode = "output";
+defparam \hex6[5]~I .output_async_reset = "none";
+defparam \hex6[5]~I .output_power_up = "low";
+defparam \hex6[5]~I .output_register_mode = "none";
+defparam \hex6[5]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex6[6]~I (
+	.datain(\IrDA_receiver|receiver_hex6_decoder|WideOr0~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex6[6]));
+// synopsys translate_off
+defparam \hex6[6]~I .input_async_reset = "none";
+defparam \hex6[6]~I .input_power_up = "low";
+defparam \hex6[6]~I .input_register_mode = "none";
+defparam \hex6[6]~I .input_sync_reset = "none";
+defparam \hex6[6]~I .oe_async_reset = "none";
+defparam \hex6[6]~I .oe_power_up = "low";
+defparam \hex6[6]~I .oe_register_mode = "none";
+defparam \hex6[6]~I .oe_sync_reset = "none";
+defparam \hex6[6]~I .operation_mode = "output";
+defparam \hex6[6]~I .output_async_reset = "none";
+defparam \hex6[6]~I .output_power_up = "low";
+defparam \hex6[6]~I .output_register_mode = "none";
+defparam \hex6[6]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_T2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[0]~I (
+	.datain(\IrDA_receiver|receiver_hex5_decoder|WideOr6~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[0]));
+// synopsys translate_off
+defparam \hex5[0]~I .input_async_reset = "none";
+defparam \hex5[0]~I .input_power_up = "low";
+defparam \hex5[0]~I .input_register_mode = "none";
+defparam \hex5[0]~I .input_sync_reset = "none";
+defparam \hex5[0]~I .oe_async_reset = "none";
+defparam \hex5[0]~I .oe_power_up = "low";
+defparam \hex5[0]~I .oe_register_mode = "none";
+defparam \hex5[0]~I .oe_sync_reset = "none";
+defparam \hex5[0]~I .operation_mode = "output";
+defparam \hex5[0]~I .output_async_reset = "none";
+defparam \hex5[0]~I .output_power_up = "low";
+defparam \hex5[0]~I .output_register_mode = "none";
+defparam \hex5[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_P6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[1]~I (
+	.datain(\IrDA_receiver|receiver_hex5_decoder|WideOr5~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[1]));
+// synopsys translate_off
+defparam \hex5[1]~I .input_async_reset = "none";
+defparam \hex5[1]~I .input_power_up = "low";
+defparam \hex5[1]~I .input_register_mode = "none";
+defparam \hex5[1]~I .input_sync_reset = "none";
+defparam \hex5[1]~I .oe_async_reset = "none";
+defparam \hex5[1]~I .oe_power_up = "low";
+defparam \hex5[1]~I .oe_register_mode = "none";
+defparam \hex5[1]~I .oe_sync_reset = "none";
+defparam \hex5[1]~I .operation_mode = "output";
+defparam \hex5[1]~I .output_async_reset = "none";
+defparam \hex5[1]~I .output_power_up = "low";
+defparam \hex5[1]~I .output_register_mode = "none";
+defparam \hex5[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_P7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[2]~I (
+	.datain(\IrDA_receiver|receiver_hex5_decoder|WideOr4~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[2]));
+// synopsys translate_off
+defparam \hex5[2]~I .input_async_reset = "none";
+defparam \hex5[2]~I .input_power_up = "low";
+defparam \hex5[2]~I .input_register_mode = "none";
+defparam \hex5[2]~I .input_sync_reset = "none";
+defparam \hex5[2]~I .oe_async_reset = "none";
+defparam \hex5[2]~I .oe_power_up = "low";
+defparam \hex5[2]~I .oe_register_mode = "none";
+defparam \hex5[2]~I .oe_sync_reset = "none";
+defparam \hex5[2]~I .operation_mode = "output";
+defparam \hex5[2]~I .output_async_reset = "none";
+defparam \hex5[2]~I .output_power_up = "low";
+defparam \hex5[2]~I .output_register_mode = "none";
+defparam \hex5[2]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_T9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[3]~I (
+	.datain(\IrDA_receiver|receiver_hex5_decoder|WideOr3~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[3]));
+// synopsys translate_off
+defparam \hex5[3]~I .input_async_reset = "none";
+defparam \hex5[3]~I .input_power_up = "low";
+defparam \hex5[3]~I .input_register_mode = "none";
+defparam \hex5[3]~I .input_sync_reset = "none";
+defparam \hex5[3]~I .oe_async_reset = "none";
+defparam \hex5[3]~I .oe_power_up = "low";
+defparam \hex5[3]~I .oe_register_mode = "none";
+defparam \hex5[3]~I .oe_sync_reset = "none";
+defparam \hex5[3]~I .operation_mode = "output";
+defparam \hex5[3]~I .output_async_reset = "none";
+defparam \hex5[3]~I .output_power_up = "low";
+defparam \hex5[3]~I .output_register_mode = "none";
+defparam \hex5[3]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_R5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[4]~I (
+	.datain(\IrDA_receiver|receiver_hex5_decoder|WideOr2~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[4]));
+// synopsys translate_off
+defparam \hex5[4]~I .input_async_reset = "none";
+defparam \hex5[4]~I .input_power_up = "low";
+defparam \hex5[4]~I .input_register_mode = "none";
+defparam \hex5[4]~I .input_sync_reset = "none";
+defparam \hex5[4]~I .oe_async_reset = "none";
+defparam \hex5[4]~I .oe_power_up = "low";
+defparam \hex5[4]~I .oe_register_mode = "none";
+defparam \hex5[4]~I .oe_sync_reset = "none";
+defparam \hex5[4]~I .operation_mode = "output";
+defparam \hex5[4]~I .output_async_reset = "none";
+defparam \hex5[4]~I .output_power_up = "low";
+defparam \hex5[4]~I .output_register_mode = "none";
+defparam \hex5[4]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_R4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[5]~I (
+	.datain(\IrDA_receiver|receiver_hex5_decoder|WideOr1~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[5]));
+// synopsys translate_off
+defparam \hex5[5]~I .input_async_reset = "none";
+defparam \hex5[5]~I .input_power_up = "low";
+defparam \hex5[5]~I .input_register_mode = "none";
+defparam \hex5[5]~I .input_sync_reset = "none";
+defparam \hex5[5]~I .oe_async_reset = "none";
+defparam \hex5[5]~I .oe_power_up = "low";
+defparam \hex5[5]~I .oe_register_mode = "none";
+defparam \hex5[5]~I .oe_sync_reset = "none";
+defparam \hex5[5]~I .operation_mode = "output";
+defparam \hex5[5]~I .output_async_reset = "none";
+defparam \hex5[5]~I .output_power_up = "low";
+defparam \hex5[5]~I .output_register_mode = "none";
+defparam \hex5[5]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_R3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \hex5[6]~I (
+	.datain(!\IrDA_receiver|receiver_hex5_decoder|WideOr0~0_combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(hex5[6]));
+// synopsys translate_off
+defparam \hex5[6]~I .input_async_reset = "none";
+defparam \hex5[6]~I .input_power_up = "low";
+defparam \hex5[6]~I .input_register_mode = "none";
+defparam \hex5[6]~I .input_sync_reset = "none";
+defparam \hex5[6]~I .oe_async_reset = "none";
+defparam \hex5[6]~I .oe_power_up = "low";
+defparam \hex5[6]~I .oe_register_mode = "none";
+defparam \hex5[6]~I .oe_sync_reset = "none";
+defparam \hex5[6]~I .operation_mode = "output";
+defparam \hex5[6]~I .output_async_reset = "none";
+defparam \hex5[6]~I .output_power_up = "low";
+defparam \hex5[6]~I .output_register_mode = "none";
+defparam \hex5[6]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AE24,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \txd_ir~I (
+	.datain(\IrDA_transmitter|transmitter_inverter|pval~regout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(txd_ir));
+// synopsys translate_off
+defparam \txd_ir~I .input_async_reset = "none";
+defparam \txd_ir~I .input_power_up = "low";
+defparam \txd_ir~I .input_register_mode = "none";
+defparam \txd_ir~I .input_sync_reset = "none";
+defparam \txd_ir~I .oe_async_reset = "none";
+defparam \txd_ir~I .oe_power_up = "low";
+defparam \txd_ir~I .oe_register_mode = "none";
+defparam \txd_ir~I .oe_sync_reset = "none";
+defparam \txd_ir~I .operation_mode = "output";
+defparam \txd_ir~I .output_async_reset = "none";
+defparam \txd_ir~I .output_power_up = "low";
+defparam \txd_ir~I .output_register_mode = "none";
+defparam \txd_ir~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AE22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \parity_error~I (
+	.datain(!\IrDA_receiver|receiver_error_detector|WideXor0~combout ),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(parity_error));
+// synopsys translate_off
+defparam \parity_error~I .input_async_reset = "none";
+defparam \parity_error~I .input_power_up = "low";
+defparam \parity_error~I .input_register_mode = "none";
+defparam \parity_error~I .input_sync_reset = "none";
+defparam \parity_error~I .oe_async_reset = "none";
+defparam \parity_error~I .oe_power_up = "low";
+defparam \parity_error~I .oe_register_mode = "none";
+defparam \parity_error~I .oe_sync_reset = "none";
+defparam \parity_error~I .operation_mode = "output";
+defparam \parity_error~I .output_async_reset = "none";
+defparam \parity_error~I .output_power_up = "low";
+defparam \parity_error~I .output_register_mode = "none";
+defparam \parity_error~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_W19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \framing_error~I (
+	.datain(!\IrDA_receiver|receiver_shift_register|pdata [9]),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(framing_error));
+// synopsys translate_off
+defparam \framing_error~I .input_async_reset = "none";
+defparam \framing_error~I .input_power_up = "low";
+defparam \framing_error~I .input_register_mode = "none";
+defparam \framing_error~I .input_sync_reset = "none";
+defparam \framing_error~I .oe_async_reset = "none";
+defparam \framing_error~I .oe_power_up = "low";
+defparam \framing_error~I .oe_register_mode = "none";
+defparam \framing_error~I .oe_sync_reset = "none";
+defparam \framing_error~I .operation_mode = "output";
+defparam \framing_error~I .output_async_reset = "none";
+defparam \framing_error~I .output_power_up = "low";
+defparam \framing_error~I .output_register_mode = "none";
+defparam \framing_error~I .output_sync_reset = "none";
+// synopsys translate_on
+
+endmodule

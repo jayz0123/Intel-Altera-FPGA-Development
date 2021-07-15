@@ -1,0 +1,36 @@
+module BaudGeneratorTx
+#(
+	BAUDRATE 
+)
+(
+	clk,
+	reset,
+	baud_enable,
+	clk_baud
+);
+
+parameter 		BAUDRATE = 1302;
+
+input			clk;
+input			reset;
+input 			baud_enable;
+
+output			clk_baud;
+
+reg		[10:0]	counter;
+
+
+always @(posedge clk or negedge reset)
+begin
+	if(!reset)
+		counter <= 11'b0;
+	
+	else if(baud_enable)
+		counter <= (counter == BAUDRATE - 1) ? 0 : counter + 1'b1;
+		
+	else
+		counter <= BAUDRATE - 1;
+end
+
+assign clk_baud = (counter == 0) && baud_enable;
+endmodule

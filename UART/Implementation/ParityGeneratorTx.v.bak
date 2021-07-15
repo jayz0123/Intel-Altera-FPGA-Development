@@ -1,0 +1,24 @@
+module ParityGeneratorTx
+(
+	clk,
+	reset,
+	data,
+	parity_bit
+);
+
+input			clk;
+input 	[6:0]	data;
+
+output 			parity_bit;
+
+reg				parity_bit;
+
+
+always @(posedge clk)
+begin
+	if(!reset)
+		parity_bit <= 0;
+	else
+		parity_bit <= !(^data)	
+end
+endmodule

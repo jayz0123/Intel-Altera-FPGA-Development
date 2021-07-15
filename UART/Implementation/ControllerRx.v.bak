@@ -1,0 +1,87 @@
+module ControllerRx
+(
+	clk,
+	reset,
+	start,
+	bit_counter,
+	load,
+	clear,
+	baud_enable
+);
+
+parameter 		IDLE 	= 2'b00;
+parameter 		RCV		= 2'b01;
+parameter 		LOAD 	= 2'b10;
+parameter		DAV		= 2'b11;
+
+input 			clk;
+input 			reset;
+input 			start;
+input 	[3:0]	bit_counter;
+
+output 			load;
+output			baud_enable;
+output			clear;
+
+reg 			clear;
+reg				load;
+reg				baud_enable;
+reg   			ready;
+
+reg		[1:0]	pstate;
+reg		[1:0]	nstate;
+
+
+always @(posedge clk or negedge reset)
+begin
+	if(!reset)
+		pstate <= IDLE;
+	else
+		pstate <= nstate;
+end
+
+always @(pstate, start, bit_counter)
+begin
+	nstate = pstate;
+
+	case(pstate)
+		IDLE:
+		begin
+			load 		= 0;
+			baud_enable = 0;
+			clear 		= 1;
+			
+			if(!start)
+				nstate = RCV;
+		end
+		
+		RCV:
+		begin
+			load 		= 0;
+			baud_enable = 1;
+			clear 		= 0;
+			
+			if(bit_counter == 10)
+				nstate = LOAD;
+		end
+		
+		LOAD:
+		begin
+			load 		= 1;
+			baud_enable = 0;
+			clear 		= 0;
+			
+			nstate 		= IDLE;
+		end
+		
+		default
+		begin
+			load 		= 0;
+			baud_enable = 0;
+			clear 		= 0;
+			
+			nstate 		= IDLE;
+		end
+	endcase
+end
+endmodule

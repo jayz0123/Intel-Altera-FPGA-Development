@@ -1,0 +1,31 @@
+module DataRegisterTx
+(
+	clk,
+	reset,
+	data_in,
+	data_out
+);
+
+input			clk;
+input 			reset;
+input 	[6:0] 	data_in;
+
+output	[6:0]	data_out;
+
+reg		[6:0] 	data_out;
+
+
+initial
+begin
+	data_out = 7'b111_1111;
+end
+
+always @(posedge clk or negedge reset)
+begin
+	if(!reset)
+		data_out <= 7'b111_1111;
+		
+	else
+		data_out <= data_in;
+end
+endmodule

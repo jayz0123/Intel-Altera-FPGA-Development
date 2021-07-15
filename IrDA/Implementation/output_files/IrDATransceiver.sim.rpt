@@ -1,0 +1,361 @@
+Simulator report for IrDATransceiver
+Fri Feb 07 21:15:12 2020
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 10.0 us      ;
+; Simulation Netlist Size     ; 177 nodes    ;
+; Simulation Coverage         ;      88.65 % ;
+; Total Number of Transitions ; 6329         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
+; Device                      ; EP2C35F672C6 ;
++-----------------------------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                           ;
++--------------------------------------------------------------------------------------------+---------------------------------+---------------+
+; Option                                                                                     ; Setting                         ; Default Value ;
++--------------------------------------------------------------------------------------------+---------------------------------+---------------+
+; Simulation mode                                                                            ; Timing                          ; Timing        ;
+; Start time                                                                                 ; 0 ns                            ; 0 ns          ;
+; Simulation results format                                                                  ; VWF                             ;               ;
+; Vector input source                                                                        ; D:/Assignment_2/Transceiver.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                              ; On            ;
+; Check outputs                                                                              ; Off                             ; Off           ;
+; Report simulation coverage                                                                 ; On                              ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                              ; On            ;
+; Display missing 1-value coverage report                                                    ; On                              ; On            ;
+; Display missing 0-value coverage report                                                    ; On                              ; On            ;
+; Detect setup and hold time violations                                                      ; Off                             ; Off           ;
+; Detect glitches                                                                            ; Off                             ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                             ; Off           ;
+; Generate Signal Activity File                                                              ; Off                             ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                             ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                             ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                              ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                      ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                             ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off                             ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                            ; Auto          ;
++--------------------------------------------------------------------------------------------+---------------------------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II 64-Bit to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      88.65 % ;
+; Total nodes checked                                 ; 177          ;
+; Total output ports checked                          ; 185          ;
+; Total output ports with complete 1/0-value coverage ; 164          ;
+; Total output ports with no 1/0-value coverage       ; 13           ;
+; Total output ports with no 1-value coverage         ; 15           ;
+; Total output ports with no 0-value coverage         ; 19           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                                                                                                                      ;
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                     ; Output Port Name                                                                                              ; Output Port Type ;
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[2]                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[2]                   ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[3]                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[3]                   ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[0]                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[0]                   ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]                   ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|pstate.RCV                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|pstate.RCV                 ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[0]          ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[0]          ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]          ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]          ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[2]          ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[2]          ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[3]          ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[3]          ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[0]~5                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[0]~5                 ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[0]~5                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[0]~6                 ; cout             ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~7                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~7                 ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~7                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~8                 ; cout             ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[2]~9                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[2]~9                 ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[2]~9                 ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[2]~10                ; cout             ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[3]~13                ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[3]~13                ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[3]~13                ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[3]~14                ; cout             ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[4]~15                ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[4]~15                ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[1]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[1]           ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[0]~5        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[0]~5        ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[0]~5        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[0]~6        ; cout             ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~7        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~7        ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~7        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~8        ; cout             ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[2]~9        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[2]~9        ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[2]~9        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[2]~10       ; cout             ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[3]~11       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[3]~11       ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[3]~11       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[3]~12       ; cout             ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[4]~13       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[4]~13       ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[2]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[2]           ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[3]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[3]           ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[4]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[4]           ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[5]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[5]           ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[6]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[6]           ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[5]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[5]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[7]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[7]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[6]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[6]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr6~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr6~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr5~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr5~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|Decoder0~0                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|Decoder0~0                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr3~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr3~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr2~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr2~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr1~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr1~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr0~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex6_decoder|WideOr0~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[1]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[1]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[2]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[2]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[3]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[3]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[4]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[4]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr6~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr6~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr5~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr5~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr4~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr4~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr3~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr3~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr2~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr2~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr1~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr1~0                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr0~0                   ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|SevenSegDecoder:receiver_hex5_decoder|WideOr0~0                   ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|pval                          ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|pval                          ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector|WideXor0~0                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector|WideXor0~0                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[8]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[8]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector|WideXor0~1                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector|WideXor0~1                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector|WideXor0                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ErrorDetector:receiver_error_detector|WideXor0                    ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[9]                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|pdata[9]                    ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[5]~0                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[5]~0                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|Equal0~0                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|Equal0~0                    ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|Equal1~0                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|Equal1~0                    ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|pstate.RCV                                      ; |IrDATransceiver|TransceiverController:transceiver_controller|pstate.RCV                                      ; regout           ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|pstate.IDLE                                     ; |IrDATransceiver|TransceiverController:transceiver_controller|pstate.IDLE                                     ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|ena_bit~0                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|ena_bit~0                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[5]~1                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[5]~1                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[7]~2                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[7]~2                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[6]~3                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[6]~3                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[1]~4                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[1]~4                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[2]~5                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[2]~5                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[3]~6                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[3]~6                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[4]~7                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[4]~7                  ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[0]           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[0]           ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~0                        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~0                        ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~1                        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~1                        ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate.TRANS   ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate.TRANS   ; regout           ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|pstate.TRANS                                    ; |IrDATransceiver|TransceiverController:transceiver_controller|pstate.TRANS                                    ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~2                        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~2                        ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~3                        ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|Inverter:transmitter_inverter|nval~3                        ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[8]~8                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[8]~8                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[9]~9                  ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ShiftRegister:receiver_shift_register|ndata[9]~9                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|Equal0~1                    ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|Equal0~1                    ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~11                ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~11                ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~12                ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[1]~12                ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.RCV~0                                    ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.RCV~0                                    ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~0                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~0                                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[2]                         ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[2]                         ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[0]                         ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[0]                         ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[1]                         ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[1]                         ; regout           ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~1                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~1                                   ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~2                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~2                                   ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~3                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~3                                   ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[2]                ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[2]                ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[0]                ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[0]                ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[1]                ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[1]                ; regout           ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~4                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~4                                   ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.RCV~1                                    ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.RCV~1                                    ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~5                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~5                                   ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~6                                   ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.IDLE~6                                   ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|nstate.RCV~0               ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|nstate.RCV~0               ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|nstate.RCV~1               ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|nstate.RCV~1               ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|nstate.RCV~2               ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|nstate.RCV~2               ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|Equal0~0           ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|Equal0~0           ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|inc~0          ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|inc~0          ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate.LOAD    ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate.LOAD    ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|ena_bit~0      ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|ena_bit~0      ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[0]~0         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[0]~0         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[0]~1         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[0]~1         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.TRANS~0 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.TRANS~0 ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate.IDLE    ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate.IDLE    ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|clear_bit~0    ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|clear_bit~0    ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~15       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~15       ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~16       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[1]~16       ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.TRANS~1 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.TRANS~1 ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.TRANS~2 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.TRANS~2 ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.TRANS~0                                  ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.TRANS~0                                  ; combout          ;
+; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.TRANS~1                                  ; |IrDATransceiver|TransceiverController:transceiver_controller|nstate.TRANS~1                                  ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[3]~0                       ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[3]~0                       ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[2]~1                       ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[2]~1                       ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[3]~0                       ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[3]~0                       ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[0]~2                       ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[0]~2                       ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|Add0~0                            ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|Add0~0                            ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[3]~3                       ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[3]~3                       ; combout          ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[1]~4                       ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|ncount[1]~4                       ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[3]~0              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[3]~0              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[2]~1              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[2]~1              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]~0              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]~0              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]~1              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]~1              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]~2              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]~2              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[0]~2              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[0]~2              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[3]~3              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[3]~3              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[1]~4              ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|ncount[1]~4              ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[1]~2         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[1]~2         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[6]~0         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[6]~0         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.LOAD~0  ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.LOAD~0  ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.IDLE~0  ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.IDLE~0  ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.IDLE~1  ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|nstate.IDLE~1  ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[2]~3         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[2]~3         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[3]~4         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[3]~4         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[4]~5         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[4]~5         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[5]~6         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[5]~6         ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[6]~7         ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[6]~7         ; combout          ;
+; |IrDATransceiver|hex6[0]                                                                                      ; |IrDATransceiver|hex6[0]                                                                                      ; padio            ;
+; |IrDATransceiver|hex6[1]                                                                                      ; |IrDATransceiver|hex6[1]                                                                                      ; padio            ;
+; |IrDATransceiver|hex6[2]                                                                                      ; |IrDATransceiver|hex6[2]                                                                                      ; padio            ;
+; |IrDATransceiver|hex6[3]                                                                                      ; |IrDATransceiver|hex6[3]                                                                                      ; padio            ;
+; |IrDATransceiver|hex6[4]                                                                                      ; |IrDATransceiver|hex6[4]                                                                                      ; padio            ;
+; |IrDATransceiver|hex6[5]                                                                                      ; |IrDATransceiver|hex6[5]                                                                                      ; padio            ;
+; |IrDATransceiver|hex6[6]                                                                                      ; |IrDATransceiver|hex6[6]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[0]                                                                                      ; |IrDATransceiver|hex5[0]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[1]                                                                                      ; |IrDATransceiver|hex5[1]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[2]                                                                                      ; |IrDATransceiver|hex5[2]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[3]                                                                                      ; |IrDATransceiver|hex5[3]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[4]                                                                                      ; |IrDATransceiver|hex5[4]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[5]                                                                                      ; |IrDATransceiver|hex5[5]                                                                                      ; padio            ;
+; |IrDATransceiver|hex5[6]                                                                                      ; |IrDATransceiver|hex5[6]                                                                                      ; padio            ;
+; |IrDATransceiver|txd_ir                                                                                       ; |IrDATransceiver|txd_ir                                                                                       ; padio            ;
+; |IrDATransceiver|parity_error                                                                                 ; |IrDATransceiver|parity_error                                                                                 ; padio            ;
+; |IrDATransceiver|framing_error                                                                                ; |IrDATransceiver|framing_error                                                                                ; padio            ;
+; |IrDATransceiver|clk                                                                                          ; |IrDATransceiver|clk~corein                                                                                   ; combout          ;
+; |IrDATransceiver|send_key                                                                                     ; |IrDATransceiver|send_key~corein                                                                              ; combout          ;
+; |IrDATransceiver|rxd_ir                                                                                       ; |IrDATransceiver|rxd_ir~corein                                                                                ; combout          ;
+; |IrDATransceiver|clk~clkctrl                                                                                  ; |IrDATransceiver|clk~clkctrl                                                                                  ; outclk           ;
++---------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                                                                                                                                                 ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                 ; Output Port Name                                                                                          ; Output Port Type ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[4]               ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[4]               ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[4]      ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[4]      ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|Equal0~0                      ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|Equal0~0                      ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|Equal0~0             ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|Equal0~0             ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[7]~8     ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[7]~8     ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~0 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~0 ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~1 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~1 ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[8]~9     ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[8]~9     ; combout          ;
+; |IrDATransceiver|data_txd[0]                                                                              ; |IrDATransceiver|data_txd[0]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[1]                                                                              ; |IrDATransceiver|data_txd[1]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[2]                                                                              ; |IrDATransceiver|data_txd[2]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[3]                                                                              ; |IrDATransceiver|data_txd[3]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[4]                                                                              ; |IrDATransceiver|data_txd[4]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[5]                                                                              ; |IrDATransceiver|data_txd[5]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[6]                                                                              ; |IrDATransceiver|data_txd[6]~corein                                                                       ; combout          ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                                                                                                                                                 ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+; Node Name                                                                                                 ; Output Port Name                                                                                          ; Output Port Type ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[4]               ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BaudGenerator:receiver_baud_generator|pcount[4]               ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[4]      ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BaudGenerator:transmitter_baud_generator|pcount[4]      ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[7]       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[7]       ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[8]       ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|pdata[8]       ; regout           ;
+; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[3]                     ; |IrDATransceiver|IrDAReceiver:IrDA_receiver|BitCounter:receiver_bit_counter|pcount[3]                     ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]            ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|pcount[3]            ; regout           ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|Add0~0               ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|BitCounter:transmitter_bit_counter|Add0~0               ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[7]~8     ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[7]~8     ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~0 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~0 ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~1 ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ParityGenerator:transmitter_parity_generator|WideXor0~1 ; combout          ;
+; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[8]~9     ; |IrDATransceiver|IrDATransmitter:IrDA_transmitter|ShiftRegister:transmitter_shift_register|ndata[8]~9     ; combout          ;
+; |IrDATransceiver|rst                                                                                      ; |IrDATransceiver|rst~corein                                                                               ; combout          ;
+; |IrDATransceiver|data_txd[0]                                                                              ; |IrDATransceiver|data_txd[0]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[1]                                                                              ; |IrDATransceiver|data_txd[1]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[2]                                                                              ; |IrDATransceiver|data_txd[2]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[3]                                                                              ; |IrDATransceiver|data_txd[3]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[4]                                                                              ; |IrDATransceiver|data_txd[4]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[5]                                                                              ; |IrDATransceiver|data_txd[5]~corein                                                                       ; combout          ;
+; |IrDATransceiver|data_txd[6]                                                                              ; |IrDATransceiver|data_txd[6]~corein                                                                       ; combout          ;
++-----------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Simulator
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Fri Feb 07 21:15:12 2020
+Info: Command: quartus_sim --simulation_results_format=VWF IrDATransceiver -c IrDATransceiver
+Info (324025): Using vector source file "D:/Assignment_2/Transceiver.vwf"
+Info (310003): Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info (310004): Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info (310002): Simulation partitioned into 1 sub-simulations
+Info (328053): Simulation coverage is      88.65 %
+Info (328052): Number of transitions in simulation is 6329
+Info (324045): Vector file IrDATransceiver.sim.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II 64-Bit Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4491 megabytes
+    Info: Processing ended: Fri Feb 07 21:15:12 2020
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+

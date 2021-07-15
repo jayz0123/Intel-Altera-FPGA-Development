@@ -1,0 +1,16 @@
+module Inverter
+(
+	input			ena,
+	input 		txd,
+	output reg	txd_ir
+);
+
+always @(ena, txd)
+begin
+	txd_ir = 1'b0;
+	
+	if(ena)
+		if(txd == 1'b0)
+			txd_ir = 1'b1;
+end
+endmodule

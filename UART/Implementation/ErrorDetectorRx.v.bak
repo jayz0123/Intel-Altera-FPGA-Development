@@ -1,0 +1,40 @@
+module ErrorDetectorRx
+(
+	clk,
+	reset,
+	data,
+	parity_error,
+	framing_error
+);
+
+input			clk;
+input 			reset;
+input	[9:0]	data;
+
+output 			parity_error;
+output			framing_error;
+
+reg				parity_error;
+reg				framing_error;
+
+initial
+begin
+	parity_error 	= 1'b0;
+	framing_error 	= 1'b0;
+end
+
+always @(posedge clk or negedge reset)
+begin
+	if(!reset)
+	begin
+		parity_error 	<= 1'b0;
+		framing_error 	<= 1'b0;
+	end
+	
+	else if(data[9] != 1'b1)
+		framing_error 	<= 1'b1;
+		
+	else if(!(^data))
+		framing_error 	<= 1'b1;
+end
+endmodule

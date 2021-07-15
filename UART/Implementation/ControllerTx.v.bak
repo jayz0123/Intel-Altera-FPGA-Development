@@ -1,0 +1,79 @@
+module ControllerTx
+(
+	clk,
+	reset,
+	start,
+	bit_counter,
+	load,
+	baud_enable,
+);
+
+parameter 		IDLE 	= 2'b00;
+parameter 		LOAD 	= 2'b01;
+parameter 		TRANS 	= 2'b10;
+
+input 			clk;
+input 			reset;
+input 			start;
+input 	[3:0]	bit_counter;
+
+output 			load;
+output			baud_enable;
+
+reg				load;
+reg				baud_enable;
+
+reg		[1:0]	pstate;
+reg		[1:0]	nstate;
+
+
+always @(posedge clk or negedge reset)
+begin
+	if(!reset)
+		pstate <= IDLE;
+		
+	else
+		pstate <= nstate;
+end
+
+always @(pstate, start, bit_counter)
+begin
+	nstate = pstate;
+
+	case(pstate)
+		IDLE:
+		begin
+			load 		= 0;
+			baud_enable = 0;
+			
+			if(!start)
+				nstate = LOAD;
+		end
+		
+		LOAD:
+		begin
+			load 		= 1;
+			baud_enable = 1;
+			
+			nstate  	= TRANS;
+		end
+		
+		TRANS:
+		begin
+			load 		= 0;
+			baud_enable = 1;
+			
+			if(bit_counter == 11)
+				nstate = IDLE;
+		end
+		
+		default
+		begin
+			load 		= 0;
+			baud_enable = 0;
+			
+			nstate 		= IDLE;
+		end
+	endcase
+end
+endmodule

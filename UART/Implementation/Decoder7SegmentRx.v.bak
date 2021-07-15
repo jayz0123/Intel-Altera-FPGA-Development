@@ -1,0 +1,42 @@
+module Decoder7SegmentRx
+(
+	clk,
+	reset,
+	data_decoding,
+	data_decoded
+);
+
+input 			clk;
+input 	[3:0]	data_decoding;
+
+output	[6:0]	data_decoded;
+
+reg 	[6:0]	data_decoded;
+
+
+always @(posedge clk)
+begin
+	if(!reset)
+		data_decoded <= 7'b0000000;
+
+	case(data_decoding)
+		4'b0000:	data_decoded <= 7'b1000000;
+		4'b0001:	data_decoded <= 7'b1111001;
+		4'b0010:	data_decoded <= 7'b0100100;
+		4'b0011:	data_decoded <= 7'b0110000;
+		4'b0100:	data_decoded <= 7'b0011001;
+		4'b0101:	data_decoded <= 7'b0010010;
+		4'b0110:	data_decoded <= 7'b0000010;
+		4'b0111:	data_decoded <= 7'b1111000;
+		4'b1000:	data_decoded <= 7'b0000000;
+		4'b1001:	data_decoded <= 7'b0010000;
+		4'b1010:	data_decoded <= 7'b0001000;
+		4'b1011:	data_decoded <= 7'b0000011;
+		4'b1100:	data_decoded <= 7'b1000110;
+		4'b1101:	data_decoded <= 7'b0100001;
+		4'b1110:	data_decoded <= 7'b1000110;
+		4'b1111:	data_decoded <= 7'b0001110;
+		default:	data_decoded <= 7'b1111111;
+	endcase
+end
+endmodule

@@ -1,0 +1,720 @@
+Simulator report for Top
+Wed Nov 27 16:00:43 2019
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 430 nodes    ;
+; Simulation Coverage         ;      62.56 % ;
+; Total Number of Transitions ; 7502         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
++-----------------------------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                                ;
++--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
+; Option                                                                                     ; Setting                              ; Default Value ;
++--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
+; Simulation mode                                                                            ; Functional                           ; Timing        ;
+; Start time                                                                                 ; 0 ns                                 ; 0 ns          ;
+; Simulation results format                                                                  ; VWF                                  ;               ;
+; Vector input source                                                                        ; M:/Assignment_1/output_files/Top.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                   ; On            ;
+; Check outputs                                                                              ; Off                                  ; Off           ;
+; Report simulation coverage                                                                 ; On                                   ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                   ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                   ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                   ; On            ;
+; Detect setup and hold time violations                                                      ; Off                                  ; Off           ;
+; Detect glitches                                                                            ; Off                                  ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                                  ; Off           ;
+; Generate Signal Activity File                                                              ; Off                                  ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                  ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                                  ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                   ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                           ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                  ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off                                  ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                 ; Auto          ;
++--------------------------------------------------------------------------------------------+--------------------------------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II 64-Bit to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      62.56 % ;
+; Total nodes checked                                 ; 430          ;
+; Total output ports checked                          ; 430          ;
+; Total output ports with complete 1/0-value coverage ; 269          ;
+; Total output ports with no 1/0-value coverage       ; 128          ;
+; Total output ports with no 1-value coverage         ; 142          ;
+; Total output ports with no 0-value coverage         ; 147          ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                ;
++--------------------------------------------+--------------------------------------------+------------------+
+; Node Name                                  ; Output Port Name                           ; Output Port Type ;
++--------------------------------------------+--------------------------------------------+------------------+
+; |Top|clk                                   ; |Top|clk                                   ; out              ;
+; |Top|send_tx                               ; |Top|send_tx                               ; out              ;
+; |Top|data_hex6[0]                          ; |Top|data_hex6[0]                          ; pin_out          ;
+; |Top|data_hex6[3]                          ; |Top|data_hex6[3]                          ; pin_out          ;
+; |Top|data_hex6[5]                          ; |Top|data_hex6[5]                          ; pin_out          ;
+; |Top|data_hex5[0]                          ; |Top|data_hex5[0]                          ; pin_out          ;
+; |Top|data_hex5[1]                          ; |Top|data_hex5[1]                          ; pin_out          ;
+; |Top|data_hex5[2]                          ; |Top|data_hex5[2]                          ; pin_out          ;
+; |Top|data_hex5[3]                          ; |Top|data_hex5[3]                          ; pin_out          ;
+; |Top|data_hex5[4]                          ; |Top|data_hex5[4]                          ; pin_out          ;
+; |Top|data_hex5[5]                          ; |Top|data_hex5[5]                          ; pin_out          ;
+; |Top|data_hex5[6]                          ; |Top|data_hex5[6]                          ; pin_out          ;
+; |Top|parity_error                          ; |Top|parity_error                          ; pin_out          ;
+; |Top|tx                                    ; |Top|tx                                    ; pin_out          ;
+; |Top|rx                                    ; |Top|rx                                    ; out              ;
+; |Top|ErrorDetectorRx:EDRx|WideXor0         ; |Top|ErrorDetectorRx:EDRx|WideXor0         ; out0             ;
+; |Top|ControllerRx:CRx|pstate~0             ; |Top|ControllerRx:CRx|pstate~0             ; out              ;
+; |Top|ControllerRx:CRx|pstate~1             ; |Top|ControllerRx:CRx|pstate~1             ; out              ;
+; |Top|ControllerRx:CRx|pstate~2             ; |Top|ControllerRx:CRx|pstate~2             ; out              ;
+; |Top|ControllerRx:CRx|nstate~0             ; |Top|ControllerRx:CRx|nstate~0             ; out              ;
+; |Top|ControllerRx:CRx|nstate~1             ; |Top|ControllerRx:CRx|nstate~1             ; out              ;
+; |Top|ControllerRx:CRx|nstate~2             ; |Top|ControllerRx:CRx|nstate~2             ; out              ;
+; |Top|ControllerRx:CRx|pstate.IDLE          ; |Top|ControllerRx:CRx|pstate.IDLE          ; regout           ;
+; |Top|ControllerRx:CRx|pstate.RCV           ; |Top|ControllerRx:CRx|pstate.RCV           ; regout           ;
+; |Top|ControllerRx:CRx|nstate~3             ; |Top|ControllerRx:CRx|nstate~3             ; out              ;
+; |Top|ControllerRx:CRx|nstate~4             ; |Top|ControllerRx:CRx|nstate~4             ; out              ;
+; |Top|ControllerRx:CRx|nstate~5             ; |Top|ControllerRx:CRx|nstate~5             ; out              ;
+; |Top|ControllerRx:CRx|pstate.LOAD          ; |Top|ControllerRx:CRx|pstate.LOAD          ; regout           ;
+; |Top|ControllerRx:CRx|pstate~3             ; |Top|ControllerRx:CRx|pstate~3             ; out0             ;
+; |Top|ControllerRx:CRx|pstate.IDLE~0        ; |Top|ControllerRx:CRx|pstate.IDLE~0        ; out0             ;
+; |Top|ControllerRx:CRx|clear                ; |Top|ControllerRx:CRx|clear                ; out0             ;
+; |Top|ControllerRx:CRx|pstate.RCV~0         ; |Top|ControllerRx:CRx|pstate.RCV~0         ; out0             ;
+; |Top|ControllerRx:CRx|baud_enable          ; |Top|ControllerRx:CRx|baud_enable          ; out0             ;
+; |Top|ControllerRx:CRx|pstate.LOAD~0        ; |Top|ControllerRx:CRx|pstate.LOAD~0        ; out0             ;
+; |Top|ControllerRx:CRx|load                 ; |Top|ControllerRx:CRx|load                 ; out0             ;
+; |Top|ControllerRx:CRx|pstate~7             ; |Top|ControllerRx:CRx|pstate~7             ; out0             ;
+; |Top|ControllerTx:CTx|pstate~0             ; |Top|ControllerTx:CTx|pstate~0             ; out              ;
+; |Top|ControllerTx:CTx|pstate~1             ; |Top|ControllerTx:CTx|pstate~1             ; out              ;
+; |Top|ControllerTx:CTx|pstate~2             ; |Top|ControllerTx:CTx|pstate~2             ; out              ;
+; |Top|ControllerTx:CTx|pstate~3             ; |Top|ControllerTx:CTx|pstate~3             ; out              ;
+; |Top|ControllerTx:CTx|pstate.IDLE          ; |Top|ControllerTx:CTx|pstate.IDLE          ; regout           ;
+; |Top|ControllerTx:CTx|nstate~0             ; |Top|ControllerTx:CTx|nstate~0             ; out              ;
+; |Top|ControllerTx:CTx|nstate~1             ; |Top|ControllerTx:CTx|nstate~1             ; out              ;
+; |Top|ControllerTx:CTx|nstate~2             ; |Top|ControllerTx:CTx|nstate~2             ; out              ;
+; |Top|ControllerTx:CTx|nstate~3             ; |Top|ControllerTx:CTx|nstate~3             ; out              ;
+; |Top|ControllerTx:CTx|pstate.LOAD          ; |Top|ControllerTx:CTx|pstate.LOAD          ; regout           ;
+; |Top|ControllerTx:CTx|pstate.TRANS         ; |Top|ControllerTx:CTx|pstate.TRANS         ; regout           ;
+; |Top|ControllerTx:CTx|pstate.HOLD          ; |Top|ControllerTx:CTx|pstate.HOLD          ; regout           ;
+; |Top|ControllerTx:CTx|nstate~5             ; |Top|ControllerTx:CTx|nstate~5             ; out              ;
+; |Top|ControllerTx:CTx|nstate~6             ; |Top|ControllerTx:CTx|nstate~6             ; out              ;
+; |Top|ControllerTx:CTx|nstate~7             ; |Top|ControllerTx:CTx|nstate~7             ; out              ;
+; |Top|ControllerTx:CTx|nstate~8             ; |Top|ControllerTx:CTx|nstate~8             ; out              ;
+; |Top|ControllerTx:CTx|nstate~9             ; |Top|ControllerTx:CTx|nstate~9             ; out              ;
+; |Top|ControllerTx:CTx|nstate~10            ; |Top|ControllerTx:CTx|nstate~10            ; out              ;
+; |Top|ControllerTx:CTx|nstate~11            ; |Top|ControllerTx:CTx|nstate~11            ; out              ;
+; |Top|ControllerTx:CTx|baud_enable~0        ; |Top|ControllerTx:CTx|baud_enable~0        ; out0             ;
+; |Top|ControllerTx:CTx|pstate~4             ; |Top|ControllerTx:CTx|pstate~4             ; out0             ;
+; |Top|ControllerTx:CTx|pstate.IDLE~0        ; |Top|ControllerTx:CTx|pstate.IDLE~0        ; out0             ;
+; |Top|ControllerTx:CTx|nstate~13            ; |Top|ControllerTx:CTx|nstate~13            ; out0             ;
+; |Top|ControllerTx:CTx|pstate.LOAD~0        ; |Top|ControllerTx:CTx|pstate.LOAD~0        ; out0             ;
+; |Top|ControllerTx:CTx|load                 ; |Top|ControllerTx:CTx|load                 ; out0             ;
+; |Top|ControllerTx:CTx|pstate.TRANS~0       ; |Top|ControllerTx:CTx|pstate.TRANS~0       ; out0             ;
+; |Top|ControllerTx:CTx|nstate~15            ; |Top|ControllerTx:CTx|nstate~15            ; out0             ;
+; |Top|ControllerTx:CTx|pstate.HOLD~0        ; |Top|ControllerTx:CTx|pstate.HOLD~0        ; out0             ;
+; |Top|ControllerTx:CTx|nstate~17            ; |Top|ControllerTx:CTx|nstate~17            ; out0             ;
+; |Top|ControllerTx:CTx|pstate~8             ; |Top|ControllerTx:CTx|pstate~8             ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr0     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr0     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr1     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr1     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr2     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr2     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr3     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr3     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr4     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr4     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr5     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr5     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|WideOr6     ; |Top|Decoder7SegmentRx:D7SHex5|WideOr6     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex6|WideOr1     ; |Top|Decoder7SegmentRx:D7SHex6|WideOr1     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex6|WideOr3     ; |Top|Decoder7SegmentRx:D7SHex6|WideOr3     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex6|WideOr6     ; |Top|Decoder7SegmentRx:D7SHex6|WideOr6     ; out0             ;
+; |Top|BitCounterRx:BCRx|always0~0           ; |Top|BitCounterRx:BCRx|always0~0           ; out0             ;
+; |Top|BitCounterRx:BCRx|bit_counter~0       ; |Top|BitCounterRx:BCRx|bit_counter~0       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~1       ; |Top|BitCounterRx:BCRx|bit_counter~1       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~2       ; |Top|BitCounterRx:BCRx|bit_counter~2       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~3       ; |Top|BitCounterRx:BCRx|bit_counter~3       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~4       ; |Top|BitCounterRx:BCRx|bit_counter~4       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~5       ; |Top|BitCounterRx:BCRx|bit_counter~5       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~6       ; |Top|BitCounterRx:BCRx|bit_counter~6       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~7       ; |Top|BitCounterRx:BCRx|bit_counter~7       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~8       ; |Top|BitCounterRx:BCRx|bit_counter~8       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~9       ; |Top|BitCounterRx:BCRx|bit_counter~9       ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~10      ; |Top|BitCounterRx:BCRx|bit_counter~10      ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter~11      ; |Top|BitCounterRx:BCRx|bit_counter~11      ; out              ;
+; |Top|BitCounterRx:BCRx|bit_counter[0]      ; |Top|BitCounterRx:BCRx|bit_counter[0]      ; regout           ;
+; |Top|BitCounterRx:BCRx|bit_counter[1]      ; |Top|BitCounterRx:BCRx|bit_counter[1]      ; regout           ;
+; |Top|BitCounterRx:BCRx|bit_counter[2]      ; |Top|BitCounterRx:BCRx|bit_counter[2]      ; regout           ;
+; |Top|BitCounterRx:BCRx|bit_counter[3]      ; |Top|BitCounterRx:BCRx|bit_counter[3]      ; regout           ;
+; |Top|BitCounterTx:BCTx|always0~0           ; |Top|BitCounterTx:BCTx|always0~0           ; out0             ;
+; |Top|BitCounterTx:BCTx|bit_counter~0       ; |Top|BitCounterTx:BCTx|bit_counter~0       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~1       ; |Top|BitCounterTx:BCTx|bit_counter~1       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~2       ; |Top|BitCounterTx:BCTx|bit_counter~2       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~3       ; |Top|BitCounterTx:BCTx|bit_counter~3       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~4       ; |Top|BitCounterTx:BCTx|bit_counter~4       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~5       ; |Top|BitCounterTx:BCTx|bit_counter~5       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~6       ; |Top|BitCounterTx:BCTx|bit_counter~6       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~7       ; |Top|BitCounterTx:BCTx|bit_counter~7       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~8       ; |Top|BitCounterTx:BCTx|bit_counter~8       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~9       ; |Top|BitCounterTx:BCTx|bit_counter~9       ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~10      ; |Top|BitCounterTx:BCTx|bit_counter~10      ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter~11      ; |Top|BitCounterTx:BCTx|bit_counter~11      ; out              ;
+; |Top|BitCounterTx:BCTx|bit_counter[0]      ; |Top|BitCounterTx:BCTx|bit_counter[0]      ; regout           ;
+; |Top|BitCounterTx:BCTx|bit_counter[1]      ; |Top|BitCounterTx:BCTx|bit_counter[1]      ; regout           ;
+; |Top|BitCounterTx:BCTx|bit_counter[2]      ; |Top|BitCounterTx:BCTx|bit_counter[2]      ; regout           ;
+; |Top|BitCounterTx:BCTx|bit_counter[3]      ; |Top|BitCounterTx:BCTx|bit_counter[3]      ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data~0           ; |Top|ShiftRegisterRx:SRRx|data~0           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~1           ; |Top|ShiftRegisterRx:SRRx|data~1           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~2           ; |Top|ShiftRegisterRx:SRRx|data~2           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~3           ; |Top|ShiftRegisterRx:SRRx|data~3           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~4           ; |Top|ShiftRegisterRx:SRRx|data~4           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~5           ; |Top|ShiftRegisterRx:SRRx|data~5           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~6           ; |Top|ShiftRegisterRx:SRRx|data~6           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~7           ; |Top|ShiftRegisterRx:SRRx|data~7           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~8           ; |Top|ShiftRegisterRx:SRRx|data~8           ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~10          ; |Top|ShiftRegisterRx:SRRx|data~10          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~11          ; |Top|ShiftRegisterRx:SRRx|data~11          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~12          ; |Top|ShiftRegisterRx:SRRx|data~12          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~13          ; |Top|ShiftRegisterRx:SRRx|data~13          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~14          ; |Top|ShiftRegisterRx:SRRx|data~14          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~15          ; |Top|ShiftRegisterRx:SRRx|data~15          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~16          ; |Top|ShiftRegisterRx:SRRx|data~16          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~17          ; |Top|ShiftRegisterRx:SRRx|data~17          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data~18          ; |Top|ShiftRegisterRx:SRRx|data~18          ; out              ;
+; |Top|ShiftRegisterRx:SRRx|data[1]          ; |Top|ShiftRegisterRx:SRRx|data[1]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[2]          ; |Top|ShiftRegisterRx:SRRx|data[2]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[3]          ; |Top|ShiftRegisterRx:SRRx|data[3]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[4]          ; |Top|ShiftRegisterRx:SRRx|data[4]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[5]          ; |Top|ShiftRegisterRx:SRRx|data[5]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[6]          ; |Top|ShiftRegisterRx:SRRx|data[6]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[7]          ; |Top|ShiftRegisterRx:SRRx|data[7]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[8]          ; |Top|ShiftRegisterRx:SRRx|data[8]          ; regout           ;
+; |Top|ShiftRegisterRx:SRRx|data[9]          ; |Top|ShiftRegisterRx:SRRx|data[9]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[0]          ; |Top|ShiftRegisterTx:SRTx|data[0]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data~1           ; |Top|ShiftRegisterTx:SRTx|data~1           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~2           ; |Top|ShiftRegisterTx:SRTx|data~2           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~3           ; |Top|ShiftRegisterTx:SRTx|data~3           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~4           ; |Top|ShiftRegisterTx:SRTx|data~4           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~5           ; |Top|ShiftRegisterTx:SRTx|data~5           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~6           ; |Top|ShiftRegisterTx:SRTx|data~6           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~7           ; |Top|ShiftRegisterTx:SRTx|data~7           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~8           ; |Top|ShiftRegisterTx:SRTx|data~8           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~9           ; |Top|ShiftRegisterTx:SRTx|data~9           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~11          ; |Top|ShiftRegisterTx:SRTx|data~11          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~12          ; |Top|ShiftRegisterTx:SRTx|data~12          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~13          ; |Top|ShiftRegisterTx:SRTx|data~13          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~14          ; |Top|ShiftRegisterTx:SRTx|data~14          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~15          ; |Top|ShiftRegisterTx:SRTx|data~15          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~16          ; |Top|ShiftRegisterTx:SRTx|data~16          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~17          ; |Top|ShiftRegisterTx:SRTx|data~17          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~18          ; |Top|ShiftRegisterTx:SRTx|data~18          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~19          ; |Top|ShiftRegisterTx:SRTx|data~19          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~21          ; |Top|ShiftRegisterTx:SRTx|data~21          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~22          ; |Top|ShiftRegisterTx:SRTx|data~22          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~23          ; |Top|ShiftRegisterTx:SRTx|data~23          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~24          ; |Top|ShiftRegisterTx:SRTx|data~24          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~25          ; |Top|ShiftRegisterTx:SRTx|data~25          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~26          ; |Top|ShiftRegisterTx:SRTx|data~26          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~27          ; |Top|ShiftRegisterTx:SRTx|data~27          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~28          ; |Top|ShiftRegisterTx:SRTx|data~28          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~29          ; |Top|ShiftRegisterTx:SRTx|data~29          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data[1]          ; |Top|ShiftRegisterTx:SRTx|data[1]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[2]          ; |Top|ShiftRegisterTx:SRTx|data[2]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[3]          ; |Top|ShiftRegisterTx:SRTx|data[3]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[4]          ; |Top|ShiftRegisterTx:SRTx|data[4]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[5]          ; |Top|ShiftRegisterTx:SRTx|data[5]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[6]          ; |Top|ShiftRegisterTx:SRTx|data[6]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[7]          ; |Top|ShiftRegisterTx:SRTx|data[7]          ; regout           ;
+; |Top|ShiftRegisterTx:SRTx|data[8]          ; |Top|ShiftRegisterTx:SRTx|data[8]          ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[0]       ; |Top|DataRegisterRx:DRRx|data_out[0]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out~1        ; |Top|DataRegisterRx:DRRx|data_out~1        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~3        ; |Top|DataRegisterRx:DRRx|data_out~3        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~4        ; |Top|DataRegisterRx:DRRx|data_out~4        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~5        ; |Top|DataRegisterRx:DRRx|data_out~5        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~6        ; |Top|DataRegisterRx:DRRx|data_out~6        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~7        ; |Top|DataRegisterRx:DRRx|data_out~7        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~8        ; |Top|DataRegisterRx:DRRx|data_out~8        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~13       ; |Top|DataRegisterRx:DRRx|data_out~13       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~15       ; |Top|DataRegisterRx:DRRx|data_out~15       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~16       ; |Top|DataRegisterRx:DRRx|data_out~16       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out[1]       ; |Top|DataRegisterRx:DRRx|data_out[1]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[2]       ; |Top|DataRegisterRx:DRRx|data_out[2]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[3]       ; |Top|DataRegisterRx:DRRx|data_out[3]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[4]       ; |Top|DataRegisterRx:DRRx|data_out[4]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[5]       ; |Top|DataRegisterRx:DRRx|data_out[5]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[7]       ; |Top|DataRegisterRx:DRRx|data_out[7]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out~5        ; |Top|DataRegisterTx:DRTx|data_out~5        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out[1]       ; |Top|DataRegisterTx:DRTx|data_out[1]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out[2]       ; |Top|DataRegisterTx:DRTx|data_out[2]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out[5]       ; |Top|DataRegisterTx:DRTx|data_out[5]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out[6]       ; |Top|DataRegisterTx:DRTx|data_out[6]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[1]       ; |Top|BaudGeneratorRx:BGRx|counter[1]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[0]       ; |Top|BaudGeneratorRx:BGRx|counter[0]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter~8        ; |Top|BaudGeneratorRx:BGRx|counter~8        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~9        ; |Top|BaudGeneratorRx:BGRx|counter~9        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~10       ; |Top|BaudGeneratorRx:BGRx|counter~10       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~19       ; |Top|BaudGeneratorRx:BGRx|counter~19       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~20       ; |Top|BaudGeneratorRx:BGRx|counter~20       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~21       ; |Top|BaudGeneratorRx:BGRx|counter~21       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~30       ; |Top|BaudGeneratorRx:BGRx|counter~30       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~31       ; |Top|BaudGeneratorRx:BGRx|counter~31       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~32       ; |Top|BaudGeneratorRx:BGRx|counter~32       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|WideNor0         ; |Top|BaudGeneratorRx:BGRx|WideNor0         ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|clk_baud         ; |Top|BaudGeneratorRx:BGRx|clk_baud         ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|counter[2]       ; |Top|BaudGeneratorRx:BGRx|counter[2]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[1]       ; |Top|BaudGeneratorTx:BGTx|counter[1]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[0]       ; |Top|BaudGeneratorTx:BGTx|counter[0]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter~8        ; |Top|BaudGeneratorTx:BGTx|counter~8        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~9        ; |Top|BaudGeneratorTx:BGTx|counter~9        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~10       ; |Top|BaudGeneratorTx:BGTx|counter~10       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~19       ; |Top|BaudGeneratorTx:BGTx|counter~19       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~20       ; |Top|BaudGeneratorTx:BGTx|counter~20       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~21       ; |Top|BaudGeneratorTx:BGTx|counter~21       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~30       ; |Top|BaudGeneratorTx:BGTx|counter~30       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~31       ; |Top|BaudGeneratorTx:BGTx|counter~31       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~32       ; |Top|BaudGeneratorTx:BGTx|counter~32       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|WideNor0         ; |Top|BaudGeneratorTx:BGTx|WideNor0         ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|clk_baud         ; |Top|BaudGeneratorTx:BGTx|clk_baud         ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|counter[2]       ; |Top|BaudGeneratorTx:BGTx|counter[2]       ; regout           ;
+; |Top|ControllerRx:CRx|Selector0~0          ; |Top|ControllerRx:CRx|Selector0~0          ; out0             ;
+; |Top|ControllerRx:CRx|Selector0~1          ; |Top|ControllerRx:CRx|Selector0~1          ; out0             ;
+; |Top|ControllerRx:CRx|Selector0~2          ; |Top|ControllerRx:CRx|Selector0~2          ; out0             ;
+; |Top|ControllerRx:CRx|Selector1~0          ; |Top|ControllerRx:CRx|Selector1~0          ; out0             ;
+; |Top|ControllerRx:CRx|Selector1~1          ; |Top|ControllerRx:CRx|Selector1~1          ; out0             ;
+; |Top|ControllerRx:CRx|Selector1~2          ; |Top|ControllerRx:CRx|Selector1~2          ; out0             ;
+; |Top|ControllerRx:CRx|Selector2~0          ; |Top|ControllerRx:CRx|Selector2~0          ; out0             ;
+; |Top|ControllerRx:CRx|Selector2~1          ; |Top|ControllerRx:CRx|Selector2~1          ; out0             ;
+; |Top|ControllerRx:CRx|Selector2~2          ; |Top|ControllerRx:CRx|Selector2~2          ; out0             ;
+; |Top|ControllerTx:CTx|Selector0~0          ; |Top|ControllerTx:CTx|Selector0~0          ; out0             ;
+; |Top|ControllerTx:CTx|Selector0~1          ; |Top|ControllerTx:CTx|Selector0~1          ; out0             ;
+; |Top|ControllerTx:CTx|Selector0~3          ; |Top|ControllerTx:CTx|Selector0~3          ; out0             ;
+; |Top|ControllerTx:CTx|Selector1~0          ; |Top|ControllerTx:CTx|Selector1~0          ; out0             ;
+; |Top|ControllerTx:CTx|Selector1~3          ; |Top|ControllerTx:CTx|Selector1~3          ; out0             ;
+; |Top|ControllerTx:CTx|Selector2~0          ; |Top|ControllerTx:CTx|Selector2~0          ; out0             ;
+; |Top|ControllerTx:CTx|Selector2~1          ; |Top|ControllerTx:CTx|Selector2~1          ; out0             ;
+; |Top|ControllerTx:CTx|Selector2~2          ; |Top|ControllerTx:CTx|Selector2~2          ; out0             ;
+; |Top|ControllerTx:CTx|Selector2~3          ; |Top|ControllerTx:CTx|Selector2~3          ; out0             ;
+; |Top|ControllerTx:CTx|Selector3~0          ; |Top|ControllerTx:CTx|Selector3~0          ; out0             ;
+; |Top|ControllerTx:CTx|Selector3~1          ; |Top|ControllerTx:CTx|Selector3~1          ; out0             ;
+; |Top|ControllerTx:CTx|Selector3~2          ; |Top|ControllerTx:CTx|Selector3~2          ; out0             ;
+; |Top|ControllerTx:CTx|Selector3~3          ; |Top|ControllerTx:CTx|Selector3~3          ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~1  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~1  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~14 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~14 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~4  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~4  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~7  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~7  ; out              ;
+; |Top|BitCounterRx:BCRx|Add0~0              ; |Top|BitCounterRx:BCRx|Add0~0              ; out0             ;
+; |Top|BitCounterRx:BCRx|Add0~1              ; |Top|BitCounterRx:BCRx|Add0~1              ; out0             ;
+; |Top|BitCounterRx:BCRx|Add0~2              ; |Top|BitCounterRx:BCRx|Add0~2              ; out0             ;
+; |Top|BitCounterRx:BCRx|Add0~3              ; |Top|BitCounterRx:BCRx|Add0~3              ; out0             ;
+; |Top|BitCounterRx:BCRx|Add0~4              ; |Top|BitCounterRx:BCRx|Add0~4              ; out0             ;
+; |Top|BitCounterTx:BCTx|Add0~0              ; |Top|BitCounterTx:BCTx|Add0~0              ; out0             ;
+; |Top|BitCounterTx:BCTx|Add0~1              ; |Top|BitCounterTx:BCTx|Add0~1              ; out0             ;
+; |Top|BitCounterTx:BCTx|Add0~2              ; |Top|BitCounterTx:BCTx|Add0~2              ; out0             ;
+; |Top|BitCounterTx:BCTx|Add0~3              ; |Top|BitCounterTx:BCTx|Add0~3              ; out0             ;
+; |Top|BitCounterTx:BCTx|Add0~4              ; |Top|BitCounterTx:BCTx|Add0~4              ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~0           ; |Top|BaudGeneratorRx:BGRx|Add0~0           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~1           ; |Top|BaudGeneratorRx:BGRx|Add0~1           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~2           ; |Top|BaudGeneratorRx:BGRx|Add0~2           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~0           ; |Top|BaudGeneratorTx:BGTx|Add0~0           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~1           ; |Top|BaudGeneratorTx:BGTx|Add0~1           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~2           ; |Top|BaudGeneratorTx:BGTx|Add0~2           ; out0             ;
+; |Top|ControllerRx:CRx|Equal0~0             ; |Top|ControllerRx:CRx|Equal0~0             ; out0             ;
+; |Top|ControllerTx:CTx|Equal0~0             ; |Top|ControllerTx:CTx|Equal0~0             ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Equal0~0         ; |Top|BaudGeneratorRx:BGRx|Equal0~0         ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Equal0~0         ; |Top|BaudGeneratorTx:BGTx|Equal0~0         ; out0             ;
++--------------------------------------------+--------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                                   ;
++--------------------------------------------+--------------------------------------------+------------------+
+; Node Name                                  ; Output Port Name                           ; Output Port Type ;
++--------------------------------------------+--------------------------------------------+------------------+
+; |Top|data_in_tx[0]                         ; |Top|data_in_tx[0]                         ; out              ;
+; |Top|data_in_tx[1]                         ; |Top|data_in_tx[1]                         ; out              ;
+; |Top|data_in_tx[3]                         ; |Top|data_in_tx[3]                         ; out              ;
+; |Top|data_in_tx[4]                         ; |Top|data_in_tx[4]                         ; out              ;
+; |Top|data_in_tx[5]                         ; |Top|data_in_tx[5]                         ; out              ;
+; |Top|data_in_tx[6]                         ; |Top|data_in_tx[6]                         ; out              ;
+; |Top|data_hex6[2]                          ; |Top|data_hex6[2]                          ; pin_out          ;
+; |Top|data_hex6[6]                          ; |Top|data_hex6[6]                          ; pin_out          ;
+; |Top|framing_error                         ; |Top|framing_error                         ; pin_out          ;
+; |Top|ParityGeneratorTx:PGTx|WideXor0       ; |Top|ParityGeneratorTx:PGTx|WideXor0       ; out0             ;
+; |Top|ControllerTx:CTx|nstate~4             ; |Top|ControllerTx:CTx|nstate~4             ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|WideOr0     ; |Top|Decoder7SegmentRx:D7SHex6|WideOr0     ; out0             ;
+; |Top|ShiftRegisterTx:SRTx|data~20          ; |Top|ShiftRegisterTx:SRTx|data~20          ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~9        ; |Top|DataRegisterRx:DRRx|data_out~9        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~10       ; |Top|DataRegisterRx:DRRx|data_out~10       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~11       ; |Top|DataRegisterRx:DRRx|data_out~11       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~12       ; |Top|DataRegisterRx:DRRx|data_out~12       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~14       ; |Top|DataRegisterRx:DRRx|data_out~14       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~17       ; |Top|DataRegisterRx:DRRx|data_out~17       ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~0        ; |Top|DataRegisterTx:DRTx|data_out~0        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~1        ; |Top|DataRegisterTx:DRTx|data_out~1        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~2        ; |Top|DataRegisterTx:DRTx|data_out~2        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~3        ; |Top|DataRegisterTx:DRTx|data_out~3        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~4        ; |Top|DataRegisterTx:DRTx|data_out~4        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~6        ; |Top|DataRegisterTx:DRTx|data_out~6        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~7        ; |Top|DataRegisterTx:DRTx|data_out~7        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~0        ; |Top|BaudGeneratorRx:BGRx|counter~0        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~1        ; |Top|BaudGeneratorRx:BGRx|counter~1        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~2        ; |Top|BaudGeneratorRx:BGRx|counter~2        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~3        ; |Top|BaudGeneratorRx:BGRx|counter~3        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~4        ; |Top|BaudGeneratorRx:BGRx|counter~4        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~5        ; |Top|BaudGeneratorRx:BGRx|counter~5        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~6        ; |Top|BaudGeneratorRx:BGRx|counter~6        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~7        ; |Top|BaudGeneratorRx:BGRx|counter~7        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~11       ; |Top|BaudGeneratorRx:BGRx|counter~11       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~12       ; |Top|BaudGeneratorRx:BGRx|counter~12       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~13       ; |Top|BaudGeneratorRx:BGRx|counter~13       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~14       ; |Top|BaudGeneratorRx:BGRx|counter~14       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~15       ; |Top|BaudGeneratorRx:BGRx|counter~15       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~16       ; |Top|BaudGeneratorRx:BGRx|counter~16       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~17       ; |Top|BaudGeneratorRx:BGRx|counter~17       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~18       ; |Top|BaudGeneratorRx:BGRx|counter~18       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~22       ; |Top|BaudGeneratorRx:BGRx|counter~22       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~23       ; |Top|BaudGeneratorRx:BGRx|counter~23       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~24       ; |Top|BaudGeneratorRx:BGRx|counter~24       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~25       ; |Top|BaudGeneratorRx:BGRx|counter~25       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~26       ; |Top|BaudGeneratorRx:BGRx|counter~26       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~27       ; |Top|BaudGeneratorRx:BGRx|counter~27       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~28       ; |Top|BaudGeneratorRx:BGRx|counter~28       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~29       ; |Top|BaudGeneratorRx:BGRx|counter~29       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter[3]       ; |Top|BaudGeneratorRx:BGRx|counter[3]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[4]       ; |Top|BaudGeneratorRx:BGRx|counter[4]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[5]       ; |Top|BaudGeneratorRx:BGRx|counter[5]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[6]       ; |Top|BaudGeneratorRx:BGRx|counter[6]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[7]       ; |Top|BaudGeneratorRx:BGRx|counter[7]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[8]       ; |Top|BaudGeneratorRx:BGRx|counter[8]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[9]       ; |Top|BaudGeneratorRx:BGRx|counter[9]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[10]      ; |Top|BaudGeneratorRx:BGRx|counter[10]      ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter~0        ; |Top|BaudGeneratorTx:BGTx|counter~0        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~1        ; |Top|BaudGeneratorTx:BGTx|counter~1        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~2        ; |Top|BaudGeneratorTx:BGTx|counter~2        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~3        ; |Top|BaudGeneratorTx:BGTx|counter~3        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~4        ; |Top|BaudGeneratorTx:BGTx|counter~4        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~5        ; |Top|BaudGeneratorTx:BGTx|counter~5        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~6        ; |Top|BaudGeneratorTx:BGTx|counter~6        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~7        ; |Top|BaudGeneratorTx:BGTx|counter~7        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~11       ; |Top|BaudGeneratorTx:BGTx|counter~11       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~12       ; |Top|BaudGeneratorTx:BGTx|counter~12       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~13       ; |Top|BaudGeneratorTx:BGTx|counter~13       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~14       ; |Top|BaudGeneratorTx:BGTx|counter~14       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~15       ; |Top|BaudGeneratorTx:BGTx|counter~15       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~16       ; |Top|BaudGeneratorTx:BGTx|counter~16       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~17       ; |Top|BaudGeneratorTx:BGTx|counter~17       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~18       ; |Top|BaudGeneratorTx:BGTx|counter~18       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~22       ; |Top|BaudGeneratorTx:BGTx|counter~22       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~23       ; |Top|BaudGeneratorTx:BGTx|counter~23       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~24       ; |Top|BaudGeneratorTx:BGTx|counter~24       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~25       ; |Top|BaudGeneratorTx:BGTx|counter~25       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~26       ; |Top|BaudGeneratorTx:BGTx|counter~26       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~27       ; |Top|BaudGeneratorTx:BGTx|counter~27       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~28       ; |Top|BaudGeneratorTx:BGTx|counter~28       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~29       ; |Top|BaudGeneratorTx:BGTx|counter~29       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter[3]       ; |Top|BaudGeneratorTx:BGTx|counter[3]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[4]       ; |Top|BaudGeneratorTx:BGTx|counter[4]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[5]       ; |Top|BaudGeneratorTx:BGTx|counter[5]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[6]       ; |Top|BaudGeneratorTx:BGTx|counter[6]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[7]       ; |Top|BaudGeneratorTx:BGTx|counter[7]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[8]       ; |Top|BaudGeneratorTx:BGTx|counter[8]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[9]       ; |Top|BaudGeneratorTx:BGTx|counter[9]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[10]      ; |Top|BaudGeneratorTx:BGTx|counter[10]      ; regout           ;
+; |Top|ControllerTx:CTx|Selector0~2          ; |Top|ControllerTx:CTx|Selector0~2          ; out0             ;
+; |Top|ControllerTx:CTx|Selector1~1          ; |Top|ControllerTx:CTx|Selector1~1          ; out0             ;
+; |Top|ControllerTx:CTx|Selector1~2          ; |Top|ControllerTx:CTx|Selector1~2          ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~0  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~0  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~2  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~2  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~3  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~3  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~4  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~4  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~5  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~5  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~7  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~7  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~8  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~8  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~9  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~9  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~10 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~10 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~11 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~11 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~12 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~12 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~13 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~13 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~0  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~0  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~1  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~1  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~2  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~2  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~3  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~3  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~6  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~6  ; out              ;
+; |Top|BaudGeneratorRx:BGRx|Add0~3           ; |Top|BaudGeneratorRx:BGRx|Add0~3           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~4           ; |Top|BaudGeneratorRx:BGRx|Add0~4           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~5           ; |Top|BaudGeneratorRx:BGRx|Add0~5           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~6           ; |Top|BaudGeneratorRx:BGRx|Add0~6           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~7           ; |Top|BaudGeneratorRx:BGRx|Add0~7           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~8           ; |Top|BaudGeneratorRx:BGRx|Add0~8           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~9           ; |Top|BaudGeneratorRx:BGRx|Add0~9           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~10          ; |Top|BaudGeneratorRx:BGRx|Add0~10          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~11          ; |Top|BaudGeneratorRx:BGRx|Add0~11          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~12          ; |Top|BaudGeneratorRx:BGRx|Add0~12          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~13          ; |Top|BaudGeneratorRx:BGRx|Add0~13          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~14          ; |Top|BaudGeneratorRx:BGRx|Add0~14          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~15          ; |Top|BaudGeneratorRx:BGRx|Add0~15          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~16          ; |Top|BaudGeneratorRx:BGRx|Add0~16          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~17          ; |Top|BaudGeneratorRx:BGRx|Add0~17          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~18          ; |Top|BaudGeneratorRx:BGRx|Add0~18          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~3           ; |Top|BaudGeneratorTx:BGTx|Add0~3           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~4           ; |Top|BaudGeneratorTx:BGTx|Add0~4           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~5           ; |Top|BaudGeneratorTx:BGTx|Add0~5           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~6           ; |Top|BaudGeneratorTx:BGTx|Add0~6           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~7           ; |Top|BaudGeneratorTx:BGTx|Add0~7           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~8           ; |Top|BaudGeneratorTx:BGTx|Add0~8           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~9           ; |Top|BaudGeneratorTx:BGTx|Add0~9           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~10          ; |Top|BaudGeneratorTx:BGTx|Add0~10          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~11          ; |Top|BaudGeneratorTx:BGTx|Add0~11          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~12          ; |Top|BaudGeneratorTx:BGTx|Add0~12          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~13          ; |Top|BaudGeneratorTx:BGTx|Add0~13          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~14          ; |Top|BaudGeneratorTx:BGTx|Add0~14          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~15          ; |Top|BaudGeneratorTx:BGTx|Add0~15          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~16          ; |Top|BaudGeneratorTx:BGTx|Add0~16          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~17          ; |Top|BaudGeneratorTx:BGTx|Add0~17          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~18          ; |Top|BaudGeneratorTx:BGTx|Add0~18          ; out0             ;
++--------------------------------------------+--------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++------------------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                                   ;
++--------------------------------------------+--------------------------------------------+------------------+
+; Node Name                                  ; Output Port Name                           ; Output Port Type ;
++--------------------------------------------+--------------------------------------------+------------------+
+; |Top|reset                                 ; |Top|reset                                 ; out              ;
+; |Top|data_in_tx[0]                         ; |Top|data_in_tx[0]                         ; out              ;
+; |Top|data_in_tx[1]                         ; |Top|data_in_tx[1]                         ; out              ;
+; |Top|data_in_tx[2]                         ; |Top|data_in_tx[2]                         ; out              ;
+; |Top|data_in_tx[3]                         ; |Top|data_in_tx[3]                         ; out              ;
+; |Top|data_in_tx[4]                         ; |Top|data_in_tx[4]                         ; out              ;
+; |Top|data_in_tx[5]                         ; |Top|data_in_tx[5]                         ; out              ;
+; |Top|data_hex6[1]                          ; |Top|data_hex6[1]                          ; pin_out          ;
+; |Top|data_hex6[2]                          ; |Top|data_hex6[2]                          ; pin_out          ;
+; |Top|data_hex6[4]                          ; |Top|data_hex6[4]                          ; pin_out          ;
+; |Top|ParityGeneratorTx:PGTx|WideXor0       ; |Top|ParityGeneratorTx:PGTx|WideXor0       ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex6|WideOr2     ; |Top|Decoder7SegmentRx:D7SHex6|WideOr2     ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex6|WideOr5     ; |Top|Decoder7SegmentRx:D7SHex6|WideOr5     ; out0             ;
+; |Top|ShiftRegisterTx:SRTx|data~0           ; |Top|ShiftRegisterTx:SRTx|data~0           ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~10          ; |Top|ShiftRegisterTx:SRTx|data~10          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data~20          ; |Top|ShiftRegisterTx:SRTx|data~20          ; out              ;
+; |Top|ShiftRegisterTx:SRTx|data[9]          ; |Top|ShiftRegisterTx:SRTx|data[9]          ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out~0        ; |Top|DataRegisterRx:DRRx|data_out~0        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~2        ; |Top|DataRegisterRx:DRRx|data_out~2        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~9        ; |Top|DataRegisterRx:DRRx|data_out~9        ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out~11       ; |Top|DataRegisterRx:DRRx|data_out~11       ; out              ;
+; |Top|DataRegisterRx:DRRx|data_out[6]       ; |Top|DataRegisterRx:DRRx|data_out[6]       ; regout           ;
+; |Top|DataRegisterRx:DRRx|data_out[8]       ; |Top|DataRegisterRx:DRRx|data_out[8]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out[0]       ; |Top|DataRegisterTx:DRTx|data_out[0]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out~0        ; |Top|DataRegisterTx:DRTx|data_out~0        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~3        ; |Top|DataRegisterTx:DRTx|data_out~3        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~4        ; |Top|DataRegisterTx:DRTx|data_out~4        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out~7        ; |Top|DataRegisterTx:DRTx|data_out~7        ; out              ;
+; |Top|DataRegisterTx:DRTx|data_out[3]       ; |Top|DataRegisterTx:DRTx|data_out[3]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out[4]       ; |Top|DataRegisterTx:DRTx|data_out[4]       ; regout           ;
+; |Top|DataRegisterTx:DRTx|data_out[7]       ; |Top|DataRegisterTx:DRTx|data_out[7]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter~0        ; |Top|BaudGeneratorRx:BGRx|counter~0        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~1        ; |Top|BaudGeneratorRx:BGRx|counter~1        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~2        ; |Top|BaudGeneratorRx:BGRx|counter~2        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~3        ; |Top|BaudGeneratorRx:BGRx|counter~3        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~4        ; |Top|BaudGeneratorRx:BGRx|counter~4        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~5        ; |Top|BaudGeneratorRx:BGRx|counter~5        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~6        ; |Top|BaudGeneratorRx:BGRx|counter~6        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~7        ; |Top|BaudGeneratorRx:BGRx|counter~7        ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~11       ; |Top|BaudGeneratorRx:BGRx|counter~11       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~12       ; |Top|BaudGeneratorRx:BGRx|counter~12       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~13       ; |Top|BaudGeneratorRx:BGRx|counter~13       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~14       ; |Top|BaudGeneratorRx:BGRx|counter~14       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~15       ; |Top|BaudGeneratorRx:BGRx|counter~15       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~16       ; |Top|BaudGeneratorRx:BGRx|counter~16       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~17       ; |Top|BaudGeneratorRx:BGRx|counter~17       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~18       ; |Top|BaudGeneratorRx:BGRx|counter~18       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~22       ; |Top|BaudGeneratorRx:BGRx|counter~22       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~23       ; |Top|BaudGeneratorRx:BGRx|counter~23       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~24       ; |Top|BaudGeneratorRx:BGRx|counter~24       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~25       ; |Top|BaudGeneratorRx:BGRx|counter~25       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~26       ; |Top|BaudGeneratorRx:BGRx|counter~26       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~27       ; |Top|BaudGeneratorRx:BGRx|counter~27       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~28       ; |Top|BaudGeneratorRx:BGRx|counter~28       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter~29       ; |Top|BaudGeneratorRx:BGRx|counter~29       ; out              ;
+; |Top|BaudGeneratorRx:BGRx|counter[3]       ; |Top|BaudGeneratorRx:BGRx|counter[3]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[4]       ; |Top|BaudGeneratorRx:BGRx|counter[4]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[5]       ; |Top|BaudGeneratorRx:BGRx|counter[5]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[6]       ; |Top|BaudGeneratorRx:BGRx|counter[6]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[7]       ; |Top|BaudGeneratorRx:BGRx|counter[7]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[8]       ; |Top|BaudGeneratorRx:BGRx|counter[8]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[9]       ; |Top|BaudGeneratorRx:BGRx|counter[9]       ; regout           ;
+; |Top|BaudGeneratorRx:BGRx|counter[10]      ; |Top|BaudGeneratorRx:BGRx|counter[10]      ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter~0        ; |Top|BaudGeneratorTx:BGTx|counter~0        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~1        ; |Top|BaudGeneratorTx:BGTx|counter~1        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~2        ; |Top|BaudGeneratorTx:BGTx|counter~2        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~3        ; |Top|BaudGeneratorTx:BGTx|counter~3        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~4        ; |Top|BaudGeneratorTx:BGTx|counter~4        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~5        ; |Top|BaudGeneratorTx:BGTx|counter~5        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~6        ; |Top|BaudGeneratorTx:BGTx|counter~6        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~7        ; |Top|BaudGeneratorTx:BGTx|counter~7        ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~11       ; |Top|BaudGeneratorTx:BGTx|counter~11       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~12       ; |Top|BaudGeneratorTx:BGTx|counter~12       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~13       ; |Top|BaudGeneratorTx:BGTx|counter~13       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~14       ; |Top|BaudGeneratorTx:BGTx|counter~14       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~15       ; |Top|BaudGeneratorTx:BGTx|counter~15       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~16       ; |Top|BaudGeneratorTx:BGTx|counter~16       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~17       ; |Top|BaudGeneratorTx:BGTx|counter~17       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~18       ; |Top|BaudGeneratorTx:BGTx|counter~18       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~22       ; |Top|BaudGeneratorTx:BGTx|counter~22       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~23       ; |Top|BaudGeneratorTx:BGTx|counter~23       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~24       ; |Top|BaudGeneratorTx:BGTx|counter~24       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~25       ; |Top|BaudGeneratorTx:BGTx|counter~25       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~26       ; |Top|BaudGeneratorTx:BGTx|counter~26       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~27       ; |Top|BaudGeneratorTx:BGTx|counter~27       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~28       ; |Top|BaudGeneratorTx:BGTx|counter~28       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter~29       ; |Top|BaudGeneratorTx:BGTx|counter~29       ; out              ;
+; |Top|BaudGeneratorTx:BGTx|counter[3]       ; |Top|BaudGeneratorTx:BGTx|counter[3]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[4]       ; |Top|BaudGeneratorTx:BGTx|counter[4]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[5]       ; |Top|BaudGeneratorTx:BGTx|counter[5]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[6]       ; |Top|BaudGeneratorTx:BGTx|counter[6]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[7]       ; |Top|BaudGeneratorTx:BGTx|counter[7]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[8]       ; |Top|BaudGeneratorTx:BGTx|counter[8]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[9]       ; |Top|BaudGeneratorTx:BGTx|counter[9]       ; regout           ;
+; |Top|BaudGeneratorTx:BGTx|counter[10]      ; |Top|BaudGeneratorTx:BGTx|counter[10]      ; regout           ;
+; |Top|ControllerTx:CTx|Selector0~2          ; |Top|ControllerTx:CTx|Selector0~2          ; out0             ;
+; |Top|ControllerTx:CTx|Selector1~1          ; |Top|ControllerTx:CTx|Selector1~1          ; out0             ;
+; |Top|ControllerTx:CTx|Selector1~2          ; |Top|ControllerTx:CTx|Selector1~2          ; out0             ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~2  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~2  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~3  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~3  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~4  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~4  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~5  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~5  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~6  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~6  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~7  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~7  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~8  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~8  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~9  ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~9  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~10 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~10 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~11 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~11 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~12 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~12 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~13 ; |Top|Decoder7SegmentRx:D7SHex5|Decoder0~13 ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~1  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~1  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~2  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~2  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~3  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~3  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~5  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~5  ; out              ;
+; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~6  ; |Top|Decoder7SegmentRx:D7SHex6|Decoder0~6  ; out              ;
+; |Top|BaudGeneratorRx:BGRx|Add0~3           ; |Top|BaudGeneratorRx:BGRx|Add0~3           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~4           ; |Top|BaudGeneratorRx:BGRx|Add0~4           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~5           ; |Top|BaudGeneratorRx:BGRx|Add0~5           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~6           ; |Top|BaudGeneratorRx:BGRx|Add0~6           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~7           ; |Top|BaudGeneratorRx:BGRx|Add0~7           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~8           ; |Top|BaudGeneratorRx:BGRx|Add0~8           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~9           ; |Top|BaudGeneratorRx:BGRx|Add0~9           ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~10          ; |Top|BaudGeneratorRx:BGRx|Add0~10          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~11          ; |Top|BaudGeneratorRx:BGRx|Add0~11          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~12          ; |Top|BaudGeneratorRx:BGRx|Add0~12          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~13          ; |Top|BaudGeneratorRx:BGRx|Add0~13          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~14          ; |Top|BaudGeneratorRx:BGRx|Add0~14          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~15          ; |Top|BaudGeneratorRx:BGRx|Add0~15          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~16          ; |Top|BaudGeneratorRx:BGRx|Add0~16          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~17          ; |Top|BaudGeneratorRx:BGRx|Add0~17          ; out0             ;
+; |Top|BaudGeneratorRx:BGRx|Add0~18          ; |Top|BaudGeneratorRx:BGRx|Add0~18          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~3           ; |Top|BaudGeneratorTx:BGTx|Add0~3           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~4           ; |Top|BaudGeneratorTx:BGTx|Add0~4           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~5           ; |Top|BaudGeneratorTx:BGTx|Add0~5           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~6           ; |Top|BaudGeneratorTx:BGTx|Add0~6           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~7           ; |Top|BaudGeneratorTx:BGTx|Add0~7           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~8           ; |Top|BaudGeneratorTx:BGTx|Add0~8           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~9           ; |Top|BaudGeneratorTx:BGTx|Add0~9           ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~10          ; |Top|BaudGeneratorTx:BGTx|Add0~10          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~11          ; |Top|BaudGeneratorTx:BGTx|Add0~11          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~12          ; |Top|BaudGeneratorTx:BGTx|Add0~12          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~13          ; |Top|BaudGeneratorTx:BGTx|Add0~13          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~14          ; |Top|BaudGeneratorTx:BGTx|Add0~14          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~15          ; |Top|BaudGeneratorTx:BGTx|Add0~15          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~16          ; |Top|BaudGeneratorTx:BGTx|Add0~16          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~17          ; |Top|BaudGeneratorTx:BGTx|Add0~17          ; out0             ;
+; |Top|BaudGeneratorTx:BGTx|Add0~18          ; |Top|BaudGeneratorTx:BGTx|Add0~18          ; out0             ;
++--------------------------------------------+--------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Simulator
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+    Info: Processing started: Wed Nov 27 16:00:42 2019
+Info: Command: quartus_sim --simulation_results_format=VWF Top -c Top
+Info (324025): Using vector source file "M:/Assignment_1/output_files/Top.vwf"
+Info (310003): Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info (310004): Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info (310002): Simulation partitioned into 1 sub-simulations
+Info (328053): Simulation coverage is      62.56 %
+Info (328052): Number of transitions in simulation is 7502
+Info (324045): Vector file Top.sim.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II 64-Bit Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4475 megabytes
+    Info: Processing ended: Wed Nov 27 16:00:44 2019
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:00
+
+

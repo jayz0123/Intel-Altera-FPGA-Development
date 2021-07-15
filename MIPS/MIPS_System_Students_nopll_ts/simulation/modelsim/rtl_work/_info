@@ -1,0 +1,490 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\MIPS_System_Students_nopll_ts\simulation\modelsim
+vadder
+IV`3?^:HVXCil4o=<^lMMA0
+VR4:XbIkd<X908neF9?e9K1
+Z1 dD:\MIPS_System_Students_nopll_ts\simulation\modelsim
+Z2 w1590249380
+Z3 8D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mipsparts.v
+Z4 FD:/MIPS_System_Students_nopll_ts/MIPS_CPU/mipsparts.v
+L0 48
+Z5 OV;L;10.1d;51
+r1
+31
+Z6 !s108 1590256020.986000
+Z7 !s107 D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mipsparts.v|
+Z8 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/MIPS_CPU|D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mipsparts.v|
+Z9 o-vlog01compat -work work -O0
+Z10 !s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/MIPS_CPU -O0
+!i10b 1
+!s100 D^njL4K`fEOzF[=8VDoCB2
+!s85 0
+!s101 -O0
+vAddr_Decoder
+IiYMNEVGE?=`QJeW<<kbNz2
+VYZUiY@2bCD3RmSiD^JG2z0
+R1
+Z11 w1584483974
+8D:/MIPS_System_Students_nopll_ts/Decoder/Addr_Decoder.v
+FD:/MIPS_System_Students_nopll_ts/Decoder/Addr_Decoder.v
+L0 1
+R5
+r1
+31
+R9
+n@addr_@decoder
+!i10b 1
+!s100 i7fASRo^CJQLF14>]4D101
+!s85 0
+!s108 1590256021.690000
+!s107 D:/MIPS_System_Students_nopll_ts/Decoder/Addr_Decoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/Decoder|D:/MIPS_System_Students_nopll_ts/Decoder/Addr_Decoder.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/Decoder -O0
+valu
+I9I1>E4;RTRL_d4Ble7k1Y2
+VQm7gl53P[EXM8L2F:CEVP1
+R1
+R2
+R3
+R4
+L0 23
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 nkgfNF=dXEi7Ihh4SLXKS2
+!s85 0
+!s101 -O0
+valudec
+IZaRZBXAH>Iko3ZMHeC]fe1
+VlJ8Cz`ZozX:RdmDn0V1<d0
+R1
+Z12 w1590249448
+Z13 8D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mips.v
+Z14 FD:/MIPS_System_Students_nopll_ts/MIPS_CPU/mips.v
+Z15 L0 143
+R5
+r1
+31
+Z16 !s108 1590256020.708000
+Z17 !s107 D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mips.v|
+Z18 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/MIPS_CPU|D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mips.v|
+R9
+R10
+!i10b 1
+!s100 bn6cd:`az;Z47TlebVX^]2
+!s85 0
+!s101 -O0
+vbyte_addr
+IbBNNB`M]n@Cjkf`gb4zzG0
+VB[EoR6_OgZ3kU@[QoTPjN2
+R1
+R2
+R3
+R4
+L0 79
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 7Y3nC6L3:=_kY3Fe@MfWb1
+!s85 0
+!s101 -O0
+vClockBlk
+I4na`:[E^2nQUY39@G25kM2
+VWbH_M>6eYc0@ahZKSS>7R0
+R1
+w1585644414
+8D:/MIPS_System_Students_nopll_ts/ClockBlk/ClockBlk.v
+FD:/MIPS_System_Students_nopll_ts/ClockBlk/ClockBlk.v
+L0 1
+R5
+r1
+31
+R9
+n@clock@blk
+!i10b 1
+!s100 cTnf^FAdiH[_BBUBClE=81
+!s85 0
+!s108 1590256020.511000
+!s107 D:/MIPS_System_Students_nopll_ts/ClockBlk/ClockBlk.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/ClockBlk|D:/MIPS_System_Students_nopll_ts/ClockBlk/ClockBlk.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/ClockBlk -O0
+vcontroller
+I<_iVo;QdiF6A6^JRUT07_3
+V_JnZ0QzmNCZgJ[e>YXb3A0
+R1
+R12
+R13
+R14
+L0 73
+R5
+r1
+31
+R16
+R17
+R18
+R9
+R10
+!i10b 1
+!s100 ]Y6mKZ5RVR9oMHYn<0>P03
+!s85 0
+!s101 -O0
+vdatapath
+I0NNFONWnn[bD>KPX2A1e_3
+V5boPF>1d=_Q`^Z:Xkf3]71
+R1
+R12
+R13
+R14
+L0 169
+R5
+r1
+31
+R16
+R17
+R18
+R9
+R10
+!i10b 1
+!s100 2N<il5=`Kb?Qb74V;M^LH0
+!s85 0
+!s101 -O0
+vflopenr
+IYo:FiB7[KBEPQi9HERT>_2
+Vl[@31Ka9Wak9oGo?2I58:3
+R1
+R2
+R3
+R4
+R15
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 bUEbjbn>lP14k>k>RJ1UQ2
+!s85 0
+!s101 -O0
+vflopr
+IDPAfCVgM[@Ea@Td4MMj[U3
+VKfe>keNPnLBlHh<KCg1o52
+R1
+R2
+R3
+R4
+L0 130
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 7^Z^A>5DUCOSBUWifeWQf3
+!s85 0
+!s101 -O0
+vGPIO
+IEo[LUgf3Z5Em0o2<AcPad1
+V:moiJF0?bfo6o5ddeibgJ0
+R1
+R11
+Z19 8D:/MIPS_System_Students_nopll_ts/GPIO/GPIO.v
+Z20 FD:/MIPS_System_Students_nopll_ts/GPIO/GPIO.v
+L0 20
+R5
+r1
+31
+Z21 !s108 1590256021.771000
+Z22 !s107 D:/MIPS_System_Students_nopll_ts/GPIO/GPIO.v|
+Z23 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/GPIO|D:/MIPS_System_Students_nopll_ts/GPIO/GPIO.v|
+R9
+Z24 !s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/GPIO -O0
+n@g@p@i@o
+!i10b 1
+!s100 I8^8FKFEXMZDLzb`h@oTA2
+!s85 0
+!s101 -O0
+vkey_detect
+Ie3`=4Zf=Ghbf^PNiDnP`e2
+VdJ_d2o?63j;RPQ=DMV36m3
+R1
+R11
+R19
+R20
+L0 257
+R5
+r1
+31
+R21
+R22
+R23
+R9
+R24
+!i10b 1
+!s100 [zo8J`Oz`b_42[17M>O>Q2
+!s85 0
+!s101 -O0
+vmaindec
+IC`L7TbYPb27J^:9J@AAJa2
+V@_I7Ec<0jo3cQhMT;TR9^2
+R1
+R12
+R13
+R14
+L0 109
+R5
+r1
+31
+R16
+R17
+R18
+R9
+R10
+!i10b 1
+!s100 TVZBJXRNMWTO:OoUL^`zj2
+!s85 0
+!s101 -O0
+vmips
+IGZL[zhKSHi2>omeo85V;`2
+VPW[Ak9MzbjZ_[1j_DcWOj3
+R1
+R12
+R13
+R14
+L0 15
+R5
+r1
+31
+R16
+R17
+R18
+R9
+R10
+!i10b 1
+!s100 Akl4GfNeWd=BHjd2IodLj2
+!s85 0
+!s101 -O0
+vMIPS_System
+I`<>8X8Qmc=hU]36mGgmFI2
+VIceOCaL_enBl`Wh0MemPg0
+R1
+w1585585462
+8D:/MIPS_System_Students_nopll_ts/MIPS_System.v
+FD:/MIPS_System_Students_nopll_ts/MIPS_System.v
+L0 21
+R5
+r1
+31
+R9
+n@m@i@p@s_@system
+!i10b 1
+!s100 kF7hhKT30mz8J9c4;6Y1D1
+!s85 0
+!s108 1590256020.595000
+!s107 D:/MIPS_System_Students_nopll_ts/MIPS_System.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts|D:/MIPS_System_Students_nopll_ts/MIPS_System.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts -O0
+vMIPS_System_vlg_vec_tst
+!i10b 1
+!s100 mbeDfYF^:7U3ARDXLA9Xk1
+IEiedcO1Y@m6ffkW@K7Ujg2
+V53JiDa0SKID;V]1<RLP4Q3
+R1
+w1590119819
+8D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt
+FD:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt
+L0 29
+R5
+r1
+!s85 0
+31
+!s108 1590256040.440000
+!s107 D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt|
+!s90 -reportprogress|300|-work|work|D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt|
+!s101 -O0
+o-work work -O0
+n@m@i@p@s_@system_vlg_vec_tst
+vmux2
+I9o[oo];KX_1hCWUPV28F@0
+VT8RWJBjAIeM]>7U=5kBkT1
+R1
+R2
+R3
+R4
+L0 157
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 XO?aT6O<R;G`4LMn[R6]a1
+!s85 0
+!s101 -O0
+vram2port_inst_data
+I==AjRaLDK1Ud;mW7DV`aU0
+V@nS`@J9bDPP4cX22C`O`Z2
+R1
+w1584483972
+8D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port/ram2port_inst_data.v
+FD:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port/ram2port_inst_data.v
+L0 39
+R5
+r1
+31
+R9
+!i10b 1
+!s100 QCmQ5f8aB549@18g`3cLm0
+!s85 0
+!s108 1590256021.589000
+!s107 D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port/ram2port_inst_data.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port|D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port/ram2port_inst_data.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port -O0
+vregfile
+IhdAH]EB:4`7OMXbgJo:N:2
+VoEfJZgI?@czGGfSOSdz_g3
+R1
+R2
+R3
+R4
+L0 2
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 c8LX][]ao7W6<zgTEl?0O1
+!s85 0
+!s101 -O0
+vshift_left_16
+IQNlcaL_6OPCHJzlVlQ:J02
+V;Rg@l^a_VE_7Odbmd^>212
+R1
+R2
+R3
+R4
+L0 116
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 Q<[FfmELdL[M2Ki><1Hig3
+!s85 0
+!s101 -O0
+vsign_zero_ext
+I8_zCAjTF1m;cc5B62Ah^W0
+V>>JeOTJFFWY8K9NY8L=991
+R1
+R2
+R3
+R4
+L0 65
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 jVO>lEn2?@U<[ez1eQ3@00
+!s85 0
+!s101 -O0
+vsl2
+I]_ANLkg`h4CgFkFR<01_A1
+VMHGRbO<8oJM:TjGW_j2PX2
+R1
+R2
+R3
+R4
+L0 56
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 eMQW:=`g9XdYAQ<G@4;b01
+!s85 0
+!s101 -O0
+vTimerCounter
+Ii8H4L:[bPUP_NHiS;=@SI2
+V?6SiADLzC[nVUWOhUg7E;3
+R1
+R11
+8D:/MIPS_System_Students_nopll_ts/Timer/TimerCounter.v
+FD:/MIPS_System_Students_nopll_ts/Timer/TimerCounter.v
+L0 1
+R5
+r1
+31
+R9
+n@timer@counter
+!i10b 1
+!s100 l=5mXL[ZY82=Zb=f]H]IT1
+!s85 0
+!s108 1590256021.934000
+!s107 D:/MIPS_System_Students_nopll_ts/Timer/TimerCounter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/MIPS_System_Students_nopll_ts/Timer|D:/MIPS_System_Students_nopll_ts/Timer/TimerCounter.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/Timer -O0
+vword_to_byte
+I3f4Pb>ZRX0YeaV[j0eKF?2
+VYU;7o_2>Q@dIQZhAhGTKl2
+R1
+R2
+R3
+R4
+L0 94
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+!i10b 1
+!s100 ^19B36V2E1Z:2_XKAT=Pf3
+!s85 0
+!s101 -O0

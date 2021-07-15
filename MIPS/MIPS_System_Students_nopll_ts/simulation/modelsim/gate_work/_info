@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\MIPS_System_Students_nopll_ts\simulation\modelsim
+vMIPS_System
+!i10b 1
+!s100 MFEn9@kDhDZM_C^cefGF32
+I3oBE0TRYkXV06Nm2l=_zA3
+VIceOCaL_enBl`Wh0MemPg0
+Z1 dD:\MIPS_System_Students_nopll_ts\simulation\modelsim
+w1590114684
+8MIPS_System.vo
+FMIPS_System.vo
+L0 31
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1590114732.436000
+!s107 MIPS_System.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|MIPS_System.vo|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+. -O0
+n@m@i@p@s_@system

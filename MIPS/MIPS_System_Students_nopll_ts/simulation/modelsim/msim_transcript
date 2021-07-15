@@ -1,0 +1,176 @@
+# Reading C:/altera/13.0sp1/modelsim_ae/tcl/vsim/pref.tcl 
+# ERROR: No extended dataflow license exists
+# do MIPS_System_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ae\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ae\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/ClockBlk {D:/MIPS_System_Students_nopll_ts/ClockBlk/ClockBlk.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ClockBlk
+# 
+# Top level modules:
+# 	ClockBlk
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts {D:/MIPS_System_Students_nopll_ts/MIPS_System.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MIPS_System
+# 
+# Top level modules:
+# 	MIPS_System
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/MIPS_CPU {D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mips.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module mips
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	mips
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/MIPS_CPU {D:/MIPS_System_Students_nopll_ts/MIPS_CPU/mipsparts.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module regfile
+# -- Compiling module alu
+# -- Compiling module adder
+# -- Compiling module sl2
+# -- Compiling module sign_zero_ext
+# -- Compiling module byte_addr
+# -- Compiling module word_to_byte
+# -- Compiling module shift_left_16
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# 
+# Top level modules:
+# 	regfile
+# 	alu
+# 	adder
+# 	sl2
+# 	sign_zero_ext
+# 	byte_addr
+# 	word_to_byte
+# 	shift_left_16
+# 	flopr
+# 	flopenr
+# 	mux2
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port {D:/MIPS_System_Students_nopll_ts/Alera_Mem_Dual_Port/ram2port_inst_data.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ram2port_inst_data
+# 
+# Top level modules:
+# 	ram2port_inst_data
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/Decoder {D:/MIPS_System_Students_nopll_ts/Decoder/Addr_Decoder.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Addr_Decoder
+# 
+# Top level modules:
+# 	Addr_Decoder
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/GPIO {D:/MIPS_System_Students_nopll_ts/GPIO/GPIO.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module GPIO
+# -- Compiling module key_detect
+# 
+# Top level modules:
+# 	GPIO
+# vlog -vlog01compat -work work +incdir+D:/MIPS_System_Students_nopll_ts/Timer {D:/MIPS_System_Students_nopll_ts/Timer/TimerCounter.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module TimerCounter
+# 
+# Top level modules:
+# 	TimerCounter
+# 
+do D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.do
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module MIPS_System_vlg_vec_tst
+# 
+# Top level modules:
+# 	MIPS_System_vlg_vec_tst
+# vsim -L cycloneii_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -t 1ps -novopt work.MIPS_System_vlg_vec_tst 
+# //  ModelSim ALTERA 10.1d Nov  2 2012 
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading work.MIPS_System_vlg_vec_tst
+# Loading work.MIPS_System
+# Loading work.ClockBlk
+# Loading work.mips
+# Loading work.controller
+# Loading work.maindec
+# Loading work.aludec
+# Loading work.datapath
+# Loading work.flopr
+# Loading work.adder
+# Loading work.sl2
+# Loading work.mux2
+# Loading work.regfile
+# Loading work.sign_zero_ext
+# Loading work.word_to_byte
+# Loading work.shift_left_16
+# Loading work.alu
+# Loading work.byte_addr
+# Loading work.ram2port_inst_data
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.Addr_Decoder
+# Loading work.TimerCounter
+# Loading work.GPIO
+# Loading work.key_detect
+# Warning: read_during_write_mode_mixed_ports is assumed as               OLD_DATA
+# Time: 0  Instance: MIPS_System_vlg_vec_tst.i1.Inst_Data_Mem.altsyncram_component
+# ** Note: $finish    : D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt(66)
+#    Time: 1 us  Iteration: 0  Instance: /MIPS_System_vlg_vec_tst
+# 1
+# Break in Module MIPS_System_vlg_vec_tst at D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt line 66
+# Simulation Breakpoint: 1
+# Break in Module MIPS_System_vlg_vec_tst at D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt line 66
+# MACRO D:\MIPS_System_Students_nopll_ts\simulation\modelsim\Waveform.vwf.do PAUSED at line 6
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/LEDR
+restart
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as               OLD_DATA
+# Time: 0  Instance: MIPS_System_vlg_vec_tst.i1.Inst_Data_Mem.altsyncram_component
+# ** Note: $finish    : D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt(66)
+#    Time: 1 us  Iteration: 0  Instance: /MIPS_System_vlg_vec_tst
+# 1
+# Break in Module MIPS_System_vlg_vec_tst at D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt line 66
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/i1/mips_cpu/loadbyte
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/i1/mips_cpu/aluout
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/i1/mips_cpu/memtoreg
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/i1/mips_cpu/ba/addr_in
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/i1/mips_cpu/ba/addr_out
+restart
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as               OLD_DATA
+# Time: 0  Instance: MIPS_System_vlg_vec_tst.i1.Inst_Data_Mem.altsyncram_component
+# ** Note: $finish    : D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt(66)
+#    Time: 1 us  Iteration: 0  Instance: /MIPS_System_vlg_vec_tst
+# 1
+# Break in Module MIPS_System_vlg_vec_tst at D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt line 66
+add wave -position insertpoint  \
+sim:/MIPS_System_vlg_vec_tst/i1/mips_cpu/memreaddata
+restart
+run -all
+# Warning: read_during_write_mode_mixed_ports is assumed as               OLD_DATA
+# Time: 0  Instance: MIPS_System_vlg_vec_tst.i1.Inst_Data_Mem.altsyncram_component
+# ** Note: $finish    : D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt(66)
+#    Time: 1 us  Iteration: 0  Instance: /MIPS_System_vlg_vec_tst
+# 1
+# Break in Module MIPS_System_vlg_vec_tst at D:/MIPS_System_Students_nopll_ts/simulation/modelsim/Waveform.vwf.vt line 66

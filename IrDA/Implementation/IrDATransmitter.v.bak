@@ -1,0 +1,83 @@
+module IrDATransmitter
+(
+	output 		bit_done,
+	output 		shift,
+	output		inc,
+	output		baud_txir,
+	output		baud_full,
+	output		ena_bit,
+	output		ena_baud,
+	output		ena_inv,
+
+	input			clk,
+	input			rst,
+	input			ena,
+	input			start,
+	input [6:0] data_txd,
+	output		txd_ir,
+	output		done
+);
+
+ShiftRegister transmitter_shift_register
+(
+	.clk(clk),
+	.rst(!clear_shift),
+	.shift(shift),
+	.load(load),
+	.serial_in(1'b1),
+	.parallel_in({1'b1, parity_bit, data_txd, 1'b0}),
+	.serial_out(txd)
+);
+
+BaudGenerator transmitter_baud_generator
+(
+	.clk(clk),
+	.rst(!clear_baud),
+	.ena(ena_baud),
+	.baud_full(baud_full),
+	.baud_txir(baud_txir)
+);
+
+BitCounter transmitter_bit_counter
+(
+	.clk(clk),
+	.rst(!clear_bit),
+	.ena(ena_bit),
+	.inc(inc),
+	.bit_done(bit_done)
+);
+
+ParityGenerator transmitter_parity_generator
+(
+	.data(data_txd),
+	.parity_bit(parity_bit)
+);
+
+Inverter transmitter_inverter
+(
+	.ena(ena_inv),
+	.txd(txd),
+	.txd_ir(txd_ir)
+);
+
+TransmitterController transmitter_controller
+(
+	.clk(clk),
+	.rst(rst),
+	.ena(ena),
+	.start(start),
+	.bit_done(bit_done),
+	.baud_full(baud_full),
+	.baud_txir(baud_txir),
+	.shift(shift),
+	.load(load),
+	.inc(inc),
+	.ena_baud(ena_baud),
+	.ena_bit(ena_bit),
+	.ena_inv(ena_inv),
+	.clear_baud(clear_baud),
+	.clear_bit(clear_bit),
+	.clear_shift(clear_shift),
+	.done(done)
+);
+endmodule

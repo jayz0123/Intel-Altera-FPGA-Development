@@ -1,0 +1,17 @@
+
+State Machine - |IrDATransceiver|TransceiverController:transceiver_controller|pstate
+Name pstate.TRANS pstate.RCV pstate.IDLE 
+pstate.IDLE 0 0 0 
+pstate.TRANS 1 0 1 
+pstate.RCV 0 1 1 
+
+State Machine - |IrDATransceiver|IrDAReceiver:IrDA_receiver|ReceiverController:receiver_controller|pstate
+Name pstate.RCV 
+pstate.IDLE 0 
+pstate.RCV 1 
+
+State Machine - |IrDATransceiver|IrDATransmitter:IrDA_transmitter|TransmitterController:transmitter_controller|pstate
+Name pstate.LOAD pstate.TRANS pstate.IDLE 
+pstate.IDLE 0 0 0 
+pstate.LOAD 1 0 1 
+pstate.TRANS 0 1 1 

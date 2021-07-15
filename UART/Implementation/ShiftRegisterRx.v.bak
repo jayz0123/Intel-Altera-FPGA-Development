@@ -1,0 +1,35 @@
+module ShiftRegisterRx
+(
+	clk,
+	clk_baud,
+	reset,
+	serial_in,
+	parallel_out
+);
+
+input			clk;
+input 			clk_baud;
+input 			reset;
+input			serial_in;
+
+output	[9:0]	parallel_out;
+
+reg		[9:0]	data;
+
+
+initial
+begin
+	data = 10'b111_111_1111;
+end
+
+always @(posedge clk or negedge reset)
+begin
+	if(!reset)
+		data <= 10'b111_111_1111;
+		
+	else if(clk_baud)
+		data <= {serial_in, data[9:1]};
+end
+
+assign parallel_out = data;
+endmodule

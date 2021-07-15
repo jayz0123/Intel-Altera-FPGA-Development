@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at ControllerTx.v(23): object "LOAD" differs only in case from object "load" in the same scope
+Info (10281): Verilog HDL Declaration information at ControllerRx.v(25): object "LOAD" differs only in case from object "load" in the same scope
